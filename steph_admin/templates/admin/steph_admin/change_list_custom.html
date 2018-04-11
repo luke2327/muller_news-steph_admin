@@ -1,0 +1,14 @@
+{% extends "admin/change_list.html" %}
+{% block extrahead %}
+{{ block.super }}
+<script>
+      window.onload = function() {
+          for(var i = 0 ; i <document.getElementsByClassName("vIntegerField").length; i++){
+              document.getElementsByClassName("vIntegerField")[i].style.width="30px";
+          }
+
+          console.log("hi");
+      }
+
+</script>
+{% endblock %}

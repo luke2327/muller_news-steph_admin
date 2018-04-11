@@ -1,0 +1,9 @@
+*.log
+*.pyc
+*.swp
+*.beforefix
+.*
+!.gitignore
+*.bak
+rds_scale_modifier/troubleshoot
+
