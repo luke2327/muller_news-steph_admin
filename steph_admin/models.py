@@ -1837,7 +1837,7 @@ class SwipsNews(models.Model):
     following_desc = models.CharField(max_length=255, blank=True, null=True)
     pushed = models.IntegerField()
     del_field = models.IntegerField(db_column='del', blank=True, null=True)  # Field renamed because it was a Python reserved word.
-
+    
     class Meta:
         managed = False
         db_table = 'swips_news'
