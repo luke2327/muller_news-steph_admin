@@ -2,14 +2,18 @@ class MultiDBRouter(object):
     def db_for_read(self, model, **hints):
         print('db_for_read')
         print(model._meta.app_label)
-        if model._meta.app_label == 'steph_admin':
+        if model._meta.app_label == 'steph_admin' or \
+            model._meta.app_label == 'feeds' :
+
             return 'admin'
+
         return 'users'
 
     def db_for_write(self, model, **hints):
         print('db_for_write')
         print(model._meta.app_label)
-        if model._meta.app_label == 'steph_admin':
+        if model._meta.app_label == 'steph_admin' or \
+            model._meta.app_label == 'feeds':
             return 'admin'
         return 'users'
 
