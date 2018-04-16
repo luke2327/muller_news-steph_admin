@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-
+    'grappelli',
     'flat_responsive',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,10 +50,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware'
 ]
 
 ROOT_URLCONF = 'steph.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -75,8 +75,7 @@ TEMPLATE_DIRS = (
     "/.../leave_beave/django/contrib/admin/templates",
 )
 WSGI_APPLICATION = 'steph.wsgi.application'
-
-
+GRAPPELLI_EXTENSIONS_NAVBAR = 'extensions.Navbar'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -140,3 +139,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')

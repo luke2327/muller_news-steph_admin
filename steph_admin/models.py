@@ -1837,7 +1837,7 @@ class SwipsNews(models.Model):
     following_desc = models.CharField(max_length=255, blank=True, null=True)
     pushed = models.IntegerField()
     del_field = models.IntegerField(db_column='del', blank=True, null=True)  # Field renamed because it was a Python reserved word.
-    
+
     class Meta:
         managed = False
         db_table = 'swips_news'
@@ -1862,7 +1862,8 @@ class CurryNews(models.Model):
     class Meta:
         managed = False
         db_table = 'curry_news'
-
+        verbose_name = "News"
+        verbose_name_plural = "News"
 class SwipsNewsRelation(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     participant = models.IntegerField()
@@ -2459,8 +2460,36 @@ class SwipsUserTs(models.Model):
         managed = False
         db_table = 'swips_user_ts'
 
+class CurryVod(models.Model):
+    id = models.IntegerField(primary_key=True)
+    match_id = models.IntegerField(blank=True, null=True)
+    link = models.CharField(unique=True, max_length=255, blank=True, null=True)
+    image_link = models.CharField(max_length=255, blank=True, null=True)
+    create_tmp = models.DateTimeField(blank=True, null=True)
+    is_top = models.IntegerField(blank=True, null=True)
+    sport = models.IntegerField(blank=True, null=True)
+    country_cd = models.CharField(max_length=2, blank=True, null=True)
+    language_cd = models.CharField(max_length=2, blank=True, null=True)
+    title = models.CharField(max_length=127, blank=True, null=True)
+    source = models.CharField(max_length=45, blank=True, null=True)
+    pub_date = models.DateTimeField(blank=True, null=True)
+    following_desc = models.CharField(max_length=255, blank=True, null=True)
+    is_frifee_content = models.IntegerField(blank=True, null=True)
+    pushed = models.IntegerField()
+    country_exclude_cd = models.CharField(max_length=45, blank=True, null=True)
+    del_field = models.IntegerField(db_column='del', blank=True, null=True)  # Field renamed because it was a Python reserved word.
+    is_live = models.IntegerField()
+    pl_relation = models.CharField(max_length=255, blank=True, null=True)
+    te_relation = models.CharField(max_length=255, blank=True, null=True)
+    le_relation = models.CharField(max_length=255, blank=True, null=True)
 
+    class Meta:
+        managed = False
+        db_table = 'curry_vod'
+        verbose_name = "vod"
+        verbose_name_plural = "vod"
 class SwipsVod(models.Model):
+    id = models.IntegerField(primary_key=True)
     match_id = models.IntegerField(blank=True, null=True)
     link = models.CharField(unique=True, max_length=255, blank=True, null=True)
     image_link = models.CharField(max_length=255, blank=True, null=True)

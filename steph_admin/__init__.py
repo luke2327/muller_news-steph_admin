@@ -28,7 +28,11 @@ class Database():
         try :
             with self.connection.cursor() as cursor:
                 # Read a single record
-                cursor.execute(sql)
-                connection.commit()
+                result = cursor.execute(sql)
+                self.connection.commit()
+                return result
+        except Exception as e :
+            print(e)
+            return -1
         finally :
             self.disconnect_db()
