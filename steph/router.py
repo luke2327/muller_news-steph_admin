@@ -6,7 +6,8 @@ class MultiDBRouter(object):
             model._meta.app_label == 'feeds' or \
             model._meta.app_label == 'lineup' or \
             model._meta.app_label == 'league_team_player' or \
-            model._meta.app_label == 'preview_review':
+            model._meta.app_label == 'preview_review' or \
+            model._meta.app_label == 'board':
 
             return 'admin'
 
@@ -19,7 +20,8 @@ class MultiDBRouter(object):
             model._meta.app_label == 'feeds' or\
             model._meta.app_label == 'lineup' or\
             model._meta.app_label == 'league_team_player' or \
-            model._meta.app_label == 'preview_review':
+            model._meta.app_label == 'preview_review' or \
+            model._meta.app_label == 'board':
             return 'admin'
         return 'users'
 
