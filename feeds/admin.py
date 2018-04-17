@@ -39,7 +39,7 @@ class CurryNewsAdmin(admin.ModelAdmin):
         #return truncatechars(obj.following_desc, 100)
     def following_(self, obj) :
         html = '<ul class = "list-unstyled" id = "following_%s">' %(obj.id)
-        html += '<li><a class="btn btn-primary following_add" data_id="%s">+ following add</button></li>' %(obj.id)
+        html += '<li><a class="btn btn-primary following_add" data_id="%s">+ following add</a></li>' %(obj.id)
         try :
             for row in obj.le_relation.split(',') :
                 html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)

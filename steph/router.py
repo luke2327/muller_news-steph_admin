@@ -3,7 +3,8 @@ class MultiDBRouter(object):
         print('db_for_read')
         print(model._meta.app_label)
         if model._meta.app_label == 'steph_admin' or \
-            model._meta.app_label == 'feeds' :
+            model._meta.app_label == 'feeds' or \
+            model._meta.app_label == 'lineup' :
 
             return 'admin'
 
@@ -13,7 +14,8 @@ class MultiDBRouter(object):
         print('db_for_write')
         print(model._meta.app_label)
         if model._meta.app_label == 'steph_admin' or \
-            model._meta.app_label == 'feeds':
+            model._meta.app_label == 'feeds' or\
+            model._meta.app_label == 'lineup' :
             return 'admin'
         return 'users'
 

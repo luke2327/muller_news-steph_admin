@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'steph_admin',
     'feeds',
+    'lineup',
 ]
 
 MIDDLEWARE = [

@@ -10,10 +10,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src='http://static.swips.co/content/static/js/jquery.autocomplete.js'></script>
 
-{% endblock %} {% block content %} {{ block.super }}
+{% endblock %}
+{% block content %}
+<a class="btn btn-primary" id="add_lineup">+ lineup add</a>
+{{ block.super }}
   {% include 'admin/steph_admin/modal.html' %}
 {% block bottom %}
 {% load staticfiles%}
-<script type="text/javascript" src="{% static 'admin/js/curry_news.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/lineup.js' %}"></script>
 {% endblock %}
 {% endblock %}
