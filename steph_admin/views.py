@@ -190,3 +190,41 @@ def vods_relation(request) :
         results = Database().insert_data(query)
         return HttpResponse(status=200)
     return HttpResponse(status=200)
+@csrf_exempt
+def lineup(request) :
+    print(request.body)
+    print(type(request.body))
+    print(json.loads(request.body))
+    if request.method == "POST":
+        try :
+            lineup = json.loads(request.body)
+            match_id = lineup['match_id']
+            team1 = lineup['team1']
+            team2 = lineup['team2']
+
+            values = []
+
+            for row in team1 :
+                values.append('("%s", "%s", "%s", "%s", "%s", "%s")'
+                        %(match_id, '1', row['lineup_number'], row['shirt_number'],\
+                          row['position'], row['name']))
+
+            for row in team2 :
+                values.append('("%s", "%s", "%s", "%s", "%s", "%s")'
+                        %(match_id, '2', row['lineup_number'], row['shirt_number'],\
+                          row['position'], row['name']))
+
+            query = ('INSERT INTO swips_lineup_custom '
+                '(match_id, team, lineup_number, shirt_number, position, name) '
+                'VALUES %s' %(','.join(values)))
+
+            print(query)
+            result = Database().insert_data(query)
+            print(result)
+            if result > 0 :
+                return HttpResponse(json.dumps({"result" : 201}))
+            else :
+                return HttpResponse(status=403)
+        except Exception as e :
+            return HttpResponse(status=401)
+    return HttpResponse(status=500)

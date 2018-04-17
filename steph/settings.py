@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'steph_admin',
     'feeds',
     'lineup',
+    'preview_review',
 ]
 
 MIDDLEWARE = [

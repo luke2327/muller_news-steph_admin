@@ -148,7 +148,6 @@ $('#btn_following_add').click(function(){
               $('#del_following_body').text('news id : ' + data_id + '   ' + following + ' 을(를) 삭제합니다');
             });
           }
-
       }
   });
 });
@@ -159,7 +158,7 @@ $('#btn_del_following').on("click",function(){
   $('#btn_del_following').button('loading');
   $.ajax({
       type : "DELETE",
-      url : "http://127.0.0.1:8000/steph_admin/news_relation/",
+      url : "/steph_admin/news_relation/",
       dataType : "text",
       headers: {"following" : following,
                 "id" : data_id,
