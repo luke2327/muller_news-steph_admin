@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'feeds',
     'lineup',
     'preview_review',
+    'league_team_player',
 ]
 
 MIDDLEWARE = [

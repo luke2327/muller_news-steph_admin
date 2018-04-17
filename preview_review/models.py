@@ -50,6 +50,7 @@ class WorldPeacePreview(models.Model):
         db_table = 'world_peace_preview'
 
 class WpFixtures(models.Model):
+    id = models.IntegerField(primary_key=True)
     match = models.IntegerField(unique=True, blank=True, null=True)
     tournament = models.IntegerField(blank=True, null=True)
     league = models.IntegerField(blank=True, null=True)
@@ -67,6 +68,7 @@ class WpFixtures(models.Model):
 
 
 class WpInjuries(models.Model):
+    id = models.IntegerField(primary_key=True)
     player = models.IntegerField(blank=True, null=True)
     match = models.IntegerField(blank=True, null=True)
     team = models.IntegerField(blank=True, null=True)
@@ -78,6 +80,7 @@ class WpInjuries(models.Model):
 
 
 class WpKeyPl(models.Model):
+    id = models.IntegerField(primary_key=True)
     match_id = models.IntegerField()
     team = models.IntegerField()
     player = models.IntegerField()
@@ -94,6 +97,7 @@ class WpKeyPl(models.Model):
 
 
 class WpTeamStat(models.Model):
+    id = models.IntegerField(primary_key=True)
     match_id = models.IntegerField(blank=True, null=True)
     team = models.IntegerField(blank=True, null=True)
     rank = models.IntegerField(blank=True, null=True)
@@ -119,6 +123,7 @@ class WpTeamStat(models.Model):
 
 
 class WpTopPl(models.Model):
+    id = models.IntegerField(primary_key=True)
     match_id = models.IntegerField(blank=True, null=True)
     team = models.IntegerField(blank=True, null=True)
     player = models.IntegerField(blank=True, null=True)
@@ -134,15 +139,56 @@ class WpTopPl(models.Model):
 
 
 class WpTransfer(models.Model):
+    id = models.IntegerField(primary_key=True)
     tournament = models.IntegerField(blank=True, null=True)
     team = models.IntegerField(blank=True, null=True)
     player = models.IntegerField(blank=True, null=True)
     position = models.CharField(max_length=10, blank=True, null=True)
     active = models.CharField(max_length=3, blank=True, null=True)
-    ut = models.DateTimeField(blank=True, null=True)
+    ut = models.CharField(max_length=20,blank=True, null=True)
     del_field = models.IntegerField(db_column='del')  # Field renamed because it was a Python reserved word.
 
     class Meta:
         managed = False
         db_table = 'wp_transfer'
         unique_together = (('team', 'player', 'ut'),)
+
+class SwipsReview(models.Model):
+    id = models.IntegerField(primary_key=True)
+    sport = models.IntegerField()
+    league = models.IntegerField()
+    result = models.TextField(blank=True, null=True)
+    ut = models.DateTimeField()
+    standing = models.TextField(blank=True, null=True)
+    startdate = models.DateTimeField()
+    ct = models.DateTimeField()
+    pushed = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'swips_review'
+
+class SwipsRating(models.Model):
+    id = models.IntegerField(primary_key=True)
+    match_id = models.IntegerField()
+    player_id = models.IntegerField()
+    type = models.IntegerField()
+    rating = models.FloatField()
+    source = models.CharField(max_length=45)
+
+    class Meta:
+        managed = False
+        db_table = 'swips_rating'
+        unique_together = (('match_id', 'player_id', 'source'),)
+
+
+class SwipsRatingProperty(models.Model):
+    id = models.IntegerField(primary_key=True)
+    mom_id = models.IntegerField(blank=True, null=True)
+    mom_goal = models.IntegerField(blank=True, null=True)
+    mom_assist = models.IntegerField(blank=True, null=True)
+    mom_min = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'swips_rating_property'
