@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'preview_review',
     'league_team_player',
     'board',
+    'feedback',
+    'transfer',
 ]
 
 MIDDLEWARE = [
