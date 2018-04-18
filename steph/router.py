@@ -9,7 +9,8 @@ class MultiDBRouter(object):
             model._meta.app_label == 'preview_review' or \
             model._meta.app_label == 'board' or \
             model._meta.app_label == 'feedback' or\
-            model._meta.app_label == 'transfer':
+            model._meta.app_label == 'transfer' or\
+            model._meta.app_label == 'user':
 
             return 'admin'
 
@@ -25,7 +26,8 @@ class MultiDBRouter(object):
             model._meta.app_label == 'preview_review' or \
             model._meta.app_label == 'board' or \
             model._meta.app_label == 'feedback' or \
-            model._meta.app_label == 'transfer':
+            model._meta.app_label == 'transfer' or \
+            model._meta.app_label == 'user':
             return 'admin'
         return 'users'
 

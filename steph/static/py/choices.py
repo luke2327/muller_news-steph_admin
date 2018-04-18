@@ -23,3 +23,14 @@ SOCCER_PLAYER_POSITION_CHOICES = (
     (20, ("RMF")),
     (21, ("SMF")),
 )
+
+IMPORTANCE_CHOICES = (
+    (1, ("A")),
+    (2, ("B")),
+    (3, ("C")),
+)
+
+BOOLEAN_CHOICES = (
+    (1, ("1")),
+    (2, ("0")),
+)

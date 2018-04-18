@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'board',
     'feedback',
     'transfer',
+    'user',
 ]
 
 MIDDLEWARE = [

@@ -6,6 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from steph.static.py.choices import *
 
 
 class AuthGroup(models.Model):
@@ -1606,13 +1607,14 @@ class SwipsClientVersion(models.Model):
 
 
 class SwipsCrawlingSource(models.Model):
+    id = models.PositiveIntegerField(primary_key=True)
     source = models.CharField(max_length=45)
     content_type = models.CharField(max_length=4)
     sport = models.IntegerField()
     language_cd = models.CharField(max_length=2)
-    frequency_cl = models.CharField(max_length=1)
-    importance_cl = models.CharField(max_length=1)
-    ut = models.DateTimeField()
+    frequency_cl = models.IntegerField(choices=IMPORTANCE_CHOICES, default=1)
+    importance_cl = models.IntegerField(choices=IMPORTANCE_CHOICES, default=1)
+    ut = models.CharField(max_length=10)
     del_field = models.IntegerField(db_column='del')  # Field renamed because it was a Python reserved word.
 
     class Meta:

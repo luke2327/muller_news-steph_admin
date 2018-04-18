@@ -17,31 +17,31 @@ class SwipsTransferAdmin(admin.ModelAdmin):
 
     def source_link_id(self, obj):
         if obj.source_id is None:
-            return obj.source_id
+            return None
         else:
             return self.source_linker(obj.source_id)
     def source_link_th(self, obj):
         if obj.source_th is None:
-            return obj.source_th
+            return None
         else:
             return self.source_linker(obj.source_th)
     def source_link_pt(self, obj):
         if obj.source_pt is None:
-            return obj.source_pt
+            return None
         else:
             return self.source_linker(obj.source_pt)
     def source_link_ko(self, obj):
         if obj.source_ko is None:
-            return obj.source_ko
+            return None
         else:
             return self.source_linker(obj.source_ko)
     def source_link_vi(self, obj):
         if obj.source_vi is None:
-            return obj.source_vi
+            return None
         else:
             return self.source_linker(obj.source_vi)
     def source_link_en(self, obj):
         if obj.source_en is None:
-            return obj.source_en
+            return None
         else:
             return self.source_linker(obj.source_en)

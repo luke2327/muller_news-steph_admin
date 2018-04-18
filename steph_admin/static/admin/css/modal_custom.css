@@ -1,0 +1,21 @@
+.titleTh{
+  padding: 10px 20px;
+}
+.subTh{
+  padding: 5px 12px;
+}
+.text-center{
+  margin: 0px;
+}
+.close_button{
+  font-size: 35px;
+}
+.close{
+  margin-top: -5px;
+}
+.modal-header{
+  margin-top: -5px;
+}
+.row{
+  vertical-align: middle;
+}

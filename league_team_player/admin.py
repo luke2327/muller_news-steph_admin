@@ -19,6 +19,17 @@ class SwipsTeamInfoAdmin(admin.ModelAdmin):
 class SwipsLeagueInfoAdmin(admin.ModelAdmin):
     list_display = ('league', 'name')
 
+# @admin.register(SwipsPlayerCareer)
+# class SwipsPlayerCareerAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'player', 'team', 'date_from', 'date_to', 'active', 'ut',
+#                     'on_loan')
+
+# @admin.register(CurryPlayer)
+# class CurryPlayerAdmin(admin.ModelAdmin):
+#
+#     list_display = ('player', 'name', 'mid_name', 'name_ko', 'mid_name_ko', 'name_th',
+#                     'mid_name_th', 'country', 'social', 'draft', 'school', 'ut', 'position')
+
 admin.site.register(SwipsPlayerInfo,SwipsPlayerInfoAdmin)
 admin.site.register(SwipsTeamInfo,SwipsTeamInfoAdmin)
 admin.site.register(SwipsLeagueInfo,SwipsLeagueInfoAdmin)
