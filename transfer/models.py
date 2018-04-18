@@ -30,3 +30,5 @@ class SwipsTransfer(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_transfer'
+        verbose_name = '이적'
+        verbose_name_plural = '이적'

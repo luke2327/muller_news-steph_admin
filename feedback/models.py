@@ -15,3 +15,5 @@ class SwipsFeedback(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_feedback'
+        verbose_name = '피드백'
+        verbose_name_plural = '피드백'

@@ -14,6 +14,8 @@ class SwipsLineupCustom(models.Model):
         managed = False
         db_table = 'swips_lineup_custom'
         unique_together = (('match_id', 'team', 'lineup_number'),)
+        verbose_name = '라인업 수동입력'
+        verbose_name_plural = '라인업 수동입력'
 
 class SwipsMatchDetailCustom(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
@@ -30,3 +32,5 @@ class SwipsMatchDetailCustom(models.Model):
         managed = False
         db_table = 'swips_match_detail_custom'
         unique_together = (('match_id', 'team_id', 'name', 'type', 'minute'),)
+        verbose_name = '매치팩트 수동입력'
+        verbose_name_plural = '매치팩트 수동입력'

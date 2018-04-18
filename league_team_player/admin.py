@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.forms import BaseModelFormSet, TextInput, Textarea
 from django import forms
+from django.utils.html import format_html
 # Register your models here.
 from .models import *
 
@@ -17,7 +18,45 @@ class SwipsTeamInfoAdmin(admin.ModelAdmin):
             'social_ko', 'social_pt', 'social_id', 'social_th', 'social_vi', 'ut')
 
 class SwipsLeagueInfoAdmin(admin.ModelAdmin):
-    list_display = ('league', 'name')
+    list_display = ('league', 'name', 'mid_name', 'short_name', 'name_ko',
+                    'name_pt', 'name_th', 'name_id', 'name_vi', 'no_teams',
+                    'founded', 'last_champion', 'social_link', 'social_link_ko',
+                    'social_link_id', 'social_link_th', 'social_link_vi',
+                    'social_link_en', 'color', 'category', 'host', 'ut')
+    list_display_links = ['league', 'name']
+    def social_linker(self, object):
+        return format_html("<div style='width:200px; word-break:break-word;'>\
+                            <a href='{}'>{}</a></div>",object,object)
+    def social_link(self, obj):
+        if obj.social is None:
+            return None
+        else:
+            return self.social_linker(obj.social)
+    def social_link_ko(self, obj):
+        if obj.social_ko is None:
+            return None
+        else:
+            return self.social_linker(obj.social_ko)
+    def social_link_id(self, obj):
+        if obj.social_id is None:
+            return None
+        else:
+            return self.social_linker(obj.social_id)
+    def social_link_th(self, obj):
+        if obj.social_th is None:
+            return None
+        else:
+            return self.social_linker(obj.social_th)
+    def social_link_vi(self, obj):
+        if obj.social_vi is None:
+            return None
+        else:
+            return self.social_linker(obj.social_vi)
+    def social_link_en(self, obj):
+        if obj.social_en is None:
+            return None
+        else:
+            return self.social_linker(obj.social_en)
 
 # @admin.register(SwipsPlayerCareer)
 # class SwipsPlayerCareerAdmin(admin.ModelAdmin):

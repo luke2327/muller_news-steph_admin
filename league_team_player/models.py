@@ -18,6 +18,8 @@ class SwipsPlayerInfo(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_player_info'
+        verbose_name = '선수'
+        verbose_name_plural = '선수'
 
 class SwipsTeamInfo(models.Model):
     team = models.IntegerField(primary_key=True)
@@ -47,6 +49,8 @@ class SwipsTeamInfo(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_team_info'
+        verbose_name = '팀'
+        verbose_name_plural = '팀'
 
 class SwipsLeagueInfo(models.Model):
     league = models.IntegerField(primary_key=True)
@@ -76,6 +80,8 @@ class SwipsLeagueInfo(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_league_info'
+        verbose_name = '리그'
+        verbose_name_plural = '리그'
 
 class CurryPlayer(models.Model):
     player = models.IntegerField()

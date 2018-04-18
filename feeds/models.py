@@ -1621,6 +1621,8 @@ class SwipsCrawlingSource(models.Model):
         managed = False
         db_table = 'swips_crawling_source'
         unique_together = (('source', 'content_type', 'sport', 'language_cd'),)
+        verbose_name = '크롤링 소스 리스트'
+        verbose_name_plural = '크롤링 소스 리스트'
 
 
 class SwipsFeedback(models.Model):
@@ -1843,6 +1845,7 @@ class SwipsNews(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_news'
+
 class CurryNews(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     language_cd = models.CharField(max_length=2, blank=True, null=True)
@@ -1864,8 +1867,8 @@ class CurryNews(models.Model):
     class Meta:
         managed = False
         db_table = 'curry_news'
-        verbose_name = "News"
-        verbose_name_plural = "News"
+        verbose_name = "뉴스"
+        verbose_name_plural = "뉴스"
 class SwipsNewsRelation(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     participant = models.IntegerField()
@@ -2488,8 +2491,8 @@ class CurryVod(models.Model):
     class Meta:
         managed = False
         db_table = 'curry_vod'
-        verbose_name = "vod"
-        verbose_name_plural = "vod"
+        verbose_name = "VOD"
+        verbose_name_plural = "VOD"
 class SwipsVod(models.Model):
     id = models.IntegerField(primary_key=True)
     match_id = models.IntegerField(blank=True, null=True)

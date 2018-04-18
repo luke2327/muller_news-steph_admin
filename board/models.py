@@ -4,25 +4,17 @@ from django.db import models
 
 class SwipsBoard(models.Model):
     item = models.IntegerField(blank=True, null=True)
-    #del_field = models.IntegerField(db_column='del')
     id = models.PositiveIntegerField(primary_key=True)
     type = models.CharField(max_length=2)
     participant = models.IntegerField(blank=True, null=True)
     language = models.CharField(max_length=2)
     account_id = models.IntegerField(blank=True, null=True)
     text = models.TextField(blank=True, null=True)
-    #img_ext = models.CharField(max_length=5, blank=True, null=True)
     image_url = models.CharField(max_length=255, blank=True, null=True)
-    #img_width = models.IntegerField(blank=True, null=True)
-    #img_height = models.IntegerField(blank=True, null=True)
-    #create_time = models.DateTimeField()
-    #edit_time = models.DateTimeField()
 
     class Meta:
         managed = False
         db_table = 'swips_board'
-        verbose_name = 'Board'
-        verbose_name_plural = 'Board'
 
 class SwipsBoardLike(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
@@ -36,6 +28,8 @@ class SwipsBoardLike(models.Model):
         managed = False
         db_table = 'swips_board_like'
         unique_together = (('type', 'root_id', 'account_id'),)
+        verbose_name = '좋아요'
+        verbose_name_plural = '좋아요'
 
 
 class SwipsBoardLikeDev(models.Model):
@@ -72,8 +66,8 @@ class SwipsBoardPost(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_board_post'
-        verbose_name_plural = 'Post'
-        verbose_name = 'Post'
+        verbose_name_plural = '게시판'
+        verbose_name = '게시판'
 
 
 class SwipsBoardPostDev(models.Model):
@@ -115,9 +109,8 @@ class SwipsBoardReply(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_board_reply'
-
-    verbose_name = 'Reply'
-    verbose_name_plural = 'Reply'
+        verbose_name = '댓글'
+        verbose_name_plural = '댓글'
 
 
 class SwipsBoardReplyDev(models.Model):
