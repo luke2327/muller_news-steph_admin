@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'transfer',
     'user',
     'etc',
+    'event',
 ]
 
 MIDDLEWARE = [

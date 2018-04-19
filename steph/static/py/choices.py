@@ -34,3 +34,19 @@ BOOLEAN_CHOICES = (
     (1, ("1")),
     (2, ("0")),
 )
+
+STATUS_TYPE_CHOICES = (
+    (1, ("notstarted")),
+    (2, ("finished")),
+    (3, ("inprogress")),
+)
+
+WEEKEND_DAY_CHOICES = (
+    (1, ("월")),
+    (2, ("화")),
+    (3, ("수")),
+    (4, ("목")),
+    (5, ("금")),
+    (6, ("토")),
+    (7, ("일")),
+)

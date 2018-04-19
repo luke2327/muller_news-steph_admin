@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-
 class SwipsBoard(models.Model):
     item = models.IntegerField(blank=True, null=True)
     id = models.PositiveIntegerField(primary_key=True)

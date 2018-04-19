@@ -68,6 +68,7 @@ class CurryVodAdmin(admin.ModelAdmin):
                 'create_tmp','is_top','sport','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
                 'following_')
     list_filter = ['language_cd', 'del_field','create_tmp','sport']
+    # list_editable = ['title_']
     '''
     display_as_charfield = ['name', 'country']
     '''
