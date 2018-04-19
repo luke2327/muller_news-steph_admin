@@ -14,7 +14,8 @@ class MultiDBRouter(object):
             model._meta.app_label == 'user' or \
             model._meta.app_label == 'etc' or \
             model._meta.app_label == 'event' or \
-            model._meta.app_label == 'poll':
+            model._meta.app_label == 'poll' or \
+            model._meta.app_label == 'info_update':
 
             return 'admin'
 
@@ -35,7 +36,8 @@ class MultiDBRouter(object):
             model._meta.app_label == 'user' or \
             model._meta.app_label == 'etc' or \
             model._meta.app_label == 'event' or \
-            model._meta.app_label == 'poll':
+            model._meta.app_label == 'poll' or \
+            model._meta.app_label == 'info_update':
             return 'admin'
         return 'users'
 

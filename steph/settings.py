@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'etc',
     'event',
     'poll',
+    'info_update',
 ]
 
 MIDDLEWARE = [
