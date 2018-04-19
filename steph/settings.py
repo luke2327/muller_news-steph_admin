@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'league_team_player',
     'board',
     'feedback',
+    'feedback_new',
     'transfer',
     'user',
     'etc',

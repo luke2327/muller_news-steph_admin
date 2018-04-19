@@ -16,7 +16,7 @@ class SwipsBoardPostAdmin(admin.ModelAdmin):
             return None;
         else:
             return format_html("<a href='http://board.swips.co/origin/bo/te_{}_{}.{}'>\
-            <img src='http://board.swips.co/thumbnails/origin/bo/te_{}_{}.{}'</a>",
+            <img src='http://board.swips.co/thumbnails/origin/bo/te_{}_{}.{}'></a>",
             obj.participant, obj.id, obj.img_ext, obj.participant, obj.id, obj.img_ext)
     def text_(self, obj):
         return format_html("<div style='width: 500px; word-break:break-word;'>{}</div>", obj.text)
