@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'event',
     'poll',
     'info_update',
+    'national',
+    'development',
 ]
 
 MIDDLEWARE = [
