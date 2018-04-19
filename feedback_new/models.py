@@ -22,5 +22,5 @@ class SwipsQna(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_qna'
-        verbose_name = '피드백(NEW)'
-        verbose_name_plural = '피드백(NEW)'
+        verbose_name = '피드백'
+        verbose_name_plural = '피드백'

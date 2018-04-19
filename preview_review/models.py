@@ -48,6 +48,8 @@ class WorldPeacePreview(models.Model):
     class Meta:
         managed = False
         db_table = 'world_peace_preview'
+        verbose_name = '웹 프리뷰'
+        verbose_name_plural = '웹 프리뷰'
 
 class WpFixtures(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -65,6 +67,8 @@ class WpFixtures(models.Model):
     class Meta:
         managed = False
         db_table = 'wp_fixtures'
+        verbose_name = '인앱 프리뷰 Fixtures(raw)'
+        verbose_name_plural = '인앱 프리뷰 Fixtures(raw)'
 
 
 class WpInjuries(models.Model):
@@ -77,6 +81,8 @@ class WpInjuries(models.Model):
         managed = False
         db_table = 'wp_injuries'
         unique_together = (('player', 'match', 'team'),)
+        verbose_name = '인앱 프리뷰 부상자명단(raw)'
+        verbose_name_plural = '인앱 프리뷰 부상자 명단(raw)'
 
 
 class WpKeyPl(models.Model):
@@ -94,6 +100,8 @@ class WpKeyPl(models.Model):
         managed = False
         db_table = 'wp_key_pl'
         unique_together = (('match_id', 'team'),)
+        verbose_name = '인앱 프리뷰 키플레이어(raw)'
+        verbose_name_plural = '인앱 프리뷰 키플레이어(raw)'
 
 
 class WpTeamStat(models.Model):
@@ -120,6 +128,8 @@ class WpTeamStat(models.Model):
         managed = False
         db_table = 'wp_team_stat'
         unique_together = (('match_id', 'team'),)
+        verbose_name = '인앱 프리뷰 팀 스탯(raw)'
+        verbose_name_plural = '인앱 프리뷰 팀 스탯(raw)'
 
 
 class WpTopPl(models.Model):
@@ -136,6 +146,8 @@ class WpTopPl(models.Model):
         managed = False
         db_table = 'wp_top_pl'
         unique_together = (('match_id', 'team', 'stat_type'),)
+        verbose_name = '인앱 프리뷰 탑플레이어(raw)'
+        verbose_name_plural = '인앱 프리뷰 탑플레이어(raw)'
 
 
 class WpTransfer(models.Model):
@@ -152,6 +164,8 @@ class WpTransfer(models.Model):
         managed = False
         db_table = 'wp_transfer'
         unique_together = (('team', 'player', 'ut'),)
+        verbose_name = '인앱 프리뷰 이적(raw)'
+        verbose_name_plural = '인앱 프리뷰 이적(raw)'
 
 class SwipsReview(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -167,6 +181,8 @@ class SwipsReview(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_review'
+        verbose_name = '리뷰(raw)'
+        verbose_name_plural = '리뷰(raw)'
 
 class SwipsRating(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -180,6 +196,8 @@ class SwipsRating(models.Model):
         managed = False
         db_table = 'swips_rating'
         unique_together = (('match_id', 'player_id', 'source'),)
+        verbose_name = '리뷰 Rating(raw)'
+        verbose_name_plural = '리뷰 Rating(raw)'
 
 
 class SwipsRatingProperty(models.Model):
@@ -192,3 +210,5 @@ class SwipsRatingProperty(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_rating_property'
+        verbose_name = '리뷰 MOM(raw)'
+        verbose_name_plural = '리뷰 MOM(raw)'
