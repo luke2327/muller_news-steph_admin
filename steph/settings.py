@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'info_update',
     'national',
     'development',
+    'expose',
 ]
 
 MIDDLEWARE = [
