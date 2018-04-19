@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'user',
     'etc',
     'event',
+    'poll',
 ]
 
 MIDDLEWARE = [
