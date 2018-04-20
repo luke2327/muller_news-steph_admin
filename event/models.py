@@ -2,7 +2,7 @@ from django.db import models
 # Create your models here.
 
 class Event(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.PositiveIntegerField(primary_key=True, verbose_name='Match Id')
     name = models.CharField(max_length=150)
     tournament_stagefk = models.PositiveIntegerField(db_column='tournament_stageFK')  # Field name made lowercase.
     startdate = models.DateTimeField(blank=True, null=True)
@@ -23,7 +23,7 @@ class Event(models.Model):
         verbose_name_plural = '경기'
 
 class CurryFixturesInfo(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.PositiveIntegerField(primary_key=True, verbose_name='Match Id')
     name = models.CharField(max_length=150)
     startdate = models.DateTimeField()
     league = models.PositiveIntegerField()
@@ -42,7 +42,7 @@ class CurryFixturesInfo(models.Model):
         verbose_name_plural = '중계정보입력'
 
 class CurryMajorFixtures(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.PositiveIntegerField(primary_key=True, verbose_name='Match Id')
     league = models.CharField(max_length=30)
     home_team = models.CharField(max_length=50)
     away_team = models.CharField(max_length=50)
@@ -56,3 +56,19 @@ class CurryMajorFixtures(models.Model):
         db_table = 'curry_major_fixtures'
         verbose_name = '주요경기조회'
         verbose_name_plural = '주요경기조회'
+
+class SwipsFixturesInfo(models.Model):
+    id = models.IntegerField(primary_key=True)
+    broadcast_id = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_th = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_vn = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_br = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_kr = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_ph = models.CharField(max_length=50, blank=True, null=True)
+    ut = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'swips_fixtures_info'
+        verbose_name = '중계정보조회'
+        verbose_name_plural = '중계정보조회'

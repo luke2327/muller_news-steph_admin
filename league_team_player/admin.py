@@ -58,16 +58,26 @@ class SwipsLeagueInfoAdmin(admin.ModelAdmin):
         else:
             return self.social_linker(obj.social_en)
 
-# @admin.register(SwipsPlayerCareer)
-# class SwipsPlayerCareerAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'player', 'team', 'date_from', 'date_to', 'active', 'ut',
-#                     'on_loan')
+@admin.register(SwipsPlayerCareer)
+class SwipsPlayerCareerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'player', 'team', 'date_from_', 'date_to_', 'active', 'ut',
+                    'on_loan')
+    def date_from_(self, obj):
+        if '0000-00-00' in str(obj.date_from):
+            return None
+        else:
+            return obj.date_from
+    def date_to_(self, obj):
+        if '0000-00-00' in str(obj.date_to):
+            return None
+        else:
+            return obj.date_to
 
-# @admin.register(CurryPlayer)
-# class CurryPlayerAdmin(admin.ModelAdmin):
-#
-#     list_display = ('player', 'name', 'mid_name', 'name_ko', 'mid_name_ko', 'name_th',
-#                     'mid_name_th', 'country', 'social', 'draft', 'school', 'ut', 'position')
+@admin.register(CurryPlayer)
+class CurryPlayerAdmin(admin.ModelAdmin):
+
+    list_display = ('player', 'name', 'mid_name', 'name_ko', 'mid_name_ko', 'name_th',
+                    'mid_name_th', 'country', 'social', 'draft', 'school', 'ut', 'position')
 
 admin.site.register(SwipsPlayerInfo,SwipsPlayerInfoAdmin)
 admin.site.register(SwipsTeamInfo,SwipsTeamInfoAdmin)
