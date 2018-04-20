@@ -26,17 +26,11 @@ class CurryFixturesInfoAdmin(admin.ModelAdmin):
 class CurryMajorFixturesAdmin(admin.ModelAdmin):
     list_display = ('id', 'league', 'home_team', 'away_team',
                     'status_type', 'day', 'utc', 'kst')
-<<<<<<< HEAD
     search_fields = ['id','league', 'home_team', 'away_team']
     list_filter = ['league',]
 
-=======
->>>>>>> f6e30a3e535bf5217d9c524b5ea38a859ae47fc2
 @admin.register(SwipsFixturesInfo)
 class SwipsFixturesInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'broadcast_id', 'broadcast_th', 'broadcast_vn',
                     'broadcast_br', 'broadcast_kr', 'broadcast_ph', 'ut')
-<<<<<<< HEAD
     search_fields = ['id']
-=======
->>>>>>> f6e30a3e535bf5217d9c524b5ea38a859ae47fc2
