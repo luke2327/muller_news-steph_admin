@@ -117,7 +117,7 @@ class SwipsCrawlingSourceAdmin(admin.ModelAdmin):
                     'language_cd', 'frequency_cl', 'importance_cl', 'ut')
 
     list_editable = ['del_field','frequency_cl', 'importance_cl']
-    # list_display_links = ['source',]
+    list_display_links = ['source',]
 
 admin.site.register(CurryVod,CurryVodAdmin)
 admin.site.register(CurryNews,CurryNewsAdmin)

@@ -294,6 +294,4 @@ $('#add_following_modal').on('show.bs.modal', function (e) {
 
 $(document).ready(function(){
 
-
-
   });

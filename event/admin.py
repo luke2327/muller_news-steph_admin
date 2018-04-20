@@ -18,3 +18,7 @@ class CurryFixturesInfoAdmin(admin.ModelAdmin):
 class CurryMajorFixturesAdmin(admin.ModelAdmin):
     list_display = ('id', 'league', 'home_team', 'away_team',
                     'status_type', 'day', 'utc', 'kst')
+@admin.register(SwipsFixturesInfo)
+class SwipsFixturesInfoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'broadcast_id', 'broadcast_th', 'broadcast_vn',
+                    'broadcast_br', 'broadcast_kr', 'broadcast_ph', 'ut')

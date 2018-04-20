@@ -41,6 +41,22 @@ class CurryFixturesInfo(models.Model):
         verbose_name = '중계정보입력'
         verbose_name_plural = '중계정보입력'
 
+class SwipsFixturesInfo(models.Model):
+    id = models.IntegerField(primary_key=True)
+    broadcast_id = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_th = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_vn = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_br = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_kr = models.CharField(max_length=50, blank=True, null=True)
+    broadcast_ph = models.CharField(max_length=50, blank=True, null=True)
+    ut = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'swips_fixtures_info'
+        verbose_name = '중계정보조회'
+        verbose_name_plural = '중계정보조회'
+
 class CurryMajorFixtures(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     league = models.CharField(max_length=30)

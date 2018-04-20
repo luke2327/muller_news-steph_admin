@@ -16,12 +16,12 @@ class MultiDBRouter(object):
             model._meta.app_label == 'event' or \
             model._meta.app_label == 'poll' or \
             model._meta.app_label == 'info_update' or \
-            model._meta.app_label == 'national' or \
             model._meta.app_label == 'development' or \
             model._meta.app_label == 'expose':
 
             return 'admin'
-
+        elif model._meta.app_label == 'national' :
+            return 'rds'
         return 'users'
 
     def db_for_write(self, model, **hints):
@@ -41,10 +41,11 @@ class MultiDBRouter(object):
             model._meta.app_label == 'event' or \
             model._meta.app_label == 'poll' or \
             model._meta.app_label == 'info_update' or \
-            model._meta.app_label == 'national' or \
             model._meta.app_label == 'development' or \
             model._meta.app_label == 'expose':
             return 'admin'
+        elif model._meta.app_label == 'national' :
+            return 'rds'
         return 'users'
 
     def allow_migrate(self, db, app_label, model_name=None, **hints):
