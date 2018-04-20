@@ -1,8 +1,28 @@
 {% extends "admin/change_list.html" %}
+{% block extrahead %} {{ block.super }}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://static.swips.co/content/static/css/jquery.magicsearch.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://static.swips.co/content/static/css/jquery.autocomplete.css">
+<link rel="stylesheet" href="http://static.swips.co/content/static/css/bootstrap-dropdownhover.min.css">
+<link rel="stylesheet" href="http://static.swips.co/content/static/css/animate.min.css">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src='http://static.swips.co/content/static/js/jquery.autocomplete.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src='http://static.swips.co/content/static/js/bootstrap-dropdownhover.min.js'></script>
+<script type="text/javascript"
+  src="https://cdn.rawgit.com/meetselva/attrchange/master/js/attrchange.js"></script>
+{% endblock %}
 {% block content %} {{ block.super }}
   {% include 'admin/steph_admin/modal.html' %}
   {% include 'admin/steph_admin/menu.html' %}
 {% block bottom %}{% load staticfiles %}
+
 <script type="text/javascript" src="{% static 'admin/js/swips.js' %}"></script>
 {% endblock %}
 {% endblock %}
