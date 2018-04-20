@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+##
 class SuUserFollowing(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     user_id = models.IntegerField()
