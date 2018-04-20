@@ -112,6 +112,14 @@ DATABASES = {
         'PASSWORD': '20150821',
         'HOST': 'admin.swips.co', # 데이테베이스 주소(IP)
         'PORT': '3306',
+    },
+    'rds': {
+        'NAME': 'spocosy',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'frifee_write',
+        'PASSWORD': 'frifee150821',
+        'HOST': 'swips-maindb.chnjavqhynwd.ap-southeast-1.rds.amazonaws.com', # 데이테베이스 주소(IP)
+        'PORT': '3306',
     }
 }
 DATABASE_ROUTERS = [
@@ -157,3 +165,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+GRAPPELLI_ADMIN_TITLE = 'SWIPS ADMIN'
