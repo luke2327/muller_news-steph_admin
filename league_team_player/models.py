@@ -84,8 +84,8 @@ class SwipsLeagueInfo(models.Model):
         verbose_name_plural = '리그'
 
 class CurryPlayer(models.Model):
-    id = models.IntegerField(primary_key=True)
-    player = models.IntegerField()
+    # id = models.IntegerField(primary_key=True)
+    player = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50, blank=True, null=True)
     mid_name = models.CharField(max_length=30, blank=True, null=True)
     name_ko = models.CharField(max_length=50, blank=True, null=True)
@@ -104,6 +104,7 @@ class CurryPlayer(models.Model):
         db_table = 'curry_player'
 
 class SwipsPlayerCareer(models.Model):
+    id = models.IntegerField(primary_key=True)
     player = models.IntegerField(blank=True, null=True)
     team = models.IntegerField(blank=True, null=True)
     date_from = models.CharField(max_length=12, blank=True, null=True)
@@ -111,3 +112,7 @@ class SwipsPlayerCareer(models.Model):
     active = models.CharField(max_length=5, blank=True, null=True)
     ut = models.CharField(max_length=12, blank=True, null=True)
     on_loan = models.CharField(max_length=5, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'swips_player_career'
