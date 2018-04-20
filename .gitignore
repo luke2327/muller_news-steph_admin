@@ -5,5 +5,5 @@
 .*
 !.gitignore
 *.bak
+*.sqlite3
 rds_scale_modifier/troubleshoot
-
