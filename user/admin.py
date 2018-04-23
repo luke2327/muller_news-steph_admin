@@ -2,7 +2,10 @@ from django.contrib import admin
 from .models import *
 from django.utils.html import format_html
 # Register your models here.
-
+from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
+admin.site.unregister(User)
+admin.site.unregister(Group)
 @admin.register(SuUserFollowing)
 class SuUserFollowingAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
