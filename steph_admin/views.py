@@ -31,11 +31,10 @@ def followings(request):
     result_l = []
     for row in results :
         result_l.append(row['league'])
-    print(result_l)
     return HttpResponse(json.dumps({"players" : result_p, "leagues" : result_l, "teams" : result_t}))
 @csrf_exempt
 def news_relation(request) :
-    print(request.method)
+
     if request.method == "POST":
         players = []
         teams = []
@@ -67,9 +66,9 @@ def news_relation(request) :
             for row in leagues :
                 values.append('("%s","%s","%s")' %(row, id, 'le'))
             query = 'INSERT INTO swips_news_relation (participant, news_id, type) VALUES %s' %(','.join(values))
-            print(query)
+
             result = Database().insert_data(query)
-            print(result)
+
 
             result_p = []
             result_t = []
@@ -92,9 +91,9 @@ def news_relation(request) :
                 pass
 
             try:
-                print(leagues)
                 query = 'SELECT CONCAT(name, "/" ,league) as league from swips_league_info WHERE league in (%s)' %(','.join(str(x) for x in leagues))
-                print(query)
+
+
                 results = Database().get_data(query)
                 for row in results :
                     result_l.append(row['league'])
@@ -107,14 +106,13 @@ def news_relation(request) :
         id = request.META.get('HTTP_ID')
         following = request.META.get('HTTP_FOLLOWING')
         query = 'DELETE from swips_news_relation WHERE news_id = %s AND participant = %s ' %(id, following)
-        print (query)
+
         results = Database().insert_data(query)
         return HttpResponse(status=200)
     return HttpResponse(status=200)
 
 @csrf_exempt
 def vods_relation(request) :
-    print(request.method)
     if request.method == "POST":
         players = []
         teams = []
@@ -146,9 +144,9 @@ def vods_relation(request) :
             for row in leagues :
                 values.append('("%s","%s","%s")' %(row, id, 'le'))
             query = 'INSERT INTO swips_vods_relation (participant, news_id, type) VALUES %s' %(','.join(values))
-            print(query)
+
             result = Database().insert_data(query)
-            print(result)
+
 
             result_p = []
             result_t = []
@@ -171,9 +169,8 @@ def vods_relation(request) :
                 pass
 
             try:
-                print(leagues)
                 query = 'SELECT CONCAT(name, "/" ,league) as league from swips_league_info WHERE league in (%s)' %(','.join(str(x) for x in leagues))
-                print(query)
+
                 results = Database().get_data(query)
                 for row in results :
                     result_l.append(row['league'])
@@ -186,15 +183,12 @@ def vods_relation(request) :
         id = request.META.get('HTTP_ID')
         following = request.META.get('HTTP_FOLLOWING')
         query = 'DELETE from swips_vods_relation WHERE news_id = %s AND participant = %s ' %(id, following)
-        print (query)
+
         results = Database().insert_data(query)
         return HttpResponse(status=200)
     return HttpResponse(status=200)
 @csrf_exempt
 def lineup(request) :
-    print(request.body)
-    print(type(request.body))
-    print(json.loads(request.body))
     if request.method == "POST":
         try :
             lineup = json.loads(request.body)
@@ -218,9 +212,7 @@ def lineup(request) :
                 '(match_id, team, lineup_number, shirt_number, position, name) '
                 'VALUES %s' %(','.join(values)))
 
-            print(query)
             result = Database().insert_data(query)
-            print(result)
             if result > 0 :
                 return HttpResponse(json.dumps({"result" : 201}))
             else :
@@ -233,7 +225,7 @@ def one_value_change(request) :
     try :
         if request.method == "POST":
             request_model = json.loads(request.body)
-            print(request_model)
+
             db_type = request_model['db_type']
             table = request_model['table']
             primary_key = request_model['primary_key']
@@ -250,8 +242,6 @@ def one_value_change(request) :
                     %(table, change_key, new_value, primary_key, primary_value))
 
             if db_type == 'admin' :
-                print('good')
-                print(query)
                 result = Database().insert_data(query)
                 if result > 0 :
                     return HttpResponse(json.dumps({"result" : 'ok'}))
@@ -259,7 +249,6 @@ def one_value_change(request) :
                     return HttpResponse(status=401)
 
     except Exception as e :
-        print(e)
         return HttpResponse(status=401)
 @csrf_exempt
 def push_send(request) :
@@ -299,12 +288,10 @@ def push_send(request) :
             query = ('INSERT INTO swips_push '
                 '(push_type, table_name, row_id, status, ref1, ref2, ref3, ref4, ref5, refstr1, refstr2, refstr3) '
                 'VALUES %s' %(','.join(values)))
-            print(query)
             result = Database().insert_data(query)
             if result > 0 :
                 return HttpResponse(json.dumps({"result" : 'ok'}))
             else :
                 return HttpResponse(status=401)
     except Exception as e :
-        print(e)
         return HttpResponse(status=401)
