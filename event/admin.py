@@ -12,13 +12,14 @@ class EventAdmin(admin.ModelAdmin):
     list_display_links = ['id',]
     list_filter = ['status_type',]
     search_fields = ['name', 'id',]
-
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
 @admin.register(CurryFixturesInfo)
 class CurryFixturesInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'startdate', 'league', 'league_name',
                     'broadcast_id_', 'broadcast_th_', 'broadcast_vn_',
                     'broadcast_br_', 'broadcast_kr_', 'broadcast_ph_')
-    search_fields = ['id', 'league', 'startdate']
+    search_fields = ['id', 'league', 'league_name', 'startdate']
+    list_filter = ['league_name', 'startdate']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     def broadcast_id_(self, obj):
         return Util().get_popover('admin', 'swips_fixtures_info', 'id', obj.id,\
