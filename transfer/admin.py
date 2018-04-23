@@ -5,6 +5,7 @@ from django.utils.html import format_html
 
 @admin.register(SwipsTransfer)
 class SwipsTransferAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'sport', 'player_id', 'player_name', 'position',
                     'from_team_id', 'from_team_name', 'to_team_id',
                     'to_team_name', 'is_loan', 'type', 'contract_dt',

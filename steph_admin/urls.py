@@ -7,5 +7,6 @@ urlpatterns = [
     path('followings/', views.followings, name='followings'),
     path('news_relation/', views.news_relation, name='news_relation'),
     path('vods_relation/', views.vods_relation, name="vods_relation"),
-    path('lineup/', views.lineup, name="lineup")
+    path('lineup/', views.lineup, name="lineup"),
+    path('one_value_change/', views.one_value_change, name="one_value_change"),
 ]

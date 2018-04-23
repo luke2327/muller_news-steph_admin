@@ -9,7 +9,7 @@ class SwipsNationalTeamInfoWCAdmin(admin.ModelAdmin):
                     'appearance_desc', 'best_result_desc', 'last_result_desc')
     list_editable = ['no_champions', 'appearance',
                     'best_result', 'last_result']
-
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
 @admin.register(SwipsNationalTeamInfoCompetition)
 class SwipsNationalTeamInfoCompetitionAdmin(admin.ModelAdmin):
     list_display = ('team', 'competition', 'no_champions', 'appearance', 'best_result',
@@ -18,6 +18,7 @@ class SwipsNationalTeamInfoCompetitionAdmin(admin.ModelAdmin):
     list_editable = ['competition', 'no_champions', 'appearance', 'best_result',
                     'no_champions_desc', 'appearance_desc', 'best_result_desc',
                     'last_result_desc', 'valid_until', 'ut']
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
 
 @admin.register(SwipsNationalCompetitionInfo)
 class SwipsNationalCompetitionInfoAdmin(admin.ModelAdmin):
@@ -25,3 +26,4 @@ class SwipsNationalCompetitionInfoAdmin(admin.ModelAdmin):
                     'name_id', 'name_vi', 'ut',)
     list_editable = ['name', 'name_ko', 'name_pt', 'name_th',
                     'name_id', 'name_vi', 'ut']
+    change_list_template = 'admin/steph_admin/change_list_custom.html'

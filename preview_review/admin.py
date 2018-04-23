@@ -37,20 +37,23 @@ class WorldPeacePreviewAdmin(admin.ModelAdmin):
             'team1_top_player_stat_per', 'team2_top_player_stat_per',\
             'team1_injuries', 'team2_injuries',\
             'status', 'type']
-
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
 class WPFixturesAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match', 'tournament', 'league', 'round',\
             'team1', 'team2', 'startdate', 'p_type', 'status', 'pushed')
 
     list_editable = ['status', 'pushed']
 
 class WpKeyPlAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match_id', 'team', 'player', 'goals',\
             'assists', 'rating', 'played', 'n')
     list_editable = ['team', 'player', 'goals',\
             'assists', 'rating', 'played', 'n']
 
 class WpTeamStatAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match_id', 'team', 'rank', 'win', 'draw', 'defeit', 'pts',\
             'games', 'prev_rank', 'prev_result', 'goals', 'goals_re', 'ga_s', 'ga_s_re',\
             'ratings', 'ratings_re', 'n')
@@ -59,6 +62,7 @@ class WpTeamStatAdmin(admin.ModelAdmin):
             'ratings', 'ratings_re', 'n']
 
 class WpTopPlAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match_id', 'team', 'player', 'stat_type', 'stat',\
             'avg_stat', 'n')
     list_editable = ['team', 'player', 'stat_type', 'stat',\
@@ -70,13 +74,16 @@ class WpTransferAdmin(admin.ModelAdmin):
     list_editable = ['ut']
 
 class SwipsReviewAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'sport', 'league', 'result', 'ut', 'standing',\
             'startdate', 'ct', 'pushed')
 
 class SwipsRatingAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match_id', 'player_id', 'type', 'rating', 'source')
 
 class SwipsRatingPropertyAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'mom_id', 'mom_goal', 'mom_assist', 'mom_min')
 
 admin.site.register(WorldPeacePreview, WorldPeacePreviewAdmin)

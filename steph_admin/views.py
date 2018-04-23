@@ -228,3 +228,31 @@ def lineup(request) :
         except Exception as e :
             return HttpResponse(status=401)
     return HttpResponse(status=500)
+@csrf_exempt
+def one_value_change(request) :
+    try :
+        if request.method == "POST":
+            request_model = json.loads(request.body)
+            print(request_model)
+            db_type = request_model['db_type']
+            table = request_model['table']
+            primary_key = request_model['primary_key']
+            primary_value = request_model['primary_value']
+            change_key = request_model['change_key']
+            default_value = request_model['default_value']
+            new_value = request_model['new_value']
+
+            query = ('UPDATE %s SET %s="%s" WHERE %s="%s" '
+                %(table, change_key, new_value, primary_key, primary_value))
+            if db_type == 'admin' :
+                print('good')
+                print(query)
+                result = Database().insert_data(query)
+                if result > 0 :
+                    return HttpResponse(json.dumps({"result" : 'ok'}))
+                else :
+                    return HttpResponse(status=401)
+
+    except Exception as e :
+        print(e)
+        return HttpResponse(status=401)
