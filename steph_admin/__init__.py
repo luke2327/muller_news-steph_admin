@@ -2,7 +2,16 @@ import pymysql.cursors
 class Database():
     connection = None
     def connect_db(self):
-        self.connection = pymysql.connect(host='admin.swips.co',
+        import os
+        try :
+            if os.uname()[1] == 'ip-172-31-31-7':  # Dev Server
+                PHOST = 'localhost'
+            elif os.uname()[1] == 'ip-172-31-31-67':
+                PHOST = 'ip-172-31-31-7'
+
+        except Exception as e :
+            PHOST = 'admin.swips.co'
+        self.connection = pymysql.connect(host=PHOST,
              user='stephen',
              password='20150821',
              db='spocosy',
