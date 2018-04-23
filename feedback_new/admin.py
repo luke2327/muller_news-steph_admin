@@ -1,13 +1,16 @@
 from django.contrib import admin
 from .models import *
 from django.utils.html import format_html
+from steph.util.util import Util
 # Register your models here.
 
 @admin.register(SwipsQna)
 class SwipsQnaAdmin(admin.ModelAdmin):
-    list_display = ('field_del', 'id', 'user_id', 'account_id', 'user_agent', 'language',
-                    'feedback', 'img_link', 'answer', 'ut', 'answer_ut', 'status')
-
+    list_display = ('id', 'del_field_', 'user_id', 'account_id', 'user_agent', 'language',
+                    'feedback', 'img_link', 'answer_', 'ut', 'answer_ut_', 'status_')
+    list_display_links = ['id',]
+    search_fields = ['id', 'user_id', 'account_id', 'feedback']
+    list_filter = ('language', 'ut', 'answer_ut', 'field_del')
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     def img_link(self, obj):
         if obj.img_ext is None:
@@ -16,3 +19,19 @@ class SwipsQnaAdmin(admin.ModelAdmin):
             return format_html("<a href='http://board.swips.co/origin/feedback/{}.jpg'>\
             <img src='http://board.swips.co/thumbnails/origin/feedback/{}.jpg'></a>",
             obj.id, obj.id)
+
+    def del_field_(self, obj):
+        return Util().get_popover('admin', 'swips_qna', 'id', obj.id,\
+                           '_del', obj.field_del, 'text')
+
+    def answer_(self, obj):
+        return Util().get_popover('admin', 'swips_qna', 'id', obj.id,\
+                           'answer', obj.answer, 'text')
+
+    def answer_ut_(self, obj):
+        return Util().get_popover('admin', 'swips_qna', 'id', obj.id,\
+                           'answer_ut', obj.answer_ut, 'text')
+
+    def status_(self, obj):
+        return Util().get_popover('admin', 'swips_qna', 'id', obj.id,\
+                           'status', obj.answer, 'text')

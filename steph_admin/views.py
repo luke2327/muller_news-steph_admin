@@ -244,6 +244,11 @@ def one_value_change(request) :
 
             query = ('UPDATE %s SET %s="%s" WHERE %s="%s" '
                 %(table, change_key, new_value, primary_key, primary_value))
+
+            if table == 'swips_qna' and change_key == 'answer' and new_value != '' :
+                query = ('UPDATE %s SET %s="%s", answer_ut = NOW(), status="ready" WHERE %s="%s" '
+                    %(table, change_key, new_value, primary_key, primary_value))
+
             if db_type == 'admin' :
                 print('good')
                 print(query)
@@ -253,6 +258,53 @@ def one_value_change(request) :
                 else :
                     return HttpResponse(status=401)
 
+    except Exception as e :
+        print(e)
+        return HttpResponse(status=401)
+@csrf_exempt
+def push_send(request) :
+    try :
+        if request.method == "POST":
+            request_model = json.loads(request.body)
+            news_id = request_model['news_id']
+            leagues = request_model['leagues']
+            teams = request_model['teams']
+            players = request_model['players']
+            title = request_model['title']
+            lang = request_model['lang']
+            type = request_model['type']
+            values = []
+            if(type=='news'):
+                push_type = 1
+                table_name = 'curry_news_push_send'
+            elif(type=='vod'):
+                push_type = 102
+                table_name = 'curry_vod_push_send'
+            for row in players :
+                values.append('("%s", "%s", '
+                    '"%s", "ready", "%s", "%s", '
+                    '"1", "0", "0", "%s", "pl", "%s")'
+                    %(push_type, table_name, news_id, row, news_id, lang, title))
+            for row in teams :
+                values.append('("%s", "%s", '
+                    '"%s", "ready", "%s", "%s", '
+                    '"1", "0", "0", "%s", "pl", "%s")'
+                    %(push_type, table_name, news_id, row, news_id, lang, title))
+            for row in leagues :
+                values.append('("%s", "%s", '
+                    '"%s", "ready", "%s", "%s", '
+                    '"1", "0", "0", "%s", "pl", "%s")'
+                    %(push_type, table_name, news_id, row, news_id, lang, title))
+
+            query = ('INSERT INTO swips_push '
+                '(push_type, table_name, row_id, status, ref1, ref2, ref3, ref4, ref5, refstr1, refstr2, refstr3) '
+                'VALUES %s' %(','.join(values)))
+            print(query)
+            result = Database().insert_data(query)
+            if result > 0 :
+                return HttpResponse(json.dumps({"result" : 'ok'}))
+            else :
+                return HttpResponse(status=401)
     except Exception as e :
         print(e)
         return HttpResponse(status=401)

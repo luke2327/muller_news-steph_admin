@@ -10,6 +10,15 @@ $('#grp-content').ready(function(){
 $('#grp-header').ready(function(){
   $('#grp-header').css({'position':'relative'});
 });
+$('.field-title_').ready(function(){
+  $('.field-title_').css({'max-width':'150px'});
+  $('.field-title_').children().css({'width':'130px'});
+});
+$('.field-following_desc_').ready(function(){
+  $('.field-following_desc_').css({'max-width':'150px'});
+  $('.field-following_desc_').children().css({'width':'130px'});
+});
+
 // $('#grp-content').attrchange({
 //     trackValues: true, /* Default to false, if set to true the event object is
 //                 updated with old and new value.*/
@@ -32,7 +41,7 @@ $('.edit_pop_text').editable({
   type: 'text',
   pk: 1,
   placement: 'top',
-  title: 'Enter username',
+  title: '변경할 값을 입력하세요..',
   success: function(response, newValue) {
         requestModel = new Object();
         requestModel.db_type = $(this).attr('data-db_type');
@@ -42,6 +51,7 @@ $('.edit_pop_text').editable({
         requestModel.change_key = $(this).attr('data-change_key');
         requestModel.default_value = $(this).attr('data-default_value');
         requestModel.new_value = newValue;
+        $(this).attr('id', requestModel.primary_key + requestModel.primary_value + requestModel.change_key);
         request_json = JSON.stringify(requestModel);
         console.log(request_json);
         $.ajax({
@@ -53,16 +63,21 @@ $('.edit_pop_text').editable({
             error : function(){
                 console.log('error');
                 alert('서버오류 값 변경실패!!');
-                $(this).val($(this).attr('data-primary_value'));
+                console.log(requestModel.primary_key + requestModel.primary_value + requestModel.change_key);
+
+                $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).text(requestModel.default_value);
+                // location.reload();
             },
             success : function(data){
                 //alert("통신데이터 값 : " + data) ;
-                // alert('라인업 추가성공!!');
+                alert('성공!!');
                 console.log(data);
                 // $('#f_add_'+data_id+"_"+following).remove();
-                $('#btn_add_lineup').button('reset');
-                $('#add_all_lineup').modal('hide');
+                $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).attr('data-default_value', requestModel.new_value);
                 // location.reload();
+                if(requestModel.table=='swips_qna'){
+                  location.reload();
+                }
             }
         });
     }

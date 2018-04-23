@@ -3,33 +3,58 @@
 <div class="container">
   <!-- Modal delete following-->
   <div class="modal fade" id="del_following" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">팔로잉 삭제</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">팔로잉 삭제</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body" id="del_following_body">
-        팔로잉을 삭제합니당
-      </div>
-      <div class="modal-footer">
-        <a type="button" id="btn_del_following" class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Delete...">Save changes</a>
-        <a type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</a>
+        </div>
+        <div class="modal-body" id="del_following_body">
+          팔로잉을 삭제합니당
+        </div>
+        <div class="modal-footer">
+          <a type="button" id="btn_del_following" class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Delete...">Save changes</a>
+          <a type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</a>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- push modal -->
+  <div class="modal fade" id="send_push" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">푸시전송</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body" id="send_push_body">
+          <div class="form-check" id="check_list">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a type="button" id="btn_send_push" class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Send...">Send</a>
+          <a type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Modal -->
-<div class="modal fade" id="add_following_modal" role="dialog" data-keyboard="false" data-backdrop="static">
-  <div class="modal-dialog modal-lg">
+  <div class="modal fade" id="add_following_modal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header bg-info">
-          <button type="button" class="close" data-dismiss="modal" >&times;</button>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title text-muted">팔로잉 수정</h4>
         </div>
         <div class="modal-body">
@@ -50,44 +75,44 @@
             <tbody>
               <tr>
                 <th class="titleTh">
-                  <p class="text-center text-muted">선수 팔로잉  </p>
+                  <p class="text-center text-muted">선수 팔로잉 </p>
                 </th>
                 <th class="subTh">
                   <input type="text" id="tags1" class="tag_target"></input>
                 </th>
                 <th class="subTh">
-                  <input type="text" id="tags2" class="tag_target" ></input>
+                  <input type="text" id="tags2" class="tag_target"></input>
                 </th>
                 <th class="subTh">
-                  <input type="text" id="tags3" class="tag_target" ></input>
+                  <input type="text" id="tags3" class="tag_target"></input>
                 </th>
               </tr>
               <tr>
                 <th class="titleTh">
-                  <p class="text-center text-muted">팀 팔로잉  </p>
+                  <p class="text-center text-muted">팀 팔로잉 </p>
                 </th>
                 <th class="subTh">
-                  <input type="text" id="tags4" class="tag_target" ></input>
+                  <input type="text" id="tags4" class="tag_target"></input>
                 </th>
                 <th class="subTh">
-                  <input type="text" id="tags5" class="tag_target" ></input>
+                  <input type="text" id="tags5" class="tag_target"></input>
                 </th>
                 <th class="subTh">
-                  <input type="text" id="tags6" class="tag_target" ></input>
+                  <input type="text" id="tags6" class="tag_target"></input>
                 </th>
               </tr>
               <tr>
                 <th class="titleTh">
-                  <p class="text-center text-muted">리그 팔로잉  </p>
+                  <p class="text-center text-muted">리그 팔로잉 </p>
                 </th>
                 <th class="subTh">
-                  <input type="text" id="tags7"  class="tag_target"></input>
+                  <input type="text" id="tags7" class="tag_target"></input>
                 </th>
                 <th class="subTh">
-                  <input type="text" id="tags8"  class="tag_target"></input>
+                  <input type="text" id="tags8" class="tag_target"></input>
                 </th>
                 <th class="subTh">
-                  <input type="text" id="tags9"  class="tag_target"></input>
+                  <input type="text" id="tags9" class="tag_target"></input>
                 </th>
               </tr>
             </tbody>
@@ -111,286 +136,447 @@
         <h4 class="modal-title text-muted" id="exampleModalLongTitle">라인업 추가
           <button type="button" class="close close_button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
-        </h4>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            </button>
+            </h4>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> -->
-      </div>
-      <div class="modal-body">
-        <table class="table table-bordered">
-          <tbody>
-            <tr>
-              <th scope="row text-muted">매치 아이디</th>
-              <td colspan="3"><input id = "input_match_id"></input></td>
-            </tr>
-            <tr class="table-dark">
-              <th scope="row" colspan="4">team1 플레이어 추가</th>
-            </tr>
-            <tr>
-              <td class="col-md-2">lineup number</td>
-              <td class="col-md-2">shirt number</td>
-              <td class="col-md-2">position</td>
-              <td class="col-md-4">name</td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_1" value = "1"></input></td>
-              <td class="col-md-2"><input id="sn_1_1"></input></td>
-              <td class="col-md-2"><input id="p_1_1" ></input></td>
-              <td class="col-md-4"><input id="n_1_1"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_2" value = "2"></input></td>
-              <td class="col-md-2"><input id="sn_1_2"></input></td>
-              <td class="col-md-2"><input id="p_1_2"></input></td>
-              <td class="col-md-4"><input id="n_1_2"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_3" value = "3"></input></td>
-              <td class="col-md-2"><input id="sn_1_3"></input></td>
-              <td class="col-md-2"><input id="p_1_3"></input></td>
-              <td class="col-md-4"><input id="n_1_3"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_4" value = "4"></input></td>
-              <td class="col-md-2"><input id="sn_1_4"></input></td>
-              <td class="col-md-2"><input id="p_1_4"></input></td>
-              <td class="col-md-4"><input id="n_1_4"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_5" value = "5"></input></td>
-              <td class="col-md-2"><input id="sn_1_5"></input></td>
-              <td class="col-md-2"><input id="p_1_5"></input></td>
-              <td class="col-md-4"><input id="n_1_5"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_6" value = "6"></input></td>
-              <td class="col-md-2"><input id="sn_1_6"></input></td>
-              <td class="col-md-2"><input id="p_1_6"></input></td>
-              <td class="col-md-4"><input id="n_1_6"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_7" value = "7"></input></td>
-              <td class="col-md-2"><input id="sn_1_7"></input></td>
-              <td class="col-md-2"><input id="p_1_7"></input></td>
-              <td class="col-md-4"><input id="n_1_7"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_8" value = "8"></input></td>
-              <td class="col-md-2"><input id="sn_1_8"></input></td>
-              <td class="col-md-2"><input id="p_1_8"></input></td>
-              <td class="col-md-4"><input id="n_1_8"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_9" value = "9"></input></td>
-              <td class="col-md-2"><input id="sn_1_9"></input></td>
-              <td class="col-md-2"><input id="p_1_9"></input></td>
-              <td class="col-md-4"><input id="n_1_9"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_10" value = "10"></input></td>
-              <td class="col-md-2"><input id="sn_1_10"></input></td>
-              <td class="col-md-2"><input id="p_1_10"></input></td>
-              <td class="col-md-4"><input id="n_1_10"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_11" value = "11"></input></td>
-              <td class="col-md-2"><input id="sn_1_11"></input></td>
-              <td class="col-md-2"><input id="p_1_11"></input></td>
-              <td class="col-md-4"><input id="n_1_11"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_12"></input></td>
-              <td class="col-md-2"><input id="sn_1_12"></input></td>
-              <td class="col-md-2"><input id="p_1_12"></input></td>
-              <td class="col-md-4"><input id="n_1_12"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_13"></input></td>
-              <td class="col-md-2"><input id="sn_1_13"></input></td>
-              <td class="col-md-2"><input id="p_1_13"></input></td>
-              <td class="col-md-4"><input id="n_1_13"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_14"></input></td>
-              <td class="col-md-2"><input id="sn_1_14"></input></td>
-              <td class="col-md-2"><input id="p_1_14"></input></td>
-              <td class="col-md-4"><input id="n_1_14"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_15"></input></td>
-              <td class="col-md-2"><input id="sn_1_15"></input></td>
-              <td class="col-md-2"><input id="p_1_15"></input></td>
-              <td class="col-md-4"><input id="n_1_15"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_16"></input></td>
-              <td class="col-md-2"><input id="sn_1_16"></input></td>
-              <td class="col-md-2"><input id="p_1_16"></input></td>
-              <td class="col-md-4"><input id="n_1_16"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_17"></input></td>
-              <td class="col-md-2"><input id="sn_1_17"></input></td>
-              <td class="col-md-2"><input id="p_1_17"></input></td>
-              <td class="col-md-4"><input id="n_1_17"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_18"></input></td>
-              <td class="col-md-2"><input id="sn_1_18"></input></td>
-              <td class="col-md-2"><input id="p_1_18"></input></td>
-              <td class="col-md-4"><input id="n_1_18"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_19"></input></td>
-              <td class="col-md-2"><input id="sn_1_19"></input></td>
-              <td class="col-md-2"><input id="p_1_19"></input></td>
-              <td class="col-md-4"><input id="n_1_19"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_1_20"></input></td>
-              <td class="col-md-2"><input id="sn_1_20"></input></td>
-              <td class="col-md-2"><input id="p_1_20"></input></td>
-              <td class="col-md-4"><input id="n_1_20"></input></td>
-            </tr>
-            <tr class="table-dark">
-              <td scope="row" colspan="4">team2 플레이어 추가</td>
-            </tr>
-            <tr>
-              <td class="col-md-2">lineup number</td>
-              <td class="col-md-2">shirt number</td>
-              <td class="col-md-2">position</td>
-              <td class="col-md-4">name</td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_1" value = "1"></input></td>
-              <td class="col-md-2"><input id="sn_2_1"></input></td>
-              <td class="col-md-2"><input id="p_2_1"></input></td>
-              <td class="col-md-4"><input id="n_2_1"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_2" value = "2"></input></td>
-              <td class="col-md-2"><input id="sn_2_2"></input></td>
-              <td class="col-md-2"><input id="p_2_2"></input></td>
-              <td class="col-md-4"><input id="n_2_2"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_3" value = "3"></input></td>
-              <td class="col-md-2"><input id="sn_2_3"></input></td>
-              <td class="col-md-2"><input id="p_2_3"></input></td>
-              <td class="col-md-4"><input id="n_2_3"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_4" value = "4"></input></td>
-              <td class="col-md-2"><input id="sn_2_4"></input></td>
-              <td class="col-md-2"><input id="p_2_4"></input></td>
-              <td class="col-md-4"><input id="n_2_4"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_5" value = "5"></input></td>
-              <td class="col-md-2"><input id="sn_2_5"></input></td>
-              <td class="col-md-2"><input id="p_2_5"></input></td>
-              <td class="col-md-4"><input id="n_2_5"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_6" value = "6"></input></td>
-              <td class="col-md-2"><input id="sn_2_6"></input></td>
-              <td class="col-md-2"><input id="p_2_6"></input></td>
-              <td class="col-md-4"><input id="n_2_6"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_7" value = "7"></input></td>
-              <td class="col-md-2"><input id="sn_2_7"></input></td>
-              <td class="col-md-2"><input id="p_2_7"></input></td>
-              <td class="col-md-4"><input id="n_2_7"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_8" value = "8"></input></td>
-              <td class="col-md-2"><input id="sn_2_8"></input></td>
-              <td class="col-md-2"><input id="p_2_8"></input></td>
-              <td class="col-md-4"><input id="n_2_8"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_9" value = "9"></input></td>
-              <td class="col-md-2"><input id="sn_2_9"></input></td>
-              <td class="col-md-2"><input id="p_2_9"></input></td>
-              <td class="col-md-4"><input id="n_2_9"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_10" value = "10"></input></td>
-              <td class="col-md-2"><input id="sn_2_10"></input></td>
-              <td class="col-md-2"><input id="p_2_10"></input></td>
-              <td class="col-md-4"><input id="n_2_10"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_11" value = "11"></input></td>
-              <td class="col-md-2"><input id="sn_2_11"></input></td>
-              <td class="col-md-2"><input id="p_2_11"></input></td>
-              <td class="col-md-4"><input id="n_2_11"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_12"></input></td>
-              <td class="col-md-2"><input id="sn_2_12"></input></td>
-              <td class="col-md-2"><input id="p_2_12"></input></td>
-              <td class="col-md-4"><input id="n_2_12"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_13"></input></td>
-              <td class="col-md-2"><input id="sn_2_13"></input></td>
-              <td class="col-md-2"><input id="p_2_13"></input></td>
-              <td class="col-md-4"><input id="n_2_13"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_14"></input></td>
-              <td class="col-md-2"><input id="sn_2_14"></input></td>
-              <td class="col-md-2"><input id="p_2_14"></input></td>
-              <td class="col-md-4"><input id="n_2_14"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_15"></input></td>
-              <td class="col-md-2"><input id="sn_2_15"></input></td>
-              <td class="col-md-2"><input id="p_2_15"></input></td>
-              <td class="col-md-4"><input id="n_2_15"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_16"></input></td>
-              <td class="col-md-2"><input id="sn_2_16"></input></td>
-              <td class="col-md-2"><input id="p_2_16"></input></td>
-              <td class="col-md-4"><input id="n_2_16"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_17"></input></td>
-              <td class="col-md-2"><input id="sn_2_17"></input></td>
-              <td class="col-md-2"><input id="p_2_17"></input></td>
-              <td class="col-md-4"><input id="n_2_17"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_18"></input></td>
-              <td class="col-md-2"><input id="sn_2_18"></input></td>
-              <td class="col-md-2"><input id="p_2_18"></input></td>
-              <td class="col-md-4"><input id="n_2_18"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_19"></input></td>
-              <td class="col-md-2"><input id="sn_2_19"></input></td>
-              <td class="col-md-2"><input id="p_2_19"></input></td>
-              <td class="col-md-4"><input id="n_2_19"></input></td>
-            </tr>
-            <tr>
-              <td class="col-md-2"><input id="ln_2_20"></input></td>
-              <td class="col-md-2"><input id="sn_2_20"></input></td>
-              <td class="col-md-2"><input id="p_2_20"></input></td>
-              <td class="col-md-4"><input id="n_2_20"></input></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <a type="button" id="btn_add_lineup" class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Save...">Save changes</a>
-        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+        <div class="modal-body">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th scope="row text-muted">매치 아이디</th>
+                <td colspan="3"><input id="input_match_id"></input>
+                </td>
+              </tr>
+              <tr class="table-dark">
+                <th scope="row" colspan="4">team1 플레이어 추가</th>
+              </tr>
+              <tr>
+                <td class="col-md-2">lineup number</td>
+                <td class="col-md-2">shirt number</td>
+                <td class="col-md-2">position</td>
+                <td class="col-md-4">name</td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_1" value="1"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_1"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_1"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_1"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_2" value="2"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_2"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_2"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_2"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_3" value="3"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_3"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_3"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_3"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_4" value="4"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_4"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_4"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_4"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_5" value="5"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_5"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_5"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_5"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_6" value="6"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_6"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_6"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_6"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_7" value="7"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_7"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_7"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_7"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_8" value="8"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_8"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_8"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_8"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_9" value="9"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_9"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_9"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_9"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_10" value="10"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_10"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_10"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_10"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_11" value="11"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_11"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_11"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_11"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_12"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_12"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_12"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_12"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_13"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_13"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_13"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_13"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_14"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_14"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_14"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_14"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_15"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_15"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_15"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_15"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_16"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_16"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_16"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_16"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_17"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_17"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_17"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_17"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_18"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_18"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_18"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_18"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_19"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_19"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_19"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_19"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_1_20"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_1_20"></input>
+                </td>
+                <td class="col-md-2"><input id="p_1_20"></input>
+                </td>
+                <td class="col-md-4"><input id="n_1_20"></input>
+                </td>
+              </tr>
+              <tr class="table-dark">
+                <td scope="row" colspan="4">team2 플레이어 추가</td>
+              </tr>
+              <tr>
+                <td class="col-md-2">lineup number</td>
+                <td class="col-md-2">shirt number</td>
+                <td class="col-md-2">position</td>
+                <td class="col-md-4">name</td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_1" value="1"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_1"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_1"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_1"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_2" value="2"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_2"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_2"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_2"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_3" value="3"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_3"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_3"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_3"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_4" value="4"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_4"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_4"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_4"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_5" value="5"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_5"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_5"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_5"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_6" value="6"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_6"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_6"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_6"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_7" value="7"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_7"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_7"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_7"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_8" value="8"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_8"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_8"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_8"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_9" value="9"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_9"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_9"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_9"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_10" value="10"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_10"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_10"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_10"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_11" value="11"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_11"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_11"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_11"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_12"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_12"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_12"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_12"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_13"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_13"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_13"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_13"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_14"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_14"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_14"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_14"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_15"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_15"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_15"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_15"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_16"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_16"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_16"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_16"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_17"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_17"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_17"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_17"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_18"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_18"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_18"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_18"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_19"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_19"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_19"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_19"></input>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-2"><input id="ln_2_20"></input>
+                </td>
+                <td class="col-md-2"><input id="sn_2_20"></input>
+                </td>
+                <td class="col-md-2"><input id="p_2_20"></input>
+                </td>
+                <td class="col-md-4"><input id="n_2_20"></input>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <a type="button" id="btn_add_lineup" class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Save...">Save changes</a>
+          <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

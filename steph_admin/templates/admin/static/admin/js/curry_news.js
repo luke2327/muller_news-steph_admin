@@ -4,6 +4,7 @@ var league;
 var player_source = new Array();
 var team_source = new Array();
 var league_source = new Array();
+
 //add following
 $('#btn_following_add').click(function(){
   var tag1 = $('#tags1').val();
