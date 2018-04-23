@@ -99,14 +99,14 @@ import pymysql
 
 pymysql.install_as_MySQLdb()
 import os
-    try :
-        if os.uname()[1] == 'ip-172-31-31-7':  # Dev Server
-            PHOST = 'localhost'
-        elif os.uname()[1] == 'ip-172-31-31-67':
-            PHOST = 'ip-172-31-31-7'
+try :
+    if os.uname()[1] == 'ip-172-31-31-7':  # Dev Server
+        PHOST = 'localhost'
+    elif os.uname()[1] == 'ip-172-31-31-67':
+        PHOST = 'ip-172-31-31-7'
 
-    except Exception as e :
-        PHOST = 'admin.swips.co'
+except Exception as e :
+    PHOST = 'admin.swips.co'
 DATABASES = {
     'default' : {},
     'users': {
