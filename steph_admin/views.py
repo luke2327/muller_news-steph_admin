@@ -4,6 +4,7 @@ from .models import *
 from . import Database
 from django.views.decorators.csrf import csrf_exempt
 import json
+import logging
 # Create your views here.
 def players(request):
     query = 'SELECT CONCAT(id, "|" ,name) as player from swips_player'
@@ -294,4 +295,5 @@ def push_send(request) :
             else :
                 return HttpResponse(status=401)
     except Exception as e :
+        logging.error(e)
         return HttpResponse(status=401)
