@@ -9,4 +9,5 @@ urlpatterns = [
     path('vods_relation/', views.vods_relation, name="vods_relation"),
     path('lineup/', views.lineup, name="lineup"),
     path('one_value_change/', views.one_value_change, name="one_value_change"),
+    path('push_send/', views.push_send, name="push_send"),
 ]

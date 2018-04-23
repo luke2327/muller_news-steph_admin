@@ -8,18 +8,37 @@ from django.template.defaultfilters import truncatechars
 from steph.util.util import Util
 class CurryNewsAdmin(admin.ModelAdmin):
     #list_display = ('id','ut','ut2','name','country','date_of_birth','position','status')
-    list_display = ('id','lang','source','link_news','link_image',\
-                'is_frifee_content', 'pushed', 'del_field',\
+    list_display = ('id','push','lang','source_','link_news','link_image',\
+                'is_frifee_content_', 'pushed_', 'del_field_',\
                 'create_tmp','is_top','sport','title_','following_desc_',\
                 'following_')
-    list_filter = ['language_cd', 'del_field','create_tmp','sport']
-    list_editable = ['sport','source', 'create_tmp', 'is_top']
+    list_filter = ['language_cd', 'del_field','create_tmp','sport','is_frifee_content']
+    #list_editable = ['sport','source', 'create_tmp', 'is_top']
     '''
     display_as_charfield = ['name', 'country']
     '''
     list_per_page = 20
     change_list_template = 'admin/steph_admin/change_list_news.html'
 
+    def push(self, obj):
+        datas = []
+        try :
+            for row in obj.le_relation.split(',') :
+                datas.append('League/%s' % row)
+        except Exception as e:
+            print(e)
+            pass
+        try :
+            for row in obj.te_relation.split(',') :
+                datas.append('Team/%s' % row)
+        except Exception as e :
+            pass
+        try :
+            for row in obj.pl_relation.split(',') :
+                datas.append('Player/%s' % row)
+        except Exception as e :
+            pass
+        return format_html('<a class="btn news_push glyphicon glyphicon-send" id="push-%s" datas = "%s" title="%s" lang="%s"></a>' %(obj.id, ','.join(datas), obj.title, obj.language_cd))
     def changelist_view(self, request, extra_context=None):
         extra = {}
         extra['players'] = 'messi'
@@ -61,10 +80,21 @@ class CurryNewsAdmin(admin.ModelAdmin):
             pass
         html += '</ul>'
         return format_html(html)
-
+    def source_(self, obj):
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'source', obj.source, 'text')
+    def del_field_(self, obj):
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'del', obj.del_field, 'text')
+    def pushed_(self, obj):
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'pushed', obj.pushed, 'text')
+    def is_frifee_content_(self, obj):
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'is_frifee_content', obj.is_frifee_content, 'text')
 class CurryVodAdmin(admin.ModelAdmin):
-    list_display = ('id','match_id','lang','source','link_news','link_image',\
-                'is_frifee_content', 'pushed', 'del_field',\
+    list_display = ('id','push','match_id_','lang','source','link_news','link_image',\
+                'is_frifee_content_', 'pushed_', 'del_field_',\
                 'create_tmp','is_top','sport','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
                 'following_')
     list_filter = ['language_cd', 'del_field','create_tmp','sport']
@@ -74,7 +104,25 @@ class CurryVodAdmin(admin.ModelAdmin):
     '''
     list_per_page = 20
     change_list_template = 'admin/steph_admin/change_list_vods.html'
-
+    def push(self, obj):
+        datas = []
+        try :
+            for row in obj.le_relation.split(',') :
+                datas.append('League/%s' % row)
+        except Exception as e:
+            print(e)
+            pass
+        try :
+            for row in obj.te_relation.split(',') :
+                datas.append('Team/%s' % row)
+        except Exception as e :
+            pass
+        try :
+            for row in obj.pl_relation.split(',') :
+                datas.append('Player/%s' % row)
+        except Exception as e :
+            pass
+        return format_html('<a class="btn news_push glyphicon glyphicon-send" id="push-%s" datas = "%s" title="%s" lang="%s"></a>' %(obj.id, ','.join(datas), obj.title, obj.language_cd))
     def lang(self, obj):
         return obj.language_cd
     def link_news(self, obj):
@@ -110,7 +158,18 @@ class CurryVodAdmin(admin.ModelAdmin):
             pass
         html += '</ul>'
         return format_html(html)
-
+    def is_frifee_content_(self, obj):
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'is_frifee_content', obj.is_frifee_content, 'text')
+    def del_field_(self, obj):
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'del', obj.del_field, 'text')
+    def pushed_(self, obj):
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'pushed', obj.pushed, 'text')
+    def match_id_(self, obj):
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'match_id', obj.match_id, 'text')
 @admin.register(SwipsCrawlingSource)
 class SwipsCrawlingSourceAdmin(admin.ModelAdmin):
     list_display = ('del_field_', 'id', 'source_', 'content_type', 'sport',
