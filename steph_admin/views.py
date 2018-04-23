@@ -256,7 +256,7 @@ def push_send(request) :
     try :
         if request.method == "POST":
             logging.error('step1')
-            request_model = json.loads(request.body)
+            request_model = json.loads(str(request.body, "utf-8"))
             logging.error('step1-1')
             news_id = request_model['news_id']
             leagues = request_model['leagues']
