@@ -1,10 +1,7 @@
 from django.contrib import admin
 from .models import *
 from django.utils.html import format_html
-<<<<<<< HEAD
-=======
 from steph.util.util import Util
->>>>>>> raul
 # Register your models here.
 
 @admin.register(Event)
@@ -15,19 +12,7 @@ class EventAdmin(admin.ModelAdmin):
     list_display_links = ['id',]
     list_filter = ['status_type',]
     search_fields = ['name', 'id',]
-<<<<<<< HEAD
 
-@admin.register(CurryFixturesInfo)
-class CurryFixturesInfoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'startdate', 'league', 'league_name',
-                    'broadcast_id', 'broadcast_th', 'broadcast_vn',
-                    'broadcast_br', 'broadcast_kr', 'broadcast_ph')
-    search_fields = ['id', 'league',]
-    list_editable = ['broadcast_id', 'broadcast_th', 'broadcast_vn',
-                    'broadcast_br', 'broadcast_kr', 'broadcast_ph']
-
-=======
-    change_list_template = 'admin/steph_admin/change_list_custom.html'
 @admin.register(CurryFixturesInfo)
 class CurryFixturesInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'startdate', 'league', 'league_name',
@@ -53,27 +38,19 @@ class CurryFixturesInfoAdmin(admin.ModelAdmin):
     def broadcast_ph_(self, obj):
         return Util().get_popover('admin', 'swips_fixtures_info', 'id', obj.id,\
                            'broadcast_ph', obj.broadcast_ph, 'text')
->>>>>>> raul
 
 @admin.register(CurryMajorFixtures)
 class CurryMajorFixturesAdmin(admin.ModelAdmin):
     list_display = ('id', 'league', 'home_team', 'away_team',
                     'status_type', 'day', 'utc', 'kst')
     search_fields = ['id','league', 'home_team', 'away_team']
-<<<<<<< HEAD
     list_filter = ['league',]
-
-=======
     list_filter = ['league', 'utc']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
->>>>>>> raul
 @admin.register(SwipsFixturesInfo)
 class SwipsFixturesInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'broadcast_id', 'broadcast_th', 'broadcast_vn',
                     'broadcast_br', 'broadcast_kr', 'broadcast_ph', 'ut')
     search_fields = ['id']
-<<<<<<< HEAD
-=======
     list_filter = ['ut',]
     change_list_template = 'admin/steph_admin/change_list_custom.html'
->>>>>>> raul
