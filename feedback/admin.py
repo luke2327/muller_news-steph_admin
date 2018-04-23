@@ -6,3 +6,4 @@ from .models import *
 class SwipsFeedbackAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'user_agent', 'language',
                     'feedback', 'email', 'ut', 'status')
+    change_list_template = 'admin/steph_admin/change_list_custom.html'

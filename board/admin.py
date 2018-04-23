@@ -7,10 +7,13 @@ admin.site.empty_value_display = ''
 
 @admin.register(SwipsBoardPost)
 class SwipsBoardPostAdmin(admin.ModelAdmin):
-    list_display = ('del_field', 'id', 'type', 'participant', 'language',
+    list_display = ('id', 'type', 'participant', 'language',
                     'account_id', 'text_', 'img_ext', 'img_link', 'img_rot',
-                    'img_width', 'img_height', 'create_time', 'edit_time_')
-
+                    'img_width', 'img_height', 'create_time', 'edit_time_', 'del_field')
+    search_fields = ('id', 'type', 'participant', 'language',
+                    'account_id', 'text', 'create_time', 'edit_time', 'del_field')
+    list_filter = ('type', 'participant', 'language', 'del_field')
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     def img_link(self, obj):
         if obj.img_ext is None:
             return None;
@@ -28,10 +31,16 @@ class SwipsBoardPostAdmin(admin.ModelAdmin):
 
 @admin.register(SwipsBoardReply)
 class SwipsBoardReplyAdmin(admin.ModelAdmin):
-    list_display = ('del_field', 'id', 'type', 'participant', 'account_id',
+    list_display = ('id', 'type', 'participant', 'account_id',
                     'post_id', 'root_type', 'root_id', 'text', 'create_time',
-                    'edit_time', 'language')
-
+                    'edit_time', 'language', 'del_field',)
+    search_fields = ('id', 'type', 'participant', 'language',
+                    'account_id', 'text', 'create_time', 'edit_time', 'del_field')
+    list_filter = ('type', 'participant', 'language', 'del_field')
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
 @admin.register(SwipsBoardLike)
 class SwipsBoardLikeAdmin(admin.ModelAdmin):
     list_display = ('id', 'type', 'root_id', 'account_id', 'create_time')
+    search_fields = ('id', 'type', 'root_id', 'account_id', 'create_time')
+    list_filter = ('id', 'type', 'root_id', 'account_id', 'create_time')
+    change_list_template = 'admin/steph_admin/change_list_custom.html'

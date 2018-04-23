@@ -14,5 +14,6 @@ class SwipsLineupCustomAdmin(admin.ModelAdmin):
 class SwipsMatchDetailCustomAdmin(admin.ModelAdmin):
     list_display = ('id', 'match_id', 'team_id', 'lineup_number', 'shirt_number', 'name', 'type', 'minute', 'ut')
     list_editable = ['match_id', 'team_id', 'lineup_number', 'shirt_number', 'name', 'type', 'minute', 'ut']
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
 admin.site.register(SwipsLineupCustom,SwipsLineupCustomAdmin)
 admin.site.register(SwipsMatchDetailCustom,SwipsMatchDetailCustomAdmin)

@@ -10,13 +10,13 @@ class SwipsPlayerInfoAdmin(admin.ModelAdmin):
             'name_th', 'mid_name_th', 'country', 'social', 'draft', 'school', 'ut')
     # list_editable = ['name', 'mid_name', 'name_ko', 'mid_name_ko',\
     #         'name_th', 'mid_name_th', 'country', 'social', 'draft', 'school', 'ut']
-
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
 class SwipsTeamInfoAdmin(admin.ModelAdmin):
     list_display = ('team', 'name', 'mid_name', 'short_name', 'name_ko', 'mid_name_ko',\
             'name_th', 'mid_name_th', 'color', 'city', 'founded', 'last_rank',\
             'no_champions', 'manager', 'manager_ko', 'manager_th', 'social',\
             'social_ko', 'social_pt', 'social_id', 'social_th', 'social_vi', 'ut')
-
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
 class SwipsLeagueInfoAdmin(admin.ModelAdmin):
     list_display = ('league', 'name', 'mid_name', 'short_name', 'name_ko',
                     'name_pt', 'name_th', 'name_id', 'name_vi', 'no_teams',
@@ -24,6 +24,7 @@ class SwipsLeagueInfoAdmin(admin.ModelAdmin):
                     'social_link_id', 'social_link_th', 'social_link_vi',
                     'social_link_en', 'color', 'category', 'host', 'ut')
     list_display_links = ['league', 'name']
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     def social_linker(self, object):
         return format_html("<div style='width:200px; word-break:break-word;'>\
                             <a href='{}'>{}</a></div>",object,object)

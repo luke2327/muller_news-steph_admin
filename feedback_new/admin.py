@@ -8,6 +8,7 @@ class SwipsQnaAdmin(admin.ModelAdmin):
     list_display = ('field_del', 'id', 'user_id', 'account_id', 'user_agent', 'language',
                     'feedback', 'img_link', 'answer', 'ut', 'answer_ut', 'status')
 
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
     def img_link(self, obj):
         if obj.img_ext is None:
             return None
