@@ -255,7 +255,9 @@ def one_value_change(request) :
 def push_send(request) :
     try :
         if request.method == "POST":
+            logging.error('step1')
             request_model = json.loads(request.body)
+            logging.error('step1-1')
             news_id = request_model['news_id']
             leagues = request_model['leagues']
             teams = request_model['teams']
@@ -291,6 +293,7 @@ def push_send(request) :
                 'VALUES %s' %(','.join(values)))
             result = Database().insert_data(query)
             if result > 0 :
+                logging.error('step2')
                 return HttpResponse(json.dumps({"result" : 'ok'}))
             else :
                 return HttpResponse(status=401)
