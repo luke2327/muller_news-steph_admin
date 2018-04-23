@@ -192,7 +192,7 @@ def vods_relation(request) :
 def lineup(request) :
     if request.method == "POST":
         try :
-            lineup = json.loads(request.body)
+            lineup = json.loads(str(request.body, "utf-8"))
             match_id = lineup['match_id']
             team1 = lineup['team1']
             team2 = lineup['team2']
@@ -225,7 +225,7 @@ def lineup(request) :
 def one_value_change(request) :
     try :
         if request.method == "POST":
-            request_model = json.loads(request.body)
+            request_model = json.loads(str(request.body, "utf-8"))
 
             db_type = request_model['db_type']
             table = request_model['table']
