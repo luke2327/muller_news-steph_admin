@@ -273,20 +273,38 @@ def push_send(request) :
                 push_type = 102
                 table_name = 'curry_vod_push_send'
             for row in players :
-                values.append('("%s", "%s", '
-                    '"%s", "ready", "%s", "%s", '
-                    '"1", "0", "0", "%s", "pl", "%s")'
-                    %(push_type, table_name, news_id, row, news_id, lang, title))
+                if lang is None or lang == '' :
+                    values.append('("%s", "%s", '
+                        '"%s", "ready", "%s", "%s", '
+                        '"1", "0", "0", NULL, "pl", "%s")'
+                        %(push_type, table_name, news_id, row, news_id, title))
+                else :
+                    values.append('("%s", "%s", '
+                        '"%s", "ready", "%s", "%s", '
+                        '"1", "0", "0", "%s", "pl", "%s")'
+                        %(push_type, table_name, news_id, row, news_id, lang, title))
             for row in teams :
-                values.append('("%s", "%s", '
-                    '"%s", "ready", "%s", "%s", '
-                    '"1", "0", "0", "%s", "pl", "%s")'
-                    %(push_type, table_name, news_id, row, news_id, lang, title))
+                if lang is None or lang == '' :
+                    values.append('("%s", "%s", '
+                        '"%s", "ready", "%s", "%s", '
+                        '"1", "0", "0", NULL, "pl", "%s")'
+                        %(push_type, table_name, news_id, row, news_id, title))
+                else :
+                    values.append('("%s", "%s", '
+                        '"%s", "ready", "%s", "%s", '
+                        '"1", "0", "0", "%s", "pl", "%s")'
+                        %(push_type, table_name, news_id, row, news_id, lang, title))
             for row in leagues :
-                values.append('("%s", "%s", '
-                    '"%s", "ready", "%s", "%s", '
-                    '"1", "0", "0", "%s", "pl", "%s")'
-                    %(push_type, table_name, news_id, row, news_id, lang, title))
+                if lang is None or lang == '' :
+                    values.append('("%s", "%s", '
+                        '"%s", "ready", "%s", "%s", '
+                        '"1", "0", "0", NULL, "pl", "%s")'
+                        %(push_type, table_name, news_id, row, news_id, title))
+                else :
+                    values.append('("%s", "%s", '
+                        '"%s", "ready", "%s", "%s", '
+                        '"1", "0", "0", "%s", "pl", "%s")'
+                        %(push_type, table_name, news_id, row, news_id, lang, title))
 
             query = ('INSERT INTO swips_push '
                 '(push_type, table_name, row_id, status, ref1, ref2, ref3, ref4, ref5, refstr1, refstr2, refstr3) '
