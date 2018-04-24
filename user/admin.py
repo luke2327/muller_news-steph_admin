@@ -4,14 +4,15 @@ from django.utils.html import format_html
 # Register your models here.
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
-admin.site.unregister(User)
-admin.site.unregister(Group)
+from django.contrib.admin.views.decorators import staff_member_required
+# admin.site.unregister(User)
+# admin.site.unregister(Group)
 @admin.register(SuUserFollowing)
 class SuUserFollowingAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'user_id', 'type', 'following', 'push_type',
                     'language', 'ut', 'aws_subscription')
-
+@staff_member_required
 @admin.register(SuAccountFollowing)
 class SuAccountFollowingAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'

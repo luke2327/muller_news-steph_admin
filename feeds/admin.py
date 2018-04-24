@@ -6,11 +6,12 @@ from .models import *
 from django.utils.html import format_html
 from django.template.defaultfilters import truncatechars
 from steph.util.util import Util
+from datetime import datetime
 class CurryNewsAdmin(admin.ModelAdmin):
     #list_display = ('id','ut','ut2','name','country','date_of_birth','position','status')
     list_display = ('id','push','lang','source_','link_news','link_image',\
                 'is_frifee_content_', 'pushed_', 'del_field_',\
-                'create_tmp','is_top','sport','title_','following_desc_',\
+                'create_tmp_','is_top','sport','title_','following_desc_',\
                 'following_')
     list_filter = ['language_cd', 'del_field','create_tmp','sport','is_frifee_content']
     #list_editable = ['sport','source', 'create_tmp', 'is_top']
@@ -49,9 +50,9 @@ class CurryNewsAdmin(admin.ModelAdmin):
     def lang(self, obj):
         return obj.language_cd
     def link_news(self, obj):
-        return format_html("<a href='{0}'>click</a>", obj.link)
+        return format_html("<a target='_blank' href='{0}'>click</a>", obj.link)
     def link_image(self, obj):
-        return format_html("<a href='{0}'>click</a>", obj.image_link)
+        return format_html("<a target='_blank' href='{0}'>click</a>", obj.image_link)
     def title_(self, obj):
         return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.title, obj.title)
     def following_desc_(self, obj):
@@ -93,6 +94,10 @@ class CurryNewsAdmin(admin.ModelAdmin):
     def is_frifee_content_(self, obj):
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'is_frifee_content', obj.is_frifee_content, 'text')
+    def create_tmp_(self, obj):
+        formated = obj.create_tmp.strftime("%Y-%m-%d %H:%M:%S")
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'create_tmp', formated, 'text')
 class CurryVodAdmin(admin.ModelAdmin):
     list_display = ('id','push','match_id_','lang','source','link_news','link_image',\
                 'is_frifee_content_', 'pushed_', 'del_field_',\

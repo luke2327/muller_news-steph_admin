@@ -166,6 +166,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -175,3 +176,6 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 GRAPPELLI_ADMIN_TITLE = 'SWIPS ADMIN'
+
+from django.conf.locale.en import formats as en_formats
+en_formats.DATETIME_FORMAT = "Y-m-d H:i:s"
