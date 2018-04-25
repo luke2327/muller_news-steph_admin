@@ -145,7 +145,7 @@ def vods_relation(request) :
                 values.append('("%s","%s","%s")' %(row, id, 'te'))
             for row in leagues :
                 values.append('("%s","%s","%s")' %(row, id, 'le'))
-            query = 'INSERT INTO swips_vods_relation (participant, news_id, type) VALUES %s' %(','.join(values))
+            query = 'INSERT INTO swips_vod_relation (participant, news_id, type) VALUES %s' %(','.join(values))
             print(query)
             result = Database().insert_data(query)
             print(result)
@@ -185,7 +185,7 @@ def vods_relation(request) :
     elif request.method == "DELETE":
         id = request.META.get('HTTP_ID')
         following = request.META.get('HTTP_FOLLOWING')
-        query = 'DELETE from swips_vods_relation WHERE news_id = %s AND participant = %s ' %(id, following)
+        query = 'DELETE from swips_vod_relation WHERE news_id = %s AND participant = %s ' %(id, following)
         print (query)
         results = Database().insert_data(query)
         return HttpResponse(status=200)
@@ -274,33 +274,45 @@ def push_send(request) :
             lang = request_model['lang']
             type = request_model['type']
             values = []
+            langs = ['en', 'th', 'ko', 'vi', 'pt', 'id']
             if(type=='news'):
-                push_type = 1
-                table_name = 'curry_news_push_send'
+                for row in players :
+                    values.append('CALL spocosy.swips_news_push_send("%s","%s","%s","%s"); '
+                        %("pl", row, news_id, lang))
+                for row in teams :
+                    values.append('CALL spocosy.swips_news_push_send("%s","%s","%s","%s"); '
+                        %("te", row, news_id, lang))
+                for row in leagues :
+                    values.append('CALL spocosy.swips_news_push_send("%s","%s","%s","%s"); '
+                        %("le", row, news_id, lang))
             elif(type=='vod'):
-                push_type = 102
-                table_name = 'curry_vod_push_send'
-            for row in players :
-                values.append('("%s", "%s", '
-                    '"%s", "ready", "%s", "%s", '
-                    '"1", "0", "0", "%s", "pl", "%s")'
-                    %(push_type, table_name, news_id, row, news_id, lang, title))
-            for row in teams :
-                values.append('("%s", "%s", '
-                    '"%s", "ready", "%s", "%s", '
-                    '"1", "0", "0", "%s", "pl", "%s")'
-                    %(push_type, table_name, news_id, row, news_id, lang, title))
-            for row in leagues :
-                values.append('("%s", "%s", '
-                    '"%s", "ready", "%s", "%s", '
-                    '"1", "0", "0", "%s", "pl", "%s")'
-                    %(push_type, table_name, news_id, row, news_id, lang, title))
+                for row in players :
+                    if lang is not None and lang != '':
+                        values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
+                            %("pl", row, news_id, lang))
+                    else :
+                        for la in langs :
+                            values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
+                                %("pl", row, news_id, la))
+                for row in teams :
+                    if lang is not None and lang != '':
+                        values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
+                            %("te", row, news_id, lang))
+                    else :
+                        for la in langs :
+                            values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
+                                %("te", row, news_id, la))
+                for row in leagues :
+                    if lang is not None and lang != '':
+                        values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
+                            %("le", row, news_id, lang))
+                    else :
+                        for la in langs :
+                            values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
+                                %("le", row, news_id, la))
 
-            query = ('INSERT INTO swips_push '
-                '(push_type, table_name, row_id, status, ref1, ref2, ref3, ref4, ref5, refstr1, refstr2, refstr3) '
-                'VALUES %s' %(','.join(values)))
-            print(query)
-            result = Database().insert_data(query)
+            for row in values :
+                result += Database().insert_data(query)
             if result > 0 :
                 return HttpResponse(json.dumps({"result" : 'ok'}))
             else :
