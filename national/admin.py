@@ -9,6 +9,8 @@ class SwipsNationalTeamInfoWCAdmin(admin.ModelAdmin):
                     'appearance_desc', 'best_result_desc', 'last_result_desc')
     list_editable = ['no_champions', 'appearance',
                     'best_result', 'last_result']
+    list_filter = ['team', 'name']
+    search_fields = ['team', 'name']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
 @admin.register(SwipsNationalTeamInfoCompetition)
 class SwipsNationalTeamInfoCompetitionAdmin(admin.ModelAdmin):

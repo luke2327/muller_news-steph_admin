@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 ##
 class SuUserFollowing(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     user_id = models.IntegerField()
     type = models.CharField(max_length=2)
     following = models.IntegerField()
@@ -20,7 +20,7 @@ class SuUserFollowing(models.Model):
         verbose_name_plural = '사용자 팔로잉'
 
 class SuAccountFollowing(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     account_id = models.IntegerField()
     type = models.CharField(max_length=2)
     following = models.IntegerField()
@@ -35,7 +35,7 @@ class SuAccountFollowing(models.Model):
         verbose_name_plural = '계정 팔로잉'
 
 class SuTransaction(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     user_id = models.IntegerField()
     account_id = models.IntegerField()
     login_ut = models.DateTimeField(blank=True, null=True)
@@ -49,7 +49,7 @@ class SuTransaction(models.Model):
         verbose_name_plural = '트랜젝션'
 
 class SuAccount(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     email = models.CharField(max_length=45, blank=True, null=True)
     password = models.CharField(max_length=64, blank=True, null=True)
     pf = models.CharField(max_length=8, blank=True, null=True)
@@ -69,7 +69,7 @@ class SuAccount(models.Model):
         verbose_name_plural = '계정'
 
 class SuUser(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     device_id = models.CharField(max_length=255, blank=True, null=True)
     create_tmp = models.DateTimeField(blank=True, null=True)
     language = models.CharField(max_length=25, blank=True, null=True)
