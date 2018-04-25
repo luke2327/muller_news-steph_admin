@@ -50,9 +50,9 @@ class CurryNewsAdmin(admin.ModelAdmin):
     def lang(self, obj):
         return obj.language_cd
     def link_news(self, obj):
-        return format_html("<a target='_blank' href='{0}'>click</a>", obj.link)
+        return format_html("<a href='{0}'>click</a>", obj.link)
     def link_image(self, obj):
-        return format_html("<a target='_blank' href='{0}'>click</a>", obj.image_link)
+        return format_html("<a href='{0}'>click</a>", obj.image_link)
     def title_(self, obj):
         return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.title, obj.title)
     def following_desc_(self, obj):
@@ -71,7 +71,6 @@ class CurryNewsAdmin(admin.ModelAdmin):
         try :
             for row in obj.te_relation.split(',') :
                 html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
-
         except Exception as e :
             pass
         try :
