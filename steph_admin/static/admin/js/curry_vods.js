@@ -16,6 +16,7 @@ $('.news_push').on("click",function(){
   news_lang_selected = $(this).attr('lang');
   news_title_selected = $(this).attr('title');
   datas = $(this).attr('datas').split(',');
+
   var check_list_default = $('#check_list').clone();
   $("#send_push_body").empty();
   check_list_default.appendTo('#send_push_body');
@@ -28,14 +29,15 @@ $('.news_push').on("click",function(){
     check_list.children('.form-check-label').text(datas[i]);
     check_list.children('.form-check-input').attr('id', id_checked_news);
     check_list.children('.form-check-label').attr('for', id_checked_news);
+    console.log('id_checked_newsa :' + id_checked_news);
     check_list.appendTo('#send_push_body');
     $("#" + id_checked_news).change(function(){
-
+      console.log('id_checked_news :' + $(this).attr('id'));
       if($(this).is(':checked')){
-        checked_news.push(id_checked_news);
+        checked_news.push($(this).attr('id'));
       }else{
         for(var i = 0; i<checked_news.length;i++){
-          if(checked_news[i]==id_checked_news){
+          if(checked_news[i]==$(this).attr('id')){
             checked_news.pop();
             break;
           }
