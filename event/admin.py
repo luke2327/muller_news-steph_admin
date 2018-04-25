@@ -10,17 +10,32 @@ class EventAdmin(admin.ModelAdmin):
                     'eventstatusfk', 'status_type', 'status_descfk', 'enetid',
                     'enetsportid', 'n', 'ut', 'locked')
     list_display_links = ['id',]
-    list_filter = ['status_type',]
-    search_fields = ['name', 'id',]
+    list_filter = ['tournament_stagefk', 'status_type', 'status_descfk']
+    search_fields = ['id', 'name', 'startdate',
+                              'status_type', 'status_descfk']
+    ordering = ['-startdate']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+         return True
+
+    def has_delete_permission(self, request, obj=None):
+         return True
 @admin.register(CurryFixturesInfo)
 class CurryFixturesInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'startdate', 'league', 'league_name',
                     'broadcast_id_', 'broadcast_th_', 'broadcast_vn_',
                     'broadcast_br_', 'broadcast_kr_', 'broadcast_ph_')
-    search_fields = ['id', 'league', 'league_name', 'startdate']
-    list_filter = ['league_name', 'startdate']
+    search_fields = ['name', 'league_name']
+    list_filter = ['name', 'league', 'league_name', 'startdate']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
+    def has_add_permission(self, request):
+        return False
+    def has_delete_permission(self, request, obj=None):
+         return True
+
     def broadcast_id_(self, obj):
         return Util().get_popover('admin', 'swips_fixtures_info', 'id', obj.id,\
                            'broadcast_id', obj.broadcast_id, 'text')
@@ -48,10 +63,27 @@ class CurryMajorFixturesAdmin(admin.ModelAdmin):
     list_filter = ['league',]
     list_filter = ['league', 'utc']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+         return True
+
+    def has_delete_permission(self, request, obj=None):
+         return True
 @admin.register(SwipsFixturesInfo)
 class SwipsFixturesInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'broadcast_id', 'broadcast_th', 'broadcast_vn',
                     'broadcast_br', 'broadcast_kr', 'broadcast_ph', 'ut')
-    search_fields = ['id']
+    search_fields = ['id', 'ut']
     list_filter = ['ut',]
     change_list_template = 'admin/steph_admin/change_list_custom.html'
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+         return True
+
+    def has_delete_permission(self, request, obj=None):
+         return True

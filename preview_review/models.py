@@ -52,16 +52,16 @@ class WorldPeacePreview(models.Model):
         verbose_name_plural = '웹 프리뷰'
 
 class WpFixtures(models.Model):
-    id = models.IntegerField(primary_key=True)
-    match = models.IntegerField(unique=True, blank=True, null=True)
-    tournament = models.IntegerField(blank=True, null=True)
-    league = models.IntegerField(blank=True, null=True)
-    round = models.IntegerField(blank=True, null=True)
-    team1 = models.IntegerField(blank=True, null=True)
-    team2 = models.IntegerField(blank=True, null=True)
-    startdate = models.DateTimeField(blank=True, null=True)
-    p_type = models.IntegerField(blank=True, null=True)
-    status = models.CharField(max_length=9)
+    id = models.AutoField(primary_key=True)
+    match = models.IntegerField(blank=True, help_text="경기 아이디")
+    tournament = models.IntegerField(blank=True, null=True, help_text="토너먼트 아이디")
+    league = models.IntegerField(blank=True, null=True, help_text="리그 아이디")
+    round = models.IntegerField(blank=True, null=True, help_text="리그 라운드")
+    team1 = models.IntegerField(blank=True, null=True, help_text="홈팀")
+    team2 = models.IntegerField(blank=True, null=True, help_text="어웨이팀")
+    startdate = models.DateTimeField(blank=True, null=True, help_text="경기 시작시각")
+    p_type = models.IntegerField(blank=True, null=True, help_text="0 : 1라운드 1:2~5라운드 2: 6라운드이상")
+    status = models.CharField(max_length=9, help_text="ready, confirmed")
     pushed = models.IntegerField(blank=True, null=True)
 
     class Meta:
@@ -72,7 +72,7 @@ class WpFixtures(models.Model):
 
 
 class WpInjuries(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     player = models.IntegerField(blank=True, null=True)
     match = models.IntegerField(blank=True, null=True)
     team = models.IntegerField(blank=True, null=True)
@@ -86,7 +86,7 @@ class WpInjuries(models.Model):
 
 
 class WpKeyPl(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     match_id = models.IntegerField()
     team = models.IntegerField()
     player = models.IntegerField()
@@ -105,7 +105,7 @@ class WpKeyPl(models.Model):
 
 
 class WpTeamStat(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     match_id = models.IntegerField(blank=True, null=True)
     team = models.IntegerField(blank=True, null=True)
     rank = models.IntegerField(blank=True, null=True)
@@ -133,7 +133,7 @@ class WpTeamStat(models.Model):
 
 
 class WpTopPl(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     match_id = models.IntegerField(blank=True, null=True)
     team = models.IntegerField(blank=True, null=True)
     player = models.IntegerField(blank=True, null=True)
@@ -151,7 +151,7 @@ class WpTopPl(models.Model):
 
 
 class WpTransfer(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     tournament = models.IntegerField(blank=True, null=True)
     team = models.IntegerField(blank=True, null=True)
     player = models.IntegerField(blank=True, null=True)
@@ -168,7 +168,7 @@ class WpTransfer(models.Model):
         verbose_name_plural = '인앱 프리뷰 이적(raw)'
 
 class SwipsReview(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     sport = models.IntegerField()
     league = models.IntegerField()
     result = models.TextField(blank=True, null=True)
@@ -185,7 +185,7 @@ class SwipsReview(models.Model):
         verbose_name_plural = '리뷰(raw)'
 
 class SwipsRating(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     match_id = models.IntegerField()
     player_id = models.IntegerField()
     type = models.IntegerField()
@@ -201,8 +201,8 @@ class SwipsRating(models.Model):
 
 
 class SwipsRatingProperty(models.Model):
-    id = models.IntegerField(primary_key=True)
-    mom_id = models.IntegerField(blank=True, null=True)
+    id = models.AutoField(primary_key=True, help_text=u"매치 id")
+    mom_id = models.IntegerField(blank=True, null=True, help_text=u"선수 id")
     mom_goal = models.IntegerField(blank=True, null=True)
     mom_assist = models.IntegerField(blank=True, null=True)
     mom_min = models.IntegerField(blank=True, null=True)

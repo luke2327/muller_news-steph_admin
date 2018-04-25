@@ -37,55 +37,101 @@ class WorldPeacePreviewAdmin(admin.ModelAdmin):
             'team1_top_player_stat_per', 'team2_top_player_stat_per',\
             'team1_injuries', 'team2_injuries',\
             'status', 'type']
+    ordering = ['-match_date']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
+    def has_add_permission(self, request):
+        return False
+    def has_delete_permission(self, request, obj=None):
+         return True
 class WPFixturesAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match', 'tournament', 'league', 'round',\
             'team1', 'team2', 'startdate', 'p_type', 'status', 'pushed')
 
-    list_editable = ['status', 'pushed']
-
+    ordering = ['-startdate']
+    list_filter = ['id', 'match', 'tournament',
+                  'league', 'round', 'team1', 'team2',
+                  'startdate', 'p_type', 'status']
+    search_fields = ['id', 'match', 'tournament',
+                  'league', 'round', 'team1', 'team2',
+                  'startdate', 'p_type', 'status']
+    def has_add_permission(self, request):
+        return False
+    def has_delete_permission(self, request, obj=None):
+         return True
 class WpKeyPlAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match_id', 'team', 'player', 'goals',\
             'assists', 'rating', 'played', 'n')
-    list_editable = ['team', 'player', 'goals',\
-            'assists', 'rating', 'played', 'n']
-
+    list_filter = ['id', 'match_id', 'team', 'player',
+                      'goals', 'assists', 'rating', 'played', 'n']
+    search_fields = ['id', 'match_id', 'team', 'player',
+                      'goals', 'assists', 'rating', 'played', 'n']
+    ordering = ['-match_id']
+    def has_add_permission(self, request):
+        return False
+    def has_delete_permission(self, request, obj=None):
+         return True
 class WpTeamStatAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match_id', 'team', 'rank', 'win', 'draw', 'defeit', 'pts',\
             'games', 'prev_rank', 'prev_result', 'goals', 'goals_re', 'ga_s', 'ga_s_re',\
             'ratings', 'ratings_re', 'n')
-    list_editable = ['team', 'rank', 'win', 'draw', 'defeit', 'pts',\
-            'games', 'prev_rank', 'prev_result', 'goals', 'goals_re', 'ga_s', 'ga_s_re',\
-            'ratings', 'ratings_re', 'n']
-
+    list_filter = ['id', 'match_id', 'team', 'rank', 'win',
+                      'draw', 'defeit', 'pts', 'games', 'prev_rank',
+                      'prev_result', 'goals', 'goals_re', 'ga_s',
+                      'ga_s_re', 'ratings', 'ratings_re', 'n']
+    search_fields = ['id', 'match_id', 'team', 'rank', 'win',
+                      'draw', 'defeit', 'pts', 'games', 'prev_rank',
+                      'prev_result', 'goals', 'goals_re', 'ga_s',
+                      'ga_s_re', 'ratings', 'ratings_re', 'n']
+    ordering = ['-match_id']
+    def has_add_permission(self, request):
+        return False
+    def has_delete_permission(self, request, obj=None):
+         return True
 class WpTopPlAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match_id', 'team', 'player', 'stat_type', 'stat',\
             'avg_stat', 'n')
-    list_editable = ['team', 'player', 'stat_type', 'stat',\
-            'avg_stat', 'n']
-
+    list_filter = ['id', 'match_id', 'team', 'player',
+                      'stat_type', 'stat', 'avg_stat', 'n']
+    search_fields = ['id', 'match_id', 'team', 'player',
+                      'stat_type', 'stat', 'avg_stat', 'n']
+    ordering = ['-match_id']
+    def has_add_permission(self, request):
+        return False
+    def has_delete_permission(self, request, obj=None):
+         return True
 class WpTransferAdmin(admin.ModelAdmin):
     list_display = ('id', 'tournament', 'team', 'player', 'position', 'active',\
             'ut', 'del_field')
-    list_editable = ['ut']
-
+    list_filter = ['id', 'tournament', 'team', 'player', 'position',
+                   'active', 'ut', 'del_field']
+    search_fields = ['id', 'tournament', 'team', 'player', 'position',
+                   'active', 'ut', 'del_field']
+    def has_delete_permission(self, request, obj=None):
+         return True
 class SwipsReviewAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'sport', 'league', 'result', 'ut', 'standing',\
             'startdate', 'ct', 'pushed')
-
+    list_filter = ['id', 'league', 'ut', 'startdate', 'ct', 'pushed']
+    search_fields = ['id', 'league', 'ut', 'startdate', 'ct', 'pushed']
+    def has_add_permission(self, request):
+        return False
+    def has_delete_permission(self, request, obj=None):
+         return True
 class SwipsRatingAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'match_id', 'player_id', 'type', 'rating', 'source')
-
+    list_filter = ['match_id', 'type', 'source']
+    search_fields = ['match_id', 'type', 'rating', 'source']
 class SwipsRatingPropertyAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'mom_id', 'mom_goal', 'mom_assist', 'mom_min')
-
+    list_filter = ['mom_id',]
+    search_fields = ['id', 'mom_id']
 admin.site.register(WorldPeacePreview, WorldPeacePreviewAdmin)
 admin.site.register(WpFixtures, WPFixturesAdmin)
 admin.site.register(WpKeyPl, WpKeyPlAdmin)

@@ -7,13 +7,14 @@ from django.utils.html import format_html
 from django.template.defaultfilters import truncatechars
 from steph.util.util import Util
 from datetime import datetime
+
 class CurryNewsAdmin(admin.ModelAdmin):
     #list_display = ('id','ut','ut2','name','country','date_of_birth','position','status')
     list_display = ('id','push','lang','source_','link_news','link_image',\
                 'is_frifee_content_', 'pushed_', 'del_field_',\
                 'create_tmp_','is_top','sport','title_','following_desc_',\
                 'following_')
-    list_filter = ['language_cd', 'del_field','create_tmp','sport','is_frifee_content']
+    list_filter = ['source', 'sport', 'is_top', 'is_frifee_content', 'language_cd', 'del_field', 'pushed']
     #list_editable = ['sport','source', 'create_tmp', 'is_top']
     search_fields = ['id', 'title', 'following_desc','source']
     '''
@@ -102,8 +103,8 @@ class CurryVodAdmin(admin.ModelAdmin):
                 'is_frifee_content_', 'pushed_', 'del_field_',\
                 'create_tmp','is_top','sport','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
                 'following_')
-    list_filter = ['id', 'language_cd', 'del_field','create_tmp','sport']
-    search_fields = ['title', 'following_desc','source']
+    list_filter = ['source', 'sport', 'is_top', 'is_live', 'language_cd', 'country_cd', 'country_exclude_cd', 'del_field']
+    search_fields = ['id', 'title', 'source', 'following_desc']
     # list_editable = ['title_']
     '''
     display_as_charfield = ['name', 'country']
@@ -180,15 +181,33 @@ class CurryVodAdmin(admin.ModelAdmin):
 class SwipsCrawlingSourceAdmin(admin.ModelAdmin):
     list_display = ('del_field_', 'id', 'source_', 'content_type', 'sport',
                     'language_cd', 'frequency_cl', 'importance_cl', 'ut')
-
+    list_filter = ['source', 'content_type', 'sport', 'language_cd',
+                      'frequency_cl', 'importance_cl', 'ut', 'del_field']
     list_editable = ['frequency_cl', 'importance_cl']
     list_display_links = ['id',]
     change_list_template = 'admin/steph_admin/change_list_custom.html'
+    def has_add_permission(self, request):
+        return False
+
     def source_(self, obj):
         return Util().get_popover('admin', 'swips_crawling_source', 'id', obj.id,\
                            'source', obj.source, 'text')
     def del_field_(self, obj):
         return Util().get_popover('admin', 'swips_crawling_source', 'id', obj.id,\
                            'del_field', obj.del_field, 'text')
+@admin.register(SwipsNews)
+class SwipsNewsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'del_field', 'title', 'source', 'link', 'is_top',
+                   'pushed', 'is_frifee_content', 'following_desc', 'create_tmp')
+    list_filter = ['source', 'sport', 'is_top', 'is_frifee_content', 'language_cd', 'del_field', 'pushed']
+    search_fields = ['id', 'title', 'source', 'following_desc']
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
+@admin.register(SwipsVod)
+class SwipsVodAdmin(admin.ModelAdmin):
+    list_display = ('id', 'del_field', 'match_id', 'title', 'link', 'is_top', 'is_live', 'pushed', 'following_desc', 'create_tmp')
+    list_filter = ['source', 'sport', 'is_top', 'is_live', 'language_cd', 'country_cd', 'country_exclude_cd', 'del_field']
+    search_fields = ['id', 'title', 'source', 'following_desc']
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
+
 admin.site.register(CurryVod,CurryVodAdmin)
 admin.site.register(CurryNews,CurryNewsAdmin)

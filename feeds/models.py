@@ -1827,7 +1827,7 @@ class SwipsNationalTeamInfo(models.Model):
 
 
 class SwipsNews(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     language_cd = models.CharField(max_length=2, blank=True, null=True)
     link = models.CharField(max_length=1024, blank=True, null=True)
     image_link = models.CharField(max_length=255, blank=True, null=True)
@@ -1845,9 +1845,10 @@ class SwipsNews(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_news'
-
+        verbose_name = "뉴스 리스트"
+        verbose_name_plural = "뉴스 리스트"
 class CurryNews(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     language_cd = models.CharField(max_length=2, blank=True, null=True)
     link = models.CharField(max_length=1024, blank=True, null=True)
     image_link = models.CharField(max_length=255, blank=True, null=True)
@@ -1867,8 +1868,8 @@ class CurryNews(models.Model):
     class Meta:
         managed = False
         db_table = 'curry_news'
-        verbose_name = "뉴스"
-        verbose_name_plural = "뉴스"
+        verbose_name = "뉴스 팔로잉"
+        verbose_name_plural = "뉴스 팔로잉"
 class SwipsNewsRelation(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     participant = models.IntegerField()
@@ -2466,7 +2467,7 @@ class SwipsUserTs(models.Model):
         db_table = 'swips_user_ts'
 
 class CurryVod(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     match_id = models.IntegerField(blank=True, null=True)
     link = models.CharField(unique=True, max_length=255, blank=True, null=True)
     image_link = models.CharField(max_length=255, blank=True, null=True)
@@ -2494,7 +2495,7 @@ class CurryVod(models.Model):
         verbose_name = "VOD"
         verbose_name_plural = "VOD"
 class SwipsVod(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     match_id = models.IntegerField(blank=True, null=True)
     link = models.CharField(unique=True, max_length=255, blank=True, null=True)
     image_link = models.CharField(max_length=255, blank=True, null=True)
@@ -2516,7 +2517,8 @@ class SwipsVod(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_vod'
-
+        verbose_name = "VOD 리스트"
+        verbose_name_plural = "VOD 리스트"
 
 class SwipsVodRelation(models.Model):
     participant = models.IntegerField(primary_key=True)
