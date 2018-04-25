@@ -242,7 +242,7 @@ def one_value_change(request) :
             if table == 'swips_qna' and change_key == 'answer' and new_value != '' :
                 query = ('UPDATE %s SET %s="%s", answer_ut = NOW(), status="ready" WHERE %s="%s" '
                     %(table, change_key, new_value, primary_key, primary_value))
-            result = 0
+
             if db_type == 'admin' :
                 result = Database().insert_data(query)
                 if result > 0 :
@@ -302,7 +302,7 @@ def push_send(request) :
                         for la in langs :
                             values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
                                 %("le", row, news_id, la))
-
+            result = 0
             for row in values :
                 result += Database().insert_data(row)
             if result > 0 :
