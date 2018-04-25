@@ -16,6 +16,9 @@
 .modal-header{
   margin-top: 0px !important;
 }
+.modal-title {
+  display: inline !important;
+}
 .row{
   vertical-align: middle;
 }
