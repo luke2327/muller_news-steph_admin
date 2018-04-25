@@ -11,10 +11,10 @@
   font-size: 35px;
 }
 .close{
-  margin-top: -5px;
+  margin-top: 0px;
 }
 .modal-header{
-  margin-top: -5px;
+  margin-top: 0px !important;
 }
 .row{
   vertical-align: middle;
