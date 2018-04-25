@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class CurryInfoDbModify(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     item = models.IntegerField()
     type = models.CharField(max_length=2)
     migrate_item = models.IntegerField(blank=True, null=True)
@@ -19,7 +19,7 @@ class CurryInfoDbModify(models.Model):
 
 
 class CurryInfoImageModify(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     item = models.IntegerField()
     type = models.CharField(max_length=2)
     desc = models.TextField(blank=True, null=True)

@@ -1,22 +1,8 @@
 from django.db import models
 
 # Create your models here.
-class SwipsBoard(models.Model):
-    item = models.IntegerField(blank=True, null=True)
-    id = models.PositiveIntegerField(primary_key=True)
-    type = models.CharField(max_length=2)
-    participant = models.IntegerField(blank=True, null=True)
-    language = models.CharField(max_length=2)
-    account_id = models.IntegerField(blank=True, null=True)
-    text = models.TextField(blank=True, null=True)
-    image_url = models.CharField(max_length=255, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'swips_board'
-
 class SwipsBoardLike(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     type = models.CharField(max_length=2)
     root_id = models.IntegerField()
     account_id = models.IntegerField()
@@ -45,7 +31,7 @@ class SwipsBoardLikeDev(models.Model):
 
 
 class SwipsBoardPost(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     type = models.CharField(max_length=2)
     participant = models.IntegerField()
     language = models.CharField(max_length=2, blank=True, null=True)
@@ -92,7 +78,7 @@ class SwipsBoardPostDev(models.Model):
 
 
 class SwipsBoardReply(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     type = models.CharField(max_length=2)
     participant = models.IntegerField()
     account_id = models.IntegerField()
