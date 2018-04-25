@@ -32,10 +32,10 @@ $('.news_push').on("click",function(){
     $("#" + id_checked_news).change(function(){
 
       if($(this).is(':checked')){
-        checked_news.push(id_checked_news);
+        checked_news.push($(this).attr('id'));
       }else{
         for(var i = 0; i<checked_news.length;i++){
-          if(checked_news[i]==id_checked_news){
+          if(checked_news[i]==$(this).attr('id')){
             checked_news.pop();
             break;
           }

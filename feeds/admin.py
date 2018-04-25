@@ -15,7 +15,7 @@ class CurryNewsAdmin(admin.ModelAdmin):
                 'following_')
     list_filter = ['language_cd', 'del_field','create_tmp','sport','is_frifee_content']
     #list_editable = ['sport','source', 'create_tmp', 'is_top']
-    search_fields = ['title', 'following_desc','source']
+    search_fields = ['id', 'title', 'following_desc','source']
     '''
     display_as_charfield = ['name', 'country']
     '''
@@ -102,7 +102,7 @@ class CurryVodAdmin(admin.ModelAdmin):
                 'is_frifee_content_', 'pushed_', 'del_field_',\
                 'create_tmp','is_top','sport','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
                 'following_')
-    list_filter = ['language_cd', 'del_field','create_tmp','sport']
+    list_filter = ['id', 'language_cd', 'del_field','create_tmp','sport']
     search_fields = ['title', 'following_desc','source']
     # list_editable = ['title_']
     '''
