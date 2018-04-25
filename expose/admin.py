@@ -5,8 +5,10 @@ from .models import *
 @admin.register(CurryExposePostLog)
 class CurryExposePostLog(admin.ModelAdmin):
     list_display = ('id', 'desc', 'user', 'ut', 'target')
+    search_fields = ('id', 'desc', 'user', 'ut', 'target')
     change_list_template = 'admin/steph_admin/change_list_custom.html'
 @admin.register(CurryExposeTarget)
 class CurryExposeTargetAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'desc', 'ut')
+    search_fields = ('id', 'name', 'desc', 'ut')
     change_list_template = 'admin/steph_admin/change_list_custom.html'
