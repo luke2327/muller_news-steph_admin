@@ -314,7 +314,7 @@ def push_send(request) :
                                 %("le", row, news_id, la))
 
             for row in values :
-                result += Database().insert_data(query)
+                result += Database().insert_data(row)
             if result > 0 :
                 return HttpResponse(json.dumps({"result" : 'ok'}))
             else :
