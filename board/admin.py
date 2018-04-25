@@ -11,17 +11,19 @@ class SwipsBoardPostAdmin(admin.ModelAdmin):
     list_display = ('id', 'type', 'participant', 'language',
                     'account_id', 'text_', 'img_ext', 'img_link', 'img_rot',
                     'img_width', 'img_height', 'create_time', 'edit_time_', 'del_field_')
-    search_fields = ('id', 'type', 'participant', 'language',
-                    'account_id', 'text', 'create_time', 'edit_time')
-    list_filter = ('type', 'participant', 'language', 'del_field')
+    search_fields = ('_del', 'type', 'participant', 'language',
+                              'account_id', 'img_ext', 'img_rot', 'create_time',
+                              'edit_time')
+    list_filter = ['_del', 'type', 'participant', 'language', 'account_id',
+                      'img_ext', 'img_rot', 'create_time', 'edit_time']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     def img_link(self, obj):
         if obj.img_ext is None:
             return None;
         else:
             return format_html("<a href='http://board.swips.co/origin/bo/te_{}_{}.{}'>\
-            <img src='http://board.swips.co/thumbnails/origin/bo/te_{}_{}.{}'></a>",
-            obj.participant, obj.id, obj.img_ext, obj.participant, obj.id, obj.img_ext)
+            <img src='http://board.swips.co/thumbnails/origin/bo/te_{}_{}.jpg'></a>",
+            obj.participant, obj.id, obj.img_ext, obj.participant, obj.id)
     def text_(self, obj):
         return format_html("<div style='width: 500px; word-break:break-word;'>{}</div>", obj.text)
     def edit_time_(self,obj):
@@ -37,9 +39,12 @@ class SwipsBoardReplyAdmin(admin.ModelAdmin):
     list_display = ('id', 'type', 'participant', 'account_id',
                     'post_id', 'root_type', 'root_id', 'text', 'create_time',
                     'edit_time', 'language', 'del_field_',)
-    search_fields = ('id', 'type', 'participant', 'language',
-                    'account_id', 'text', 'create_time', 'edit_time', 'del_field')
-    list_filter = ('type', 'participant', 'language', 'del_field')
+    search_fields = ('_del', 'type', 'participant', 'language',
+                              'account_id', 'post_id', 'root_type', 'root_id',
+                              'text', 'create_time', 'edit_time')
+    list_filter = ['_del', 'type', 'participant', 'language', 'account_id',
+                      'post_id', 'root_type', 'root_id', 'text', 'create_time',
+                      'edit_time']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     def del_field_(self, obj):
         return Util().get_popover('admin', 'swips_board_reply', 'id', obj.id,\
@@ -47,6 +52,6 @@ class SwipsBoardReplyAdmin(admin.ModelAdmin):
 @admin.register(SwipsBoardLike)
 class SwipsBoardLikeAdmin(admin.ModelAdmin):
     list_display = ('id', 'type', 'root_id', 'account_id', 'create_time')
-    search_fields = ('id', 'type', 'root_id', 'account_id', 'create_time')
-    list_filter = ('id', 'type', 'root_id', 'account_id', 'create_time')
+    search_fields = ('type', 'root_id', 'account_id', 'create_time')
+    list_filter = ['type', 'root_id', 'account_id', 'create_time']
     change_list_template = 'admin/steph_admin/change_list_custom.html'

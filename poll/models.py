@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class SwipsPoll(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     item = models.IntegerField()
     number = models.IntegerField()
     type = models.CharField(max_length=2, blank=True, null=True)
@@ -18,7 +18,7 @@ class SwipsPoll(models.Model):
         verbose_name_plural = '투표'
 
 class SwipsBoard(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     item = models.IntegerField(blank=True, null=True)
     type = models.CharField(max_length=2)
     participant = models.IntegerField(blank=True, null=True)

@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class SwipsNationalTeamInfoWC(models.Model):
-    team = models.PositiveIntegerField(primary_key=True)
+    team = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30)
     fifa_ranking = models.PositiveIntegerField()
     no_champions = models.IntegerField()
@@ -22,7 +22,7 @@ class SwipsNationalTeamInfoWC(models.Model):
         verbose_name = '국가별WC정보'
         verbose_name_plural = '국가별WC정보'
 class SwipsNationalTeamInfoCompetition(models.Model):
-    team = models.PositiveIntegerField(primary_key=True)
+    team = models.AutoField(primary_key=True)
     competition = models.IntegerField()
     no_champions = models.IntegerField()
     appearance = models.IntegerField()
@@ -40,7 +40,7 @@ class SwipsNationalTeamInfoCompetition(models.Model):
         verbose_name = '국가별대회정보'
         verbose_name_plural = '국가별대회정보'
 class SwipsNationalCompetitionInfo(models.Model) :
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     name_ko = models.CharField(max_length=50)
     name_pt = models.CharField(max_length=50)
