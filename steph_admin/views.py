@@ -114,6 +114,7 @@ def news_relation(request) :
 
 @csrf_exempt
 def vods_relation(request) :
+    logging.error('vods_relation')
     if request.method == "POST":
         players = []
         teams = []
@@ -144,7 +145,7 @@ def vods_relation(request) :
                 values.append('("%s","%s","%s")' %(row, id, 'te'))
             for row in leagues :
                 values.append('("%s","%s","%s")' %(row, id, 'le'))
-            query = 'INSERT INTO swips_vods_relation (participant, news_id, type) VALUES %s' %(','.join(values))
+            query = 'INSERT INTO swips_vod_relation (participant, vod_id, type) VALUES %s' %(','.join(values))
 
             result = Database().insert_data(query)
 
@@ -183,7 +184,7 @@ def vods_relation(request) :
     elif request.method == "DELETE":
         id = request.META.get('HTTP_ID')
         following = request.META.get('HTTP_FOLLOWING')
-        query = 'DELETE from swips_vods_relation WHERE news_id = %s AND participant = %s ' %(id, following)
+        query = 'DELETE from swips_vod_relation WHERE vod_id = %s AND participant = %s ' %(id, following)
 
         results = Database().insert_data(query)
         return HttpResponse(status=200)

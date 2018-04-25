@@ -34,4 +34,4 @@ class SwipsQnaAdmin(admin.ModelAdmin):
 
     def status_(self, obj):
         return Util().get_popover('admin', 'swips_qna', 'id', obj.id,\
-                           'status', obj.answer, 'text')
+                           'status', obj.status, 'text')
