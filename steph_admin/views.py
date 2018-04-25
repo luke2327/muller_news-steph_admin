@@ -304,6 +304,7 @@ def push_send(request) :
                                 %("le", row, news_id, la))
             result = 0
             for row in values :
+                logging.error(row)
                 result += Database().insert_data(row)
             if result > 0 :
                 return HttpResponse(json.dumps({"result" : 'ok'}))
