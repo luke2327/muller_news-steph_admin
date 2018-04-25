@@ -19,3 +19,6 @@
 .row{
   vertical-align: middle;
 }
+.xdsoft_autocomplete, input[class="tag_target xdsoft_input"]{
+  width:200px !important;
+}
