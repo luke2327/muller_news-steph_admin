@@ -225,10 +225,10 @@ class CurryVodAdmin(admin.ModelAdmin):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'match_id', obj.match_id, 'text')
     def is_top_(self, obj):
-        return Util().get_count_change('admin', 'swips_news', 'id', obj.id,\
+        return Util().get_count_change('admin', 'swips_vod', 'id', obj.id,\
                            'is_top', obj.is_top, 'text', 2)
     def sport_(self, obj):
-        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'sport', obj.sport, 'text')
     def has_add_permission(self, request):
         return False

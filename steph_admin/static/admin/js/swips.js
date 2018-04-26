@@ -147,18 +147,15 @@ $('.edit_pop_text').editable({
     }
 });
 $('.edit_count_text').click(function(){
-  console.log('here!!!');
   var data_max = parseInt($(this).attr('data-max'));
   var data_now = 0;
   try {
-    console.log('what??');
     data_now = parseInt($(this).text());
     if(isNaN(data_now)){
       data_now = 0;
     }
   }
   catch(exception){
-    console.log('here??');
     data_now = 0;
   }
 
