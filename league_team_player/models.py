@@ -102,7 +102,8 @@ class CurryPlayer(models.Model):
     class Meta:
         managed = False
         db_table = 'curry_player'
-
+        verbose_name = '중복 선수 확인'
+        verbose_name_plural = '중복 선수 확인'
 class SwipsPlayerCareer(models.Model):
     id = models.IntegerField(primary_key=True)
     player = models.IntegerField(blank=True, null=True)
@@ -116,3 +117,5 @@ class SwipsPlayerCareer(models.Model):
     class Meta:
         managed = False
         db_table = 'swips_player_career'
+        verbose_name = '선수 커리어'
+        verbose_name_plural = '선수 커리어'
