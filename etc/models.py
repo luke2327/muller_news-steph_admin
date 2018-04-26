@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Country(models.Model):
+    
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     enetid = models.PositiveIntegerField(db_column='enetID')  # Field name made lowercase.

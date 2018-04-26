@@ -11,7 +11,7 @@ from datetime import datetime
 class CurryNewsAdmin(admin.ModelAdmin):
     #list_display = ('id','ut','ut2','name','country','date_of_birth','position','status')
     list_display = ('id','push','lang','source_','link_news','link_image',\
-                'is_frifee_content_', 'pushed_', 'del_field_',\
+                'is_frifee_content_', 'pushed', 'del_field_',\
                 'create_tmp_','is_top','sport','title_','following_desc_',\
                 'following_')
     list_filter = ['source', 'sport', 'is_top', 'is_frifee_content', 'language_cd', 'del_field', 'pushed']
@@ -23,6 +23,28 @@ class CurryNewsAdmin(admin.ModelAdmin):
     list_per_page = 20
     change_list_template = 'admin/steph_admin/change_list_news.html'
 
+    def has_delete_permission(self, request, obj=None):
+        #Disable delete
+        return False
+    actions = ['del_field_change', ]
+
+    def del_field_change(self, request, queryset):
+        ids_del = []
+        ids = []
+        for row in queryset :
+            if row.del_field is None or row.del_field == 0 :
+                ids_del.append(str(row.id))
+            else :
+                ids.append(str(row.id))
+        SwipsNews.objects.filter(id__in=ids).all().update(del_field = 0)
+        SwipsNews.objects.filter(id__in=ids_del).all().update(del_field = 1)
+    del_field_change.short_description = "선택한 뉴스 del값을 바꿉니다"
+    def get_actions(self, request):
+
+        actions = super(CurryNewsAdmin, self).get_actions(request)
+        if 'delete_selected' in actions:
+            del actions['delete_selected']
+        return actions
     def push(self, obj):
         datas = []
         try :
@@ -88,9 +110,6 @@ class CurryNewsAdmin(admin.ModelAdmin):
     def del_field_(self, obj):
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'del', obj.del_field, 'text')
-    def pushed_(self, obj):
-        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
-                           'pushed', obj.pushed, 'text')
     def is_frifee_content_(self, obj):
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'is_frifee_content', obj.is_frifee_content, 'text')
@@ -100,7 +119,7 @@ class CurryNewsAdmin(admin.ModelAdmin):
                            'create_tmp', formated, 'text')
 class CurryVodAdmin(admin.ModelAdmin):
     list_display = ('id','push','match_id_','lang','source','link_news','link_image',\
-                'is_frifee_content_', 'pushed_', 'del_field_',\
+                'is_frifee_content_', 'pushed', 'del_field_',\
                 'create_tmp','is_top','sport','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
                 'following_')
     list_filter = ['source', 'sport', 'is_top', 'is_live', 'language_cd', 'country_cd', 'country_exclude_cd', 'del_field']
@@ -110,7 +129,27 @@ class CurryVodAdmin(admin.ModelAdmin):
     display_as_charfield = ['name', 'country']
     '''
     list_per_page = 20
+    actions = ['del_field_change', ]
     change_list_template = 'admin/steph_admin/change_list_vods.html'
+    def del_field_change(self, request, queryset):
+        print('delf_field_0')
+        ids_del = []
+        ids = []
+        for row in queryset :
+            if row.del_field is None or row.del_field == 0 :
+                ids_del.append(str(row.id))
+            else :
+                ids.append(str(row.id))
+        SwipsVod.objects.filter(id__in=ids).all().update(del_field = 0)
+        SwipsVod.objects.filter(id__in=ids_del).all().update(del_field = 1)
+    del_field_change.short_description = "선택한 VOD del값을 바꿉니다"
+
+    def get_actions(self, request):
+
+        actions = super(CurryVodAdmin, self).get_actions(request)
+        if 'delete_selected' in actions:
+            del actions['delete_selected']
+        return actions
     def push(self, obj):
         datas = []
         try :
@@ -171,9 +210,6 @@ class CurryVodAdmin(admin.ModelAdmin):
     def del_field_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'del', obj.del_field, 'text')
-    def pushed_(self, obj):
-        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
-                           'pushed', obj.pushed, 'text')
     def match_id_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'match_id', obj.match_id, 'text')
