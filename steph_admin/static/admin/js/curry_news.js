@@ -199,7 +199,7 @@ $('#btn_following_add').click(function(){
           for(var i=0; i<pl.length; i++){
             $('#following_'+ data_id)
               .append('<li id = "f_add_'+data_id+'_'+pl[i].split('/')[1]+'"><a id = "f_del_'+data_id+'_'+pl[i].split('/')[1]+'" data-toggle="modal" data-target="#del_following"'+
-                'class="following_del" following="'+pl[i]+'" data_id="'+data_id+'">'+
+                'class="following_del  following_pl" following="'+pl[i]+'" data_id="'+data_id+'">'+
                 pl[i]+'</a></li>');
 
             var push_datas = $('#push-'+ data_id).attr('datas');
@@ -231,7 +231,7 @@ $('#btn_following_add').click(function(){
           for(var i=0; i<te.length; i++){
             $('#following_'+ data_id)
               .append('<li id = "f_add_'+data_id+'_'+te[i].split('/')[1]+'"><a id = "f_del_'+data_id+'_'+te[i].split('/')[1]+'" data-toggle="modal" data-target="#del_following"'+
-                'class="following_del" following="'+te[i]+'" data_id="'+data_id+'">'+
+                'class="following_del following_te" following="'+te[i]+'" data_id="'+data_id+'">'+
                 te[i]+'</a></li>');
 
             var push_datas = $('#push-'+ data_id).attr('datas');
@@ -261,7 +261,7 @@ $('#btn_following_add').click(function(){
           for(var i=0; i<le.length; i++){
             $('#following_'+ data_id)
               .append('<li id = "f_add_'+data_id+'_'+le[i].split('/')[1]+'"><a id = "f_del_'+data_id+'_'+le[i].split('/')[1]+'" data-toggle="modal" data-target="#del_following"'+
-                'class="following_del" following="'+le[i]+'" data_id="'+data_id+'">'+
+                'class="following_del  following_le" following="'+le[i]+'" data_id="'+data_id+'">'+
                 le[i]+'</a></li>');
 
             var push_datas = $('#push-'+ data_id).attr('datas');

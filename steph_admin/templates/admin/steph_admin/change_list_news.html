@@ -1,32 +1,32 @@
 {% extends "admin/steph_admin/change_list_custom.html" %} {% block content %}
 <ul class="navbar-nav bd-navbar-nav flex-row" style="margin-bottom: 10px">
   <li class="nav-item">
-    <a class="btn btn-info" href=".?language_cd=id">id</a>
+    <a id="language_cd_id" class="btn btn-info curry-filter-btn" data = "language_cd=id" href="#">id</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-info" href=".?language_cd=th" style="margin-left: 10px">th</a>
+    <a id="language_cd_th" class="btn btn-info curry-filter-btn" data = "language_cd=th" href="#" style="margin-left: 10px">th</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-info" href=".?language_cd=pt" style="margin-left: 10px">pt</a>
+    <a id="language_cd_pt" class="btn btn-info curry-filter-btn" data = "language_cd=pt" href="#" style="margin-left: 10px">pt</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-info" href=".?language_cd=ko" style="margin-left: 10px">ko</a>
+    <a id="language_cd_ko" class="btn btn-info curry-filter-btn" data = "language_cd=ko" href="#" style="margin-left: 10px">ko</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-info" href=".?language_cd=vi" style="margin-left: 10px">vi</a>
+    <a id="language_cd_vi" class="btn btn-info curry-filter-btn" data = "language_cd=vi" href="#" style="margin-left: 10px">vi</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-info" href=".?language_cd=en" style="margin-left: 10px">en</a>
+    <a id="language_cd_en" class="btn btn-info curry-filter-btn" data = "language_cd=en" href="#" style="margin-left: 10px">en</a>
   </li>
   <br>
   <li class="nav-item" style="margin-top: 5px">
-    <a class="btn btn-primary" href=".?sport=1">Football</a>
+    <a id="sport_1" class="btn btn-primary curry-filter-btn" data = "sport=1" href="#">Football</a>
   </li>
   <li class="nav-item" style="margin-top: 5px">
-    <a class="btn btn-primary" href=".?sport=23" style="margin-left: 10px">Basketball</a>
+    <a id="sport_23" class="btn btn-primary curry-filter-btn" data = "sport=23" href="#" style="margin-left: 10px">Basketball</a>
   </li>
   <li class="nav-item" style="margin-top: 5px">
-    <a class="btn btn-primary" href=".?sport=26" style="margin-left: 10px">Baseball</a>
+    <a id="sport_26" class="btn btn-primary curry-filter-btn" data = "sport=26" href="#" style="margin-left: 10px">Baseball</a>
   </li>
 </div>
 {{ block.super }}

@@ -12,7 +12,7 @@ class CurryNewsAdmin(admin.ModelAdmin):
     #list_display = ('id','ut','ut2','name','country','date_of_birth','position','status')
     list_display = ('id','push','lang','source_','link_news','link_image',\
                 'is_frifee_content_', 'pushed', 'del_field_',\
-                'create_tmp_','is_top','sport','title_','following_desc_',\
+                'create_tmp_','is_top_','sport_','title_','following_desc_',\
                 'following_')
     list_filter = ['source', 'sport', 'is_top', 'is_frifee_content', 'language_cd', 'del_field', 'pushed']
     #list_editable = ['sport','source', 'create_tmp', 'is_top']
@@ -88,19 +88,19 @@ class CurryNewsAdmin(admin.ModelAdmin):
         html += '<li><a class="btn btn-primary btn-sm following_add" style="margin-bottom: 5px;" data_id="%s">+ following add</a></li>' %(obj.id)
         try :
             for row in obj.le_relation.split(',') :
-                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
+                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del following_le" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
 
         except Exception as e:
             print(e)
             pass
         try :
             for row in obj.te_relation.split(',') :
-                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
+                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del following_te" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
         except Exception as e :
             pass
         try :
             for row in obj.pl_relation.split(',') :
-                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
+                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del following_pl" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
 
         except Exception as e :
             pass
@@ -119,12 +119,18 @@ class CurryNewsAdmin(admin.ModelAdmin):
         formated = obj.create_tmp.strftime("%Y-%m-%d %H:%M:%S")
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'create_tmp', formated, 'text')
+    def is_top_(self, obj):
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'is_top', obj.is_top, 'text')
+    def sport_(self, obj):
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'sport', obj.sport, 'text')
     def has_add_permission(self, request):
         return False
 class CurryVodAdmin(admin.ModelAdmin):
     list_display = ('id','push','match_id_','lang','source','link_news','link_image',\
                 'is_frifee_content_', 'pushed', 'del_field_',\
-                'create_tmp','is_top','sport','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
+                'create_tmp','is_top_','sport_','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
                 'following_')
     list_filter = ['source', 'sport', 'is_top', 'is_live', 'language_cd', 'country_cd', 'country_exclude_cd', 'del_field']
     search_fields = ['id', 'title', 'source', 'following_desc']
@@ -190,20 +196,20 @@ class CurryVodAdmin(admin.ModelAdmin):
         html += '<li><a class="btn btn-primary btn-sm following_add" style="margin-bottom: 5px;" data_id="%s">+ following add</button></li>' %(obj.id)
         try :
             for row in obj.le_relation.split(',') :
-                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
+                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del following_le" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
 
         except Exception as e:
             print(e)
             pass
         try :
             for row in obj.te_relation.split(',') :
-                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
+                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del following_te" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
 
         except Exception as e :
             pass
         try :
             for row in obj.pl_relation.split(',') :
-                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
+                html = html + '<li id = "f_add_%s_%s" ><a data-toggle="modal" data-target="#del_following" class="following_del following_pl" following="%s" data_id="%s">%s</a></li>' %(obj.id,row.split('/')[1],row,obj.id,row)
 
         except Exception as e :
             pass
@@ -218,6 +224,12 @@ class CurryVodAdmin(admin.ModelAdmin):
     def match_id_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'match_id', obj.match_id, 'text')
+    def is_top_(self, obj):
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'is_top', obj.is_top, 'text')
+    def sport_(self, obj):
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'sport', obj.sport, 'text')
     def has_add_permission(self, request):
         return False
 @admin.register(SwipsCrawlingSource)

@@ -1,9 +1,40 @@
 $(document).ready(function(){
   var clone_menu = $('#swips_menu').clone();
   clone_menu.appendTo('#grp-navigation');
-  
-});
 
+});
+$(function() {
+
+    var href = $(location).attr('href');
+    if(href.includes('feeds/curry')){
+      console.log($.urlParam('language_cd'));
+      var filter_lang = $.urlParam('language_cd');
+      var filter_sport = $.urlParam('sport');
+      var filter_source = $.urlParam('source');
+      console.log(filter_lang);
+      if(filter_lang){
+        console.log('working??');
+        $('#language_cd_'+ filter_lang).button('toggle');
+      }
+      if(filter_sport){
+        console.log('working??');
+        $('#sport_'+ filter_sport).button('toggle');
+      }
+      if(filter_source){
+        console.log('working??');
+        $('#source_'+ filter_source.replace('.','_')).button('toggle');
+      }
+    }
+});
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return decodeURI(results[1]) || 0;
+    }
+}
 $('#grp-content').ready(function(){
   $('#grp-content').css({top: 0});
 });
@@ -18,18 +49,47 @@ $('.field-following_desc_').ready(function(){
   $('.field-following_desc_').css({'max-width':'150px'});
   $('.field-following_desc_').children().css({'width':'130px'});
 });
-
-// $('#grp-content').attrchange({
-//     trackValues: true, /* Default to false, if set to true the event object is
-//                 updated with old and new value.*/
-//     callback: function (event) {
-//       // $('#grp-navigation').attr('position','relative');
-//       $('#grp-content').attr('top','0px');
-//       // console.log('go');
-//       // console.log($('#grp-navigation').attr('position'));
-//       // console.log($('#grp-content').attr('position'));
-//     }
-// });
+$('.curry-filter-btn').click(function(){
+  var url = $(location).attr('href').split('?')[0];
+  var data = $(this).attr('data');
+  var toggle = $(this).attr('aria-pressed');
+  var filter_lang = $.urlParam('language_cd');
+  var filter_sport = $.urlParam('sport');
+  var filter_source = $.urlParam('source');
+  if(data.split('=')[0]=='language_cd'){
+    if(toggle){
+      filter_lang = null;
+    }else{
+      filter_lang = data.split('=')[1];
+    }
+  }
+  if(data.split('=')[0]=='sport'){
+    if(toggle){
+      filter_sport = null;
+    }else{
+      filter_sport = data.split('=')[1];
+    }
+  }
+  if(data.split('=')[0]=='source'){
+    if(toggle){
+      filter_source = null;
+    }else{
+      filter_source = data.split('=')[1];
+    }
+  }
+  params = new Array();
+  if(filter_lang){
+    params.push('language_cd='+filter_lang);
+  }
+  if(filter_sport){
+    params.push('sport='+filter_sport);
+  }
+  if(filter_source){
+    params.push('source='+filter_source);
+  }
+  url = url + '?' + params.join("&");
+  $(location).attr('href', url);
+});
 
 var db_type;
 var table;

@@ -18,6 +18,8 @@
 <script type="text/javascript" src='http://static.swips.co/content/static/js/bootstrap-dropdownhover.min.js'></script>
 <script type="text/javascript"
   src="https://cdn.rawgit.com/meetselva/attrchange/master/js/attrchange.js"></script>
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/swips.css' %}" />
 {% endblock %}
 {% block content %} {{ block.super }}
   {% include 'admin/steph_admin/modal.html' %}
