@@ -252,17 +252,25 @@ class SwipsCrawlingSourceAdmin(admin.ModelAdmin):
                            'del_field', obj.del_field, 'text')
 @admin.register(SwipsNews)
 class SwipsNewsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'del_field', 'title', 'source', 'link', 'is_top',
-                   'pushed', 'is_frifee_content', 'following_desc', 'create_tmp')
+    list_display = ('id','language_cd','source','link_news','link_image',\
+                    'is_frifee_content', 'pushed', 'del_field',\
+                    'create_tmp','is_top','sport','title','following_desc')
     list_filter = ['source', 'sport', 'is_top', 'is_frifee_content', 'language_cd', 'del_field', 'pushed']
     search_fields = ['id', 'title', 'source', 'following_desc']
-    change_list_template = 'admin/steph_admin/change_list_custom.html'
+    change_list_template = 'admin/steph_admin/change_list_news.html'
+    def link_news(self, obj):
+        return format_html("<a href='{0}' target='_blank'>click</a>", obj.link)
+    def link_image(self, obj):
+        return format_html("<a href='{0}' target='_blank'>click</a>", obj.image_link)
 @admin.register(SwipsVod)
 class SwipsVodAdmin(admin.ModelAdmin):
-    list_display = ('id', 'del_field', 'match_id', 'title', 'link', 'is_top', 'is_live', 'pushed', 'following_desc', 'create_tmp')
+    list_display = ('id', 'match_id', 'link_news', 'link_image', 'create_tmp', 'is_top', 'sport', 'country_cd', 'language_cd', 'title', 'source', 'following_desc', 'is_frifee_content', 'pushed', 'country_exclude_cd', 'del_field', 'is_live')
     list_filter = ['source', 'sport', 'is_top', 'is_live', 'language_cd', 'country_cd', 'country_exclude_cd', 'del_field']
     search_fields = ['id', 'title', 'source', 'following_desc']
-    change_list_template = 'admin/steph_admin/change_list_custom.html'
-
+    change_list_template = 'admin/steph_admin/change_list_vods.html'
+    def link_news(self, obj):
+        return format_html("<a href='{0}' target='_blank'>click</a>", obj.link)
+    def link_image(self, obj):
+        return format_html("<a href='{0}' target='_blank'>click</a>", obj.image_link)
 admin.site.register(CurryVod,CurryVodAdmin)
 admin.site.register(CurryNews,CurryNewsAdmin)
