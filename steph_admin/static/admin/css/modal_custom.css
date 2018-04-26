@@ -10,8 +10,11 @@
 .close_button{
   font-size: 35px;
 }
-.modal-header .close{
+.modal-header{
   margin-top: 0px !important;
+}
+.close{
+  margin-top: -5px !important;
 }
 .modal-title {
   display: inline !important;

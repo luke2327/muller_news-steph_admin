@@ -1,0 +1,13 @@
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
+  background-color: #313131 !important;
+}
+a{
+  font-weight: bold !important;
+}
+ul[class="navbar-nav bd-navbar-nav flex-row"]{
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+}
+ul[class="dropdown-menu"]{
+  min-width: 160px !important;
+}
