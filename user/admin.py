@@ -17,6 +17,9 @@ class SuUserFollowingAdmin(admin.ModelAdmin):
     search_fields = ['user_id', 'type', 'following', 'push_type',
                               'language']
 
+    def has_add_permission(self, request):
+        return False
+
 @staff_member_required
 @admin.register(SuAccountFollowing)
 class SuAccountFollowingAdmin(admin.ModelAdmin):
@@ -27,12 +30,19 @@ class SuAccountFollowingAdmin(admin.ModelAdmin):
                       'ut']
     search_fields = ['id', 'account_id', 'type', 'following',
                               'push_type', 'ut']
+
+    def has_add_permission(self, request):
+        return False
+
 @admin.register(SuTransaction)
 class SuTransactionAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'user_id', 'account_id', 'login_ut', 'logout_ut')
     list_filter = ['id', 'user_id', 'account_id', 'login_ut', 'logout_ut']
     search_fields = ['id', 'user_id', 'account_id', 'login_ut', 'logout_ut']
+
+    def has_add_permission(self, request):
+        return False
 
 @admin.register(SuAccount)
 class SuAccountAdmin(admin.ModelAdmin):
@@ -60,6 +70,9 @@ class SuAccountAdmin(admin.ModelAdmin):
         else:
             return format_html("<div style='width: 300px; word-break:break-word;'>{}</div>",
                                 obj.pf_image_url)
+    def has_add_permission(self, request):
+        return False
+
 @admin.register(SuUser)
 class SuUserAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom_default.html'
@@ -69,3 +82,5 @@ class SuUserAdmin(admin.ModelAdmin):
                       'os', 'push_key', 'last_login_ut']
     search_fields = ['id', 'device_id', 'create_tmp',
                               'language', 'os', 'push_key', 'last_login_ut']
+    def has_add_permission(self, request):
+        return False

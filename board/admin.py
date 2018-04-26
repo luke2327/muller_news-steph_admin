@@ -21,7 +21,7 @@ class SwipsBoardPostAdmin(admin.ModelAdmin):
         if obj.img_ext is None:
             return None;
         else:
-            return format_html("<a href='http://board.swips.co/origin/bo/te_{}_{}.{}'>\
+            return format_html("<a target='_blank' href='http://board.swips.co/origin/bo/te_{}_{}.{}'>\
             <img src='http://board.swips.co/thumbnails/origin/bo/te_{}_{}.jpg'></a>",
             obj.participant, obj.id, obj.img_ext, obj.participant, obj.id)
     def text_(self, obj):
