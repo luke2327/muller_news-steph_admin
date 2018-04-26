@@ -51,7 +51,7 @@ class SwipsLeagueInfoAdmin(admin.ModelAdmin):
          return True
     def social_linker(self, object):
         return format_html("<div style='width:200px; word-break:break-word;'>\
-                            <a href='{}'>{}</a></div>",object,object)
+                            <a href='{}' target='_blank'>{}</a></div>",object,object)
     def social_link(self, obj):
         if obj.social is None:
             return None
@@ -97,13 +97,14 @@ class SwipsPlayerCareerAdmin(admin.ModelAdmin):
             return None
         else:
             return obj.date_to
-
+    def has_add_permission(self, request):
+        return False
 @admin.register(CurryPlayer)
 class CurryPlayerAdmin(admin.ModelAdmin):
-
     list_display = ('player', 'name', 'mid_name', 'name_ko', 'mid_name_ko', 'name_th',
                     'mid_name_th', 'country', 'social', 'draft', 'school', 'ut', 'position')
-
+    def has_add_permission(self, request):
+        return False
 admin.site.register(SwipsPlayerInfo,SwipsPlayerInfoAdmin)
 admin.site.register(SwipsTeamInfo,SwipsTeamInfoAdmin)
 admin.site.register(SwipsLeagueInfo,SwipsLeagueInfoAdmin)

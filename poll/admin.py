@@ -9,6 +9,8 @@ class SwipsPollAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     search_fields = ['item', 'participant', 'type']
     list_filter = ['item', 'participant', 'type']
+    def has_add_permission(self, request):
+        return False
 
 @admin.register(SwipsBoard)
 class SwipsBoardAdmin(admin.ModelAdmin):
@@ -24,6 +26,9 @@ class SwipsBoardAdmin(admin.ModelAdmin):
         else:
             return format_html("<div style='width: 500px;\
             word-break:break-word;'>{}</div>", obj.text)
+            
+    def has_add_permission(self, request):
+        return False
     search_fields = ['item', 'participant', 'language', 'account_id',
                     'text', 'type']
     list_filter = ['item', 'participant', 'language', 'account_id', 'type']

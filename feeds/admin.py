@@ -51,9 +51,9 @@ class CurryNewsAdmin(admin.ModelAdmin):
     def lang(self, obj):
         return obj.language_cd
     def link_news(self, obj):
-        return format_html("<a href='{0}'>click</a>", obj.link)
+        return format_html("<a href='{0}' target='_blank'>click</a>", obj.link)
     def link_image(self, obj):
-        return format_html("<a href='{0}'>click</a>", obj.image_link)
+        return format_html("<a href='{0}' target='_blank'>click</a>", obj.image_link)
     def title_(self, obj):
         return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.title, obj.title)
     def following_desc_(self, obj):
@@ -98,6 +98,8 @@ class CurryNewsAdmin(admin.ModelAdmin):
         formated = obj.create_tmp.strftime("%Y-%m-%d %H:%M:%S")
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'create_tmp', formated, 'text')
+    def has_add_permission(self, request):
+        return False
 class CurryVodAdmin(admin.ModelAdmin):
     list_display = ('id','push','match_id_','lang','source','link_news','link_image',\
                 'is_frifee_content_', 'pushed_', 'del_field_',\
@@ -133,9 +135,9 @@ class CurryVodAdmin(admin.ModelAdmin):
     def lang(self, obj):
         return obj.language_cd
     def link_news(self, obj):
-        return format_html("<a href='{0}'>click</a>", obj.link)
+        return format_html("<a href='{0}' target='_blank'>click</a>", obj.link)
     def link_image(self, obj):
-        return format_html("<a href='{0}'>click</a>", obj.image_link)
+        return format_html("<a href='{0}' target='_blank'>click</a>", obj.image_link)
     def title_(self, obj):
         return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.title, obj.title)
     def following_desc_(self, obj):
@@ -177,6 +179,8 @@ class CurryVodAdmin(admin.ModelAdmin):
     def match_id_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'match_id', obj.match_id, 'text')
+    def has_add_permission(self, request):
+        return False
 @admin.register(SwipsCrawlingSource)
 class SwipsCrawlingSourceAdmin(admin.ModelAdmin):
     list_display = ('del_field_', 'id', 'source_', 'content_type', 'sport',

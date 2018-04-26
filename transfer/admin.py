@@ -14,7 +14,7 @@ class SwipsTransferAdmin(admin.ModelAdmin):
                     'source_link_ko', 'source_link_vi', 'source_link_en')
 
     def source_linker(self, object):
-        return format_html("<a href='{}'>{}</a>", object, object)
+        return format_html("<a href='{}' target='_blank'>{}</a>", object, object)
 
     def source_link_id(self, obj):
         if obj.source_id is None:
