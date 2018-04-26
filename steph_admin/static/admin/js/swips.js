@@ -6,7 +6,7 @@ $(document).ready(function(){
 $(function() {
 
     var href = $(location).attr('href');
-    if(href.includes('feeds/curry')){
+    if(href.includes('feeds/')){
       console.log($.urlParam('language_cd'));
       var filter_lang = $.urlParam('language_cd');
       var filter_sport = $.urlParam('sport');
