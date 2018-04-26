@@ -102,7 +102,7 @@ class WpTopPlAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
     def has_delete_permission(self, request, obj=None):
-         return True
+         return False
 class WpTransferAdmin(admin.ModelAdmin):
     list_display = ('id', 'tournament', 'team', 'player', 'position', 'active',\
             'ut', 'del_field')

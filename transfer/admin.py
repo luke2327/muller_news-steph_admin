@@ -13,6 +13,11 @@ class SwipsTransferAdmin(admin.ModelAdmin):
                     'ut', 'source_link_id', 'source_link_th', 'source_link_pt',
                     'source_link_ko', 'source_link_vi', 'source_link_en')
 
+    list_filter = ['sport' , 'player_id', 'from_team_id', 'to_team_id',
+                      'is_loan', 'type']
+    search_fields = ['player_id', 'player_name', 'from_team_id',
+                      'from_team_name', 'to_team_id', 'to_team_name']
+
     def source_linker(self, object):
         return format_html("<a href='{}' target='_blank'>{}</a>", object, object)
 

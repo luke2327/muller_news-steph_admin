@@ -240,7 +240,7 @@ def one_value_change(request) :
                 %(table, change_key, new_value, primary_key, primary_value))
 
             if table == 'swips_qna' and change_key == 'answer' and new_value != '' :
-                query = ('UPDATE %s SET %s="%s", answer_ut = NOW(), status="ready" WHERE %s="%s" '
+                query = ('UPDATE %s SET %s="%s", answer_ut = NOW(), status="answered" WHERE %s="%s" '
                     %(table, change_key, new_value, primary_key, primary_value))
 
             if db_type == 'admin' :

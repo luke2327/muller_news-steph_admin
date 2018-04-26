@@ -11,7 +11,7 @@ class SwipsFeedback(models.Model):
     ut = models.DateTimeField()
     email = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(max_length=9, blank=True, null=True)
-
+    
     class Meta:
         managed = False
         db_table = 'swips_feedback'

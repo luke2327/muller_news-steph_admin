@@ -22,7 +22,7 @@ class EventAdmin(admin.ModelAdmin):
          return True
 
     def has_delete_permission(self, request, obj=None):
-         return True
+         return False
 @admin.register(CurryFixturesInfo)
 class CurryFixturesInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'startdate', 'league', 'league_name',
@@ -34,7 +34,7 @@ class CurryFixturesInfoAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
     def has_delete_permission(self, request, obj=None):
-         return True
+         return False
 
     def broadcast_id_(self, obj):
         return Util().get_popover('admin', 'swips_fixtures_info', 'id', obj.id,\
@@ -71,7 +71,7 @@ class CurryMajorFixturesAdmin(admin.ModelAdmin):
          return True
 
     def has_delete_permission(self, request, obj=None):
-         return True
+         return False
 @admin.register(SwipsFixturesInfo)
 class SwipsFixturesInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'broadcast_id', 'broadcast_th', 'broadcast_vn',
@@ -86,4 +86,4 @@ class SwipsFixturesInfoAdmin(admin.ModelAdmin):
          return True
 
     def has_delete_permission(self, request, obj=None):
-         return True
+         return False

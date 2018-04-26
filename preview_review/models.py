@@ -87,14 +87,14 @@ class WpInjuries(models.Model):
 
 class WpKeyPl(models.Model):
     id = models.AutoField(primary_key=True)
-    match_id = models.IntegerField()
-    team = models.IntegerField()
-    player = models.IntegerField()
-    goals = models.IntegerField()
-    assists = models.IntegerField()
-    rating = models.FloatField()
-    played = models.IntegerField()
-    n = models.IntegerField()
+    match_id = models.IntegerField(help_text="경기 아이디")
+    team = models.IntegerField(help_text="팀 아이디")
+    player = models.IntegerField(help_text="선수 아이디")
+    goals = models.IntegerField(help_text="최근 골수")
+    assists = models.IntegerField(help_text="최근 어시스트 수")
+    rating = models.FloatField(help_text="최근 평점평균")
+    played = models.IntegerField(help_text="최근 뛴 경기수")
+    n = models.IntegerField(help_text="")
 
     class Meta:
         managed = False
@@ -106,23 +106,23 @@ class WpKeyPl(models.Model):
 
 class WpTeamStat(models.Model):
     id = models.AutoField(primary_key=True)
-    match_id = models.IntegerField(blank=True, null=True)
-    team = models.IntegerField(blank=True, null=True)
-    rank = models.IntegerField(blank=True, null=True)
-    win = models.IntegerField(blank=True, null=True)
-    draw = models.IntegerField(blank=True, null=True)
-    defeit = models.IntegerField(blank=True, null=True)
-    pts = models.IntegerField(blank=True, null=True)
-    games = models.IntegerField(blank=True, null=True)
-    prev_rank = models.CharField(max_length=32, blank=True, null=True)
-    prev_result = models.CharField(max_length=32, blank=True, null=True)
-    goals = models.IntegerField(blank=True, null=True)
-    goals_re = models.FloatField(blank=True, null=True)
-    ga_s = models.IntegerField(blank=True, null=True)
-    ga_s_re = models.FloatField(blank=True, null=True)
-    ratings = models.FloatField(blank=True, null=True)
-    ratings_re = models.FloatField(blank=True, null=True)
-    n = models.IntegerField(blank=True, null=True)
+    match_id = models.IntegerField(blank=True, null=True, help_text="경기 아이디")
+    team = models.IntegerField(blank=True, null=True, help_text="팀 아이디")
+    rank = models.IntegerField(blank=True, null=True, help_text="팀 현재 순위")
+    win = models.IntegerField(blank=True, null=True, help_text="승")
+    draw = models.IntegerField(blank=True, null=True, help_text="무")
+    defeit = models.IntegerField(blank=True, null=True, help_text="패")
+    pts = models.IntegerField(blank=True, null=True, help_text="승점")
+    games = models.IntegerField(blank=True, null=True, help_text="경기수")
+    prev_rank = models.CharField(max_length=32, blank=True, null=True, help_text="이전순위변화")
+    prev_result = models.CharField(max_length=32, blank=True, null=True, help_text="이전 결과 변화(1:home lose, 2:home draw, 3:homewin 4:awaylose 5:awaydraw 6:awaywin")
+    goals = models.IntegerField(blank=True, null=True, help_text="총 골수")
+    goals_re = models.FloatField(blank=True, null=True, help_text="최근경기 평균골수")
+    ga_s = models.IntegerField(blank=True, null=True, help_text="총 실점수")
+    ga_s_re = models.FloatField(blank=True, null=True, help_text="최근경기 평균실점")
+    ratings = models.FloatField(blank=True, null=True, help_text="총 평점합")
+    ratings_re = models.FloatField(blank=True, null=True, help_text="최근경기 평점평균")
+    n = models.IntegerField(blank=True, null=True, help_text="")
 
     class Meta:
         managed = False
@@ -134,13 +134,13 @@ class WpTeamStat(models.Model):
 
 class WpTopPl(models.Model):
     id = models.AutoField(primary_key=True)
-    match_id = models.IntegerField(blank=True, null=True)
-    team = models.IntegerField(blank=True, null=True)
-    player = models.IntegerField(blank=True, null=True)
-    stat_type = models.CharField(max_length=7, blank=True, null=True)
-    stat = models.FloatField(blank=True, null=True)
-    avg_stat = models.FloatField(blank=True, null=True)
-    n = models.IntegerField(blank=True, null=True)
+    match_id = models.IntegerField(blank=True, null=True, help_text="경기 아이디")
+    team = models.IntegerField(blank=True, null=True, help_text="팀 아이디")
+    player = models.IntegerField(blank=True, null=True, help_text="선수 아이디")
+    stat_type = models.CharField(max_length=7, blank=True, null=True, help_text="goals, assists, ycards, rating, p_time")
+    stat = models.FloatField(blank=True, null=True, help_text="stat_type 에 대응하는 시즌 기록")
+    avg_stat = models.FloatField(blank=True, null=True, help_text="stat 값의 시간당 환산값(preview에 보여지는값기준)")
+    n = models.IntegerField(blank=True, null=True, help_text="preview상 보여지는 순서")
 
     class Meta:
         managed = False
@@ -152,12 +152,12 @@ class WpTopPl(models.Model):
 
 class WpTransfer(models.Model):
     id = models.AutoField(primary_key=True)
-    tournament = models.IntegerField(blank=True, null=True)
-    team = models.IntegerField(blank=True, null=True)
-    player = models.IntegerField(blank=True, null=True)
-    position = models.CharField(max_length=10, blank=True, null=True)
-    active = models.CharField(max_length=3, blank=True, null=True)
-    ut = models.CharField(max_length=20,blank=True, null=True)
+    tournament = models.IntegerField(blank=True, null=True, help_text="토너먼트 아이디(년도마다 다름)")
+    team = models.IntegerField(blank=True, null=True, help_text="팀 아이디")
+    player = models.IntegerField(blank=True, null=True, help_text="선수 아이디")
+    position = models.CharField(max_length=10, blank=True, null=True, help_text="선수 포지션")
+    active = models.CharField(max_length=3, blank=True, null=True, help_text="yes 이면 transfer in no 이면 transfer out")
+    ut = models.CharField(max_length=20,blank=True, null=True, help_text="이적 시점(이넷펄스에서 주는 값)")
     del_field = models.IntegerField(db_column='del')  # Field renamed because it was a Python reserved word.
 
     class Meta:
@@ -169,14 +169,14 @@ class WpTransfer(models.Model):
 
 class SwipsReview(models.Model):
     id = models.AutoField(primary_key=True)
-    sport = models.IntegerField()
-    league = models.IntegerField()
+    sport = models.IntegerField(help_text="")
+    league = models.IntegerField(help_text="")
     result = models.TextField(blank=True, null=True)
-    ut = models.DateTimeField()
-    standing = models.TextField(blank=True, null=True)
-    startdate = models.DateTimeField()
-    ct = models.DateTimeField()
-    pushed = models.IntegerField()
+    ut = models.DateTimeField(help_text="최근 review update된 시간")
+    standing = models.TextField(blank=True, null=True, help_text="")
+    startdate = models.DateTimeField(help_text="경기 시작 시간")
+    ct = models.DateTimeField(help_text="처음 review가 만들어진 시간; 앱에 표기되는 시간")
+    pushed = models.IntegerField(help_text="푸시 나간 횟수")
 
     class Meta:
         managed = False
@@ -186,11 +186,11 @@ class SwipsReview(models.Model):
 
 class SwipsRating(models.Model):
     id = models.AutoField(primary_key=True)
-    match_id = models.IntegerField()
-    player_id = models.IntegerField()
-    type = models.IntegerField()
-    rating = models.FloatField()
-    source = models.CharField(max_length=45)
+    match_id = models.IntegerField(help_text="매치 id")
+    player_id = models.IntegerField(help_text="선수 id")
+    type = models.IntegerField(help_text="1: 스타팅home, 2:스타팅away, 3: Sub home, 4: Sub away")
+    rating = models.FloatField(help_text="평점")
+    source = models.CharField(max_length=45, help_text="평점 소스")
 
     class Meta:
         managed = False
