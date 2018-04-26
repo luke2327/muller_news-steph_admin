@@ -56,6 +56,7 @@ $('.curry-filter-btn').click(function(){
   var filter_lang = $.urlParam('language_cd');
   var filter_sport = $.urlParam('sport');
   var filter_source = $.urlParam('source');
+  console.log('data='+filter_source);
   if(data.split('=')[0]=='language_cd'){
     if(toggle){
       filter_lang = null;
@@ -70,8 +71,10 @@ $('.curry-filter-btn').click(function(){
       filter_sport = data.split('=')[1];
     }
   }
-  if(data.split('=')[0]=='source'){
+  if(data.split('=')[0]=='sorce'){
+    console.log('not working1?');
     if(toggle){
+      console.log('not working?');
       filter_source = null;
     }else{
       filter_source = data.split('=')[1];
@@ -88,6 +91,7 @@ $('.curry-filter-btn').click(function(){
     params.push('source='+filter_source);
   }
   url = url + '?' + params.join("&");
+  console.log('url='+url);
   $(location).attr('href', url);
 });
 
@@ -142,7 +146,57 @@ $('.edit_pop_text').editable({
         });
     }
 });
+$('.edit_count_text').click(function(){
+  console.log('here!!!');
+  var data_max = parseInt($(this).attr('data-max'));
+  var data_now = 0;
+  try {
+    console.log('what??');
+    data_now = parseInt($(this).text());
+    if(isNaN(data_now)){
+      data_now = 0;
+    }
+  }
+  catch(exception){
+    console.log('here??');
+    data_now = 0;
+  }
 
+  var new_value = data_max==data_now?0:data_now+1;
+  requestModel = new Object();
+  requestModel.db_type = $(this).attr('data-db_type');
+  requestModel.table = $(this).attr('data-table');
+  requestModel.primary_key = $(this).attr('data-primary_key');
+  requestModel.primary_value = $(this).attr('data-primary_value');
+  requestModel.change_key = $(this).attr('data-change_key');
+  requestModel.default_value = $(this).attr('data-default_value');
+  requestModel.new_value = new_value;
+  $(this).attr('id', requestModel.primary_key + requestModel.primary_value + requestModel.change_key);
+  request_json = JSON.stringify(requestModel);
+  $.ajax({
+      type : "POST",
+      url : "/steph_admin/one_value_change/",
+      dataType : "json",
+      data : request_json,
+
+      error : function(){
+          console.log('error');
+          alert('서버오류 값 변경실패!!');
+          $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).text(requestModel.default_value);
+          // location.reload();
+      },
+      success : function(data){
+          console.log(data);
+          // $('#f_add_'+data_id+"_"+following).remove();
+          $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).attr('data-default_value', requestModel.new_value);
+          $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).text(requestModel.new_value);
+          // location.reload();
+          if(requestModel.table=='swips_qna'){
+            location.reload();
+          }
+      }
+  });
+});
 $('.edit_pop_select').editable({
   type: 'text',
   pk: 1,

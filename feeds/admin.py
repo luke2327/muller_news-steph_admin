@@ -110,18 +110,18 @@ class CurryNewsAdmin(admin.ModelAdmin):
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'source', obj.source, 'text')
     def del_field_(self, obj):
-        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+        return Util().get_count_change('admin', 'swips_news', 'id', obj.id,\
                            'del', obj.del_field, 'text')
     def is_frifee_content_(self, obj):
-        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
-                           'is_frifee_content', obj.is_frifee_content, 'text')
+        return Util().get_count_change('admin', 'swips_news', 'id', obj.id,\
+                           'is_frifee_content', obj.is_frifee_content, 'text', 2)
     def create_tmp_(self, obj):
         formated = obj.create_tmp.strftime("%Y-%m-%d %H:%M:%S")
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'create_tmp', formated, 'text')
     def is_top_(self, obj):
-        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
-                           'is_top', obj.is_top, 'text')
+        return Util().get_count_change('admin', 'swips_news', 'id', obj.id,\
+                           'is_top', obj.is_top, 'text', 2)
     def sport_(self, obj):
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'sport', obj.sport, 'text')
@@ -216,17 +216,17 @@ class CurryVodAdmin(admin.ModelAdmin):
         html += '</ul>'
         return format_html(html)
     def is_frifee_content_(self, obj):
-        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+        return Util().get_count_change('admin', 'swips_vod', 'id', obj.id,\
                            'is_frifee_content', obj.is_frifee_content, 'text')
     def del_field_(self, obj):
-        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+        return Util().get_count_change('admin', 'swips_vod', 'id', obj.id,\
                            'del', obj.del_field, 'text')
     def match_id_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'match_id', obj.match_id, 'text')
     def is_top_(self, obj):
-        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
-                           'is_top', obj.is_top, 'text')
+        return Util().get_count_change('admin', 'swips_news', 'id', obj.id,\
+                           'is_top', obj.is_top, 'text', 2)
     def sport_(self, obj):
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'sport', obj.sport, 'text')
