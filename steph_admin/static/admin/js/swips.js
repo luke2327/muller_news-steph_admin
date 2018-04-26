@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var clone_menu = $('#swips_menu').clone();
   clone_menu.appendTo('#grp-navigation');
-  console.log('go');
+  
 });
 
 $('#grp-content').ready(function(){

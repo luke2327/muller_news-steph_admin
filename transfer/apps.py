@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class TransferConfig(AppConfig):
     name = 'transfer'
-    verbose_name = '이적'
+    verbose_name = '05. 이적'

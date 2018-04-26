@@ -1,13 +1,42 @@
 {% extends "admin/steph_admin/change_list_custom.html" %} {% block content %}
 <ul class="navbar-nav bd-navbar-nav flex-row" style="margin-bottom: 10px">
   <li class="nav-item">
-    <a class="btn btn-info" href=".?q=naver.com">naver.com</a>
+    <a class="btn btn-info" href=".?language_cd=id">id</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-info" href=".?q=daum.net" style="margin-left: 10px">daum.net</a>
+    <a class="btn btn-info" href=".?language_cd=th" style="margin-left: 10px">th</a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-info" href=".?q=youtube.com" style="margin-left: 10px">youtube.com</a>
+    <a class="btn btn-info" href=".?language_cd=pt" style="margin-left: 10px">pt</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-info" href=".?language_cd=ko" style="margin-left: 10px">ko</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-info" href=".?language_cd=vi" style="margin-left: 10px">vi</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-info" href=".?language_cd=en" style="margin-left: 10px">en</a>
+  </li>
+  <br>
+  <li class="nav-item" style="margin-top: 5px">
+    <a class="btn btn-primary" href=".?sport=1">Football</a>
+  </li>
+  <li class="nav-item" style="margin-top: 5px">
+    <a class="btn btn-primary" href=".?sport=23" style="margin-left: 10px">Basketball</a>
+  </li>
+  <li class="nav-item" style="margin-top: 5px">
+    <a class="btn btn-primary" href=".?sport=26" style="margin-left: 10px">Baseball</a>
+  </li>
+  <br>
+  <li class="nav-item" style="margin-top: 5px">
+    <a class="btn btn-success" href=".?source=naver.com">naver.com</a>
+  </li>
+  <li class="nav-item" style="margin-top: 5px">
+    <a class="btn btn-success" href=".?source=daum.net" style="margin-left: 10px">daum.net</a>
+  </li>
+  <li class="nav-item" style="margin-top: 5px">
+    <a class="btn btn-success" href=".?source=youtube.com" style="margin-left: 10px">youtube.com</a>
   </li>
 </div>
 {{ block.super }}

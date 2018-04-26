@@ -72,12 +72,14 @@ class CurryNewsAdmin(admin.ModelAdmin):
         return super(CurryNewsAdmin, self).changelist_view(request, extra_context=extra)
     def lang(self, obj):
         return obj.language_cd
+
     def link_news(self, obj):
         return format_html("<a href='{0}'>click</a>", obj.link)
     def link_image(self, obj):
         return format_html("<a href='{0}'>click</a>", obj.image_link)
     def title_(self, obj):
-        return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.title, obj.title)
+        return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
+                           'title', obj.title, 'text')
     def following_desc_(self, obj):
         return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.following_desc, obj.following_desc)
         #return truncatechars(obj.following_desc, 100)
@@ -176,7 +178,8 @@ class CurryVodAdmin(admin.ModelAdmin):
     def link_image(self, obj):
         return format_html("<a href='{0}'>click</a>", obj.image_link)
     def title_(self, obj):
-        return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.title, obj.title)
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'title', obj.title, 'text')
     def following_desc_(self, obj):
         return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.following_desc, obj.following_desc)
         #return truncatechars(obj.following_desc, 100)
