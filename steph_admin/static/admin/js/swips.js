@@ -71,7 +71,7 @@ $('.curry-filter-btn').click(function(){
       filter_sport = data.split('=')[1];
     }
   }
-  if(data.split('=')[0]=='sorce'){
+  if(data.split('=')[0]=='source'){
     console.log('not working1?');
     if(toggle){
       console.log('not working?');
