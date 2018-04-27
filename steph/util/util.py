@@ -3,6 +3,7 @@ class Util():
     @staticmethod
     def get_popover(db_type, table, primary_key, primary_value,\
                     change_key, default_value, edit_type, list=[]):
+
         return format_html('<a href="#" '
                            'class = "edit_pop_%s" '
                            'data-db_type="%s" '
@@ -17,7 +18,7 @@ class Util():
                            '>%s</a>'
                            %(edit_type, db_type, table, primary_key, primary_value,\
                             change_key, default_value, edit_type, ','.join(list),\
-                            primary_key, primary_value, change_key, default_value))
+                            primary_key, primary_value, change_key, default_value  if default_value != None else ''))
 
     @staticmethod
     def get_count_change(db_type, table, primary_key, primary_value,\

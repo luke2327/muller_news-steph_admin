@@ -14,3 +14,7 @@ li.grp-changelist-actions select {
     margin: 1px 5px 0 0;
     color: black;
 }
+.input-large{
+  width : 500px !important;
+  max-width : 500px !important;
+}

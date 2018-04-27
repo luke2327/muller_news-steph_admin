@@ -11,7 +11,7 @@ from datetime import datetime
 class CurryNewsAdmin(admin.ModelAdmin):
     #list_display = ('id','ut','ut2','name','country','date_of_birth','position','status')
     list_display = ('id','push','lang','source_','link_news','link_image',\
-                'is_frifee_content_', 'pushed', 'del_field_',\
+                'is_frifee_content_', 'pushed_', 'del_field_',\
                 'create_tmp_','is_top_','sport_','title_','following_desc_',\
                 'following_')
     list_filter = ['source', 'sport', 'is_top', 'is_frifee_content', 'language_cd', 'del_field', 'pushed']
@@ -79,7 +79,7 @@ class CurryNewsAdmin(admin.ModelAdmin):
         return format_html("<a href='{0}' target='_blank'>click</a>", obj.image_link)
     def title_(self, obj):
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
-                           'title', obj.title, 'text')
+                           'title', obj.title, 'textarea')
     def following_desc_(self, obj):
         return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.following_desc, obj.following_desc)
         #return truncatechars(obj.following_desc, 100)
@@ -125,11 +125,13 @@ class CurryNewsAdmin(admin.ModelAdmin):
     def sport_(self, obj):
         return Util().get_popover('admin', 'swips_news', 'id', obj.id,\
                            'sport', obj.sport, 'text')
+    def pushed_(self, obj):
+        return format_html('<span id="%s%s%s">%s</span>' %('id', obj.id, 'pushed', obj.pushed))
     def has_add_permission(self, request):
         return False
 class CurryVodAdmin(admin.ModelAdmin):
     list_display = ('id','push','match_id_','lang','source','link_vods','link_image',\
-                'is_frifee_content_', 'pushed', 'del_field_',\
+                'is_frifee_content_', 'pushed_', 'del_field_',\
                 'create_tmp','is_top_','sport_','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
                 'following_')
     list_filter = ['source', 'sport', 'is_top', 'is_live', 'language_cd', 'country_cd', 'country_exclude_cd', 'del_field']
@@ -187,7 +189,7 @@ class CurryVodAdmin(admin.ModelAdmin):
         return format_html("<a href='{0}' target='_blank'>click</a>", obj.image_link)
     def title_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
-                           'title', obj.title, 'text')
+                           'title', obj.title, 'textarea')
     def following_desc_(self, obj):
         return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.following_desc, obj.following_desc)
         #return truncatechars(obj.following_desc, 100)
@@ -230,6 +232,8 @@ class CurryVodAdmin(admin.ModelAdmin):
     def sport_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'sport', obj.sport, 'text')
+    def pushed_(self, obj):
+        return format_html('<span id="%s%s%s">%s</span>' %('id', obj.id, 'pushed', obj.pushed))
     def has_add_permission(self, request):
         return False
 @admin.register(SwipsCrawlingSource)

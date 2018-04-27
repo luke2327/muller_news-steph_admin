@@ -123,7 +123,6 @@ $('.edit_pop_text').editable({
   title: '변경할 값을 입력하세요..',
   display: function(value, sourceData) {
    //display checklist as comma-separated values
-
    if(value=='None'){
      $(this).text('');
    }
@@ -156,7 +155,58 @@ $('.edit_pop_text').editable({
             },
             success : function(data){
                 //alert("통신데이터 값 : " + data) ;
-                alert('성공!!');
+                console.log(data);
+                // $('#f_add_'+data_id+"_"+following).remove();
+                $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).attr('data-default_value', requestModel.new_value);
+                // location.reload();
+                if(requestModel.table=='swips_qna'){
+                  location.reload();
+                }
+            }
+        });
+    }
+});
+$('.edit_pop_textarea').editable({
+  type: 'textarea',
+  pk: 1,
+  placement: 'top',
+  title: '변경할 값을 입력하세요..',
+  display: function(value, sourceData) {
+   //display checklist as comma-separated values
+   if(value=='None'){
+     $(this).text('');
+     $(this).addClass('editable-empty');
+     $(this).attr('data-value',"");
+   }
+  },
+  success: function(response, newValue) {
+        requestModel = new Object();
+        requestModel.db_type = $(this).attr('data-db_type');
+        requestModel.table = $(this).attr('data-table');
+        requestModel.primary_key = $(this).attr('data-primary_key');
+        requestModel.primary_value = $(this).attr('data-primary_value');
+        requestModel.change_key = $(this).attr('data-change_key');
+        requestModel.default_value = $(this).attr('data-default_value');
+        requestModel.new_value = newValue;
+        $(this).attr('id', requestModel.primary_key + requestModel.primary_value + requestModel.change_key);
+        request_json = JSON.stringify(requestModel);
+        console.log(request_json);
+        $.ajax({
+            type : "POST",
+            url : "/steph_admin/one_value_change/",
+            dataType : "json",
+            data : request_json,
+
+            error : function(){
+                console.log('error');
+                alert('서버오류 값 변경실패!!');
+                console.log(requestModel.primary_key + requestModel.primary_value + requestModel.change_key);
+
+                $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).text(requestModel.default_value);
+                // location.reload();
+            },
+            success : function(data){
+                //alert("통신데이터 값 : " + data) ;
                 console.log(data);
                 // $('#f_add_'+data_id+"_"+following).remove();
                 $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).attr('data-default_value', requestModel.new_value);

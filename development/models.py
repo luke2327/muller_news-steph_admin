@@ -19,7 +19,7 @@ class CurryAdBalance(models.Model):
     weight = models.IntegerField(help_text="광고의 노출 빈도; admob/mobvista의 경우 0이어야함, direct일 경우는 0이 아니여야함")
     country_cd = models.CharField(max_length=2, help_text="영문 대문자 2자리 입력")
     os = models.CharField(max_length=7, help_text='"android" 또는 "ios"')
-    valid_until = models.CharField(max_length=12, help_text="광고가 끝나는 시점. UTC기준")
+    valid_until = models.DateTimeField(blank=True, null=True, help_text="광고가 끝나는 시점. UTC기준")
     ut = models.DateTimeField(blank=True, null=True)
     advertiser = models.CharField(max_length=45, blank=True, null=True, help_text="direct의 경우에만 입력. 임의의 입력")
     link = models.CharField(max_length=255, blank=True, null=True, help_text="direct의 경우에만 입력. 연결될 링크")

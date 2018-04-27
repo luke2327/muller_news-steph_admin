@@ -61,7 +61,7 @@ $('#btn_add_lineup').click(function(){
       },
       success : function(data){
           //alert("통신데이터 값 : " + data) ;
-          alert('라인업 추가성공!!');
+          // alert('라인업 추가성공!!');
           console.log(data);
           // $('#f_add_'+data_id+"_"+following).remove();
           $('#btn_add_lineup').button('reset');

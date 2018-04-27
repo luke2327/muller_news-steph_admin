@@ -201,19 +201,30 @@ def lineup(request) :
             values = []
 
             for row in team1 :
+                shirt_number = str(row['shirt_number'])
+                if shirt_number is None or shirt_number == '' :
+                    shirt_number = '0'
+                position = str(row['position'])
+                if position is None or position == '' :
+                    position = '0'
                 values.append('("%s", "%s", "%s", "%s", "%s", "%s")'
-                        %(match_id, '1', row['lineup_number'], row['shirt_number'],\
-                          row['position'], row['name']))
+                        %(match_id, '1', row['lineup_number'], shirt_number,\
+                          position, row['name']))
 
             for row in team2 :
+                shirt_number = str(row['shirt_number'])
+                if shirt_number is None or shirt_number == '' :
+                    shirt_number = '0'
+                position = str(row['position'])
+                if position is None or position == '' :
+                    position = '0'
                 values.append('("%s", "%s", "%s", "%s", "%s", "%s")'
-                        %(match_id, '2', row['lineup_number'], row['shirt_number'],\
-                          row['position'], row['name']))
+                        %(match_id, '2', row['lineup_number'], shirt_number,\
+                          position, row['name']))
 
             query = ('INSERT INTO swips_lineup_custom '
                 '(match_id, team, lineup_number, shirt_number, position, name) '
                 'VALUES %s' %(','.join(values)))
-
             result = Database().insert_data(query)
             if result > 0 :
                 return HttpResponse(json.dumps({"result" : 201}))
