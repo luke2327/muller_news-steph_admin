@@ -18,3 +18,10 @@ li.grp-changelist-actions select {
   width : 500px !important;
   max-width : 500px !important;
 }
+.modal-footer{
+  text-align: center !important;
+}
+.edit_count_btn{
+  font-size: 20px;
+  cursor: pointer;
+}

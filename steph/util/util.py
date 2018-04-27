@@ -23,7 +23,9 @@ class Util():
     @staticmethod
     def get_count_change(db_type, table, primary_key, primary_value,\
                     change_key, default_value, edit_type, max_value=1):
-        return format_html('<span href="" '
+        return format_html('<ul>'
+                           '<li>'
+                            '<span '
                            'class = "edit_count_%s" '
                            'data-db_type="%s" '
                            'data-table="%s" '
@@ -35,7 +37,8 @@ class Util():
                            'data-max="%s" '
                            'id = "%s%s%s"'
                            'style="color: #337ab7; text-decoration: underline; cursor: pointer;"'
-                           '>%s</span>'
+                           '>%s</span></li>'
+                           '<li><span class="glyphicon glyphicon-retweet edit_count_btn" id="btn%s%s%s"></span></li></ul>'
                            %(edit_type, db_type, table, primary_key, primary_value,\
                             change_key, default_value, edit_type, max_value,\
-                            primary_key, primary_value, change_key, default_value))
+                            primary_key, primary_value, change_key, default_value, primary_key, primary_value, change_key))

@@ -12,6 +12,7 @@ $(function() {
       var filter_sport = $.urlParam('sport');
       var filter_source = $.urlParam('source');
       var filter_league = $.urlParam('league');
+      var filter_del = $.urlParam('del_field');
       console.log(filter_lang);
       if(filter_lang){
         console.log('working??');
@@ -28,6 +29,9 @@ $(function() {
       if(filter_league){
         console.log('working??');
         $('#league_'+ filter_league.replace('.','_')).button('toggle');
+      }
+      if(filter_del){
+        $('#del_'+ filter_del).button('toggle');
       }
     }
 });
@@ -62,6 +66,7 @@ $('.curry-filter-btn').click(function(){
   var filter_sport = $.urlParam('sport');
   var filter_source = $.urlParam('source');
   var filter_league = $.urlParam('league');
+  var filter_del = $.urlParam('del_field');
   if(data.split('=')[0]=='language_cd'){
     if(toggle){
       filter_lang = null;
@@ -92,6 +97,13 @@ $('.curry-filter-btn').click(function(){
       filter_league = data.split('=')[1];
     }
   }
+  if(data.split('=')[0]=='del'){
+    if(toggle){
+      filter_del = null;
+    }else{
+      filter_del = data.split('=')[1];
+    }
+  }
   params = new Array();
   if(filter_lang){
     params.push('language_cd='+filter_lang);
@@ -104,6 +116,9 @@ $('.curry-filter-btn').click(function(){
   }
   if(filter_league){
     params.push('league='+filter_league);
+  }
+  if(filter_del){
+    params.push('del_field='+filter_del);
   }
   url = url + '?' + params.join("&");
   console.log('url='+url);
@@ -217,6 +232,10 @@ $('.edit_pop_textarea').editable({
             }
         });
     }
+});
+$('.edit_count_btn').click(function(){
+  var id = $(this).attr('id').replace("btn","");
+  $('#'+id).click();
 });
 $('.edit_count_text').click(function(){
   var data_max = parseInt($(this).attr('data-max'));
