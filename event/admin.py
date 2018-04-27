@@ -29,8 +29,9 @@ class CurryFixturesInfoAdmin(admin.ModelAdmin):
                     'broadcast_id_', 'broadcast_th_', 'broadcast_vn_',
                     'broadcast_br_', 'broadcast_kr_', 'broadcast_ph_')
     search_fields = ['name', 'league_name']
-    list_filter = ['name', 'league', 'league_name', 'startdate']
-    change_list_template = 'admin/steph_admin/change_list_custom.html'
+    list_filter = ['league', 'league_name', 'startdate']
+    ordering = ['startdate']
+    change_list_template = 'admin/steph_admin/change_list_fixtures_info.html'
     def has_add_permission(self, request):
         return False
     def has_delete_permission(self, request, obj=None):
@@ -62,7 +63,8 @@ class CurryMajorFixturesAdmin(admin.ModelAdmin):
     search_fields = ['id','league', 'home_team', 'away_team']
     list_filter = ['league',]
     list_filter = ['league', 'utc']
-    change_list_template = 'admin/steph_admin/change_list_custom.html'
+    ordering = ['utc']
+    change_list_template = 'admin/steph_admin/change_list_fixtures_info.html'
 
     def has_add_permission(self, request):
         return False

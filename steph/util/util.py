@@ -22,7 +22,7 @@ class Util():
     @staticmethod
     def get_count_change(db_type, table, primary_key, primary_value,\
                     change_key, default_value, edit_type, max_value=1):
-        return format_html('<a href="#" '
+        return format_html('<span href="" '
                            'class = "edit_count_%s" '
                            'data-db_type="%s" '
                            'data-table="%s" '
@@ -33,7 +33,8 @@ class Util():
                            'data-type="%s" '
                            'data-max="%s" '
                            'id = "%s%s%s"'
-                           '>%s</a>'
+                           'style="color: #337ab7; text-decoration: underline; cursor: pointer;"'
+                           '>%s</span>'
                            %(edit_type, db_type, table, primary_key, primary_value,\
                             change_key, default_value, edit_type, max_value,\
                             primary_key, primary_value, change_key, default_value))

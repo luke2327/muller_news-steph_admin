@@ -128,7 +128,7 @@ class CurryNewsAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 class CurryVodAdmin(admin.ModelAdmin):
-    list_display = ('id','push','match_id_','lang','source','link_news','link_image',\
+    list_display = ('id','push','match_id_','lang','source','link_vods','link_image',\
                 'is_frifee_content_', 'pushed', 'del_field_',\
                 'create_tmp','is_top_','sport_','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
                 'following_')
@@ -181,7 +181,7 @@ class CurryVodAdmin(admin.ModelAdmin):
         return format_html('<a class="btn news_push glyphicon glyphicon-send" id="push-%s" datas = "%s" title="%s" lang="%s"></a>' %(obj.id, ','.join(datas), obj.title, obj.language_cd))
     def lang(self, obj):
         return obj.language_cd
-    def link_news(self, obj):
+    def link_vods(self, obj):
         return format_html("<a href='{0}' target='_blank'>click</a>", obj.link)
     def link_image(self, obj):
         return format_html("<a href='{0}' target='_blank'>click</a>", obj.image_link)

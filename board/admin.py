@@ -32,8 +32,8 @@ class SwipsBoardPostAdmin(admin.ModelAdmin):
         else:
             return obj.edit_time
     def del_field_(self, obj):
-        return Util().get_popover('admin', 'swips_board_post', 'id', obj.id,\
-                           'del', obj.del_field, 'text')
+        return Util().get_count_change('admin', 'swips_board_post', 'id', obj.id,\
+                           'del', obj.del_field, 'text', 2)
 @admin.register(SwipsBoardReply)
 class SwipsBoardReplyAdmin(admin.ModelAdmin):
     list_display = ('id', 'type', 'participant', 'account_id',

@@ -6,11 +6,12 @@ $(document).ready(function(){
 $(function() {
 
     var href = $(location).attr('href');
-    if(href.includes('feeds/')){
+    if(href.includes('feeds/') || href.includes('curryfixturesinfo')|| href.includes('currymajorfixtures')){
       console.log($.urlParam('language_cd'));
       var filter_lang = $.urlParam('language_cd');
       var filter_sport = $.urlParam('sport');
       var filter_source = $.urlParam('source');
+      var filter_league = $.urlParam('league');
       console.log(filter_lang);
       if(filter_lang){
         console.log('working??');
@@ -23,6 +24,10 @@ $(function() {
       if(filter_source){
         console.log('working??');
         $('#source_'+ filter_source.replace('.','_')).button('toggle');
+      }
+      if(filter_league){
+        console.log('working??');
+        $('#league_'+ filter_league.replace('.','_')).button('toggle');
       }
     }
 });
@@ -56,7 +61,7 @@ $('.curry-filter-btn').click(function(){
   var filter_lang = $.urlParam('language_cd');
   var filter_sport = $.urlParam('sport');
   var filter_source = $.urlParam('source');
-  console.log('data='+filter_source);
+  var filter_league = $.urlParam('league');
   if(data.split('=')[0]=='language_cd'){
     if(toggle){
       filter_lang = null;
@@ -80,6 +85,13 @@ $('.curry-filter-btn').click(function(){
       filter_source = data.split('=')[1];
     }
   }
+  if(data.split('=')[0]=='league'){
+    if(toggle){
+      filter_league = null;
+    }else{
+      filter_league = data.split('=')[1];
+    }
+  }
   params = new Array();
   if(filter_lang){
     params.push('language_cd='+filter_lang);
@@ -89,6 +101,9 @@ $('.curry-filter-btn').click(function(){
   }
   if(filter_source){
     params.push('source='+filter_source);
+  }
+  if(filter_league){
+    params.push('league='+filter_league);
   }
   url = url + '?' + params.join("&");
   console.log('url='+url);
@@ -106,6 +121,13 @@ $('.edit_pop_text').editable({
   pk: 1,
   placement: 'top',
   title: '변경할 값을 입력하세요..',
+  display: function(value, sourceData) {
+   //display checklist as comma-separated values
+
+   if(value=='None'){
+     $(this).text('');
+   }
+  },
   success: function(response, newValue) {
         requestModel = new Object();
         requestModel.db_type = $(this).attr('data-db_type');
@@ -189,7 +211,7 @@ $('.edit_count_text').click(function(){
           $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).text(requestModel.new_value);
           // location.reload();
           if(requestModel.table=='swips_qna'){
-            location.reload();
+            // location.reload();
           }
       }
   });
@@ -232,4 +254,35 @@ $('.edit_pop_select').editable({
             }
         });
     }
+});
+$(document).keydown(function (e) {
+  if (e.keyCode == 13) {
+    if($('#del_following').is(':visible')){
+      console.log($('#del_following').is(':visible'));
+      $('#btn_del_following').click();
+    }
+    if($('#send_push').is(':visible')){
+      $('#btn_send_push').click();
+    }
+    if($('#add_following_modal').is(':visible')){
+      $('#btn_following_add').click();
+    }
+    if($('#add_all_lineup').is(':visible')){
+      $('#btn_add_lineup').click();
+    }
+  }
+  if (e.keyCode == 27) {
+    if($('#del_following').is(':visible')){
+      $('#del_following').modal('hide');
+    }
+    if($('#send_push').is(':visible')){
+      $('#send_push').modal('hide');
+    }
+    if($('#add_following_modal').is(':visible')){
+      $('#add_following_modal').modal('hide');
+    }
+    if($('#add_all_lineup').is(':visible')){
+      $('#add_all_lineup').modal('hide');
+    }
+  }
 });

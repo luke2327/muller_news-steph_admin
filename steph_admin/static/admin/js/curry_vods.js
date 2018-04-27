@@ -8,6 +8,9 @@ var checked_news = new Array();
 var news_id_selected;
 var news_lang_selected;
 var news_title_selected;
+$('#grp-content-title').html(
+  '<h1>VOD</h1><ul class=\"grp-object-tools\"><li><a href=\"/admin_v2/feeds/swipsvod/add/\" class=\"grp-add-link grp-state-focus\">Add VOD 리스트</a></li></ul>'
+);
 //send pushed
 $('.news_push').on("click",function(){
   var news_id = $(this).attr('id').split('-')[1];
@@ -215,7 +218,7 @@ $('#btn_following_add').click(function(){
               console.log('following:' + following + ",data_id : " + data_id);
               $('#del_following').attr('data_id', data_id);
               $('#del_following').attr('following', following.split('/')[1]);
-
+              $('#del_following').attr('following_text', following);
               $('#del_following_body').text('news id : ' + data_id + '   ' + following + ' 을(를) 삭제합니다');
 
               var before_datas = $('#push-'+ data_id).attr('datas').split(',');
@@ -299,6 +302,7 @@ $('#btn_following_add').click(function(){
 $('#btn_del_following').on("click",function(){
   var data_id = $('#del_following').attr("data_id");
   var following = $('#del_following').attr("following");
+  var following_text = $('#del_following').attr("following_text");
   $('#btn_del_following').button('loading');
   $.ajax({
       type : "DELETE",
@@ -312,8 +316,27 @@ $('#btn_del_following').on("click",function(){
           //alert('통신실패!!');
       },
       success : function(data){
-          //alert("통신데이터 값 : " + data) ;
-          console.log(data);
+          var before_datas = $('#push-'+ data_id).attr('datas').split(',');
+          var data = 'Player/' + following_text;
+          for (var i = 0 ; i<before_datas.length; i++){
+            console.log('befor_datas :' + before_datas[i]);
+            console.log('data :' + data);
+            if(before_datas[i] == data){
+              before_datas.pop();
+            }
+          }
+          data = 'Team/' + following_text;
+          for (var i = 0 ; i<before_datas.length; i++){
+            if(before_datas[i] == data){
+              before_datas.pop();
+            }
+          }
+          data = 'League/' + following_text;
+          for (var i = 0 ; i<before_datas.length; i++){
+            if(before_datas[i] == data){
+              before_datas.pop();
+            }
+          }
           $('#f_add_'+data_id+"_"+following).remove();
           $('#btn_del_following').button('reset');
           $('#del_following').modal('hide');
@@ -434,10 +457,3 @@ $('#add_following_modal').on('show.bs.modal', function (e) {
   //   focusShow: true
   // });
 });
-
-
-$(document).ready(function(){
-
-
-
-  });
