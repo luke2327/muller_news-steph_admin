@@ -12,8 +12,8 @@ class SuUserFollowingAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'user_id', 'type', 'following', 'push_type',
                     'language', 'ut', 'aws_subscription')
-    list_filter = ['user_id', 'type', 'following', 'push_type',
-                      'language']
+    # list_filter = ['user_id', 'type', 'following', 'push_type',
+    #                   'language']
     search_fields = ['user_id', 'type', 'following', 'push_type',
                               'language']
 
@@ -26,8 +26,8 @@ class SuAccountFollowingAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'account_id', 'type', 'following',
                     'push_type', 'ut')
-    list_filter = ['id', 'account_id', 'type', 'following', 'push_type',
-                      'ut']
+    # list_filter = ['id', 'account_id', 'type', 'following', 'push_type',
+    #                   'ut']
     search_fields = ['id', 'account_id', 'type', 'following',
                               'push_type', 'ut']
 
@@ -38,7 +38,7 @@ class SuAccountFollowingAdmin(admin.ModelAdmin):
 class SuTransactionAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     list_display = ('id', 'user_id', 'account_id', 'login_ut', 'logout_ut')
-    list_filter = ['id', 'user_id', 'account_id', 'login_ut', 'logout_ut']
+    # list_filter = ['id', 'user_id', 'account_id', 'login_ut', 'logout_ut']
     search_fields = ['id', 'user_id', 'account_id', 'login_ut', 'logout_ut']
 
     def has_add_permission(self, request):
@@ -50,8 +50,8 @@ class SuAccountAdmin(admin.ModelAdmin):
     list_display = ('id', 'email', 'password_', 'pf', 'pf_user_id',
                     'pf_user_name', 'pf_user_token_', 'pf_image_url_',
                     'email_confirmed', 'secret_key')
-    list_filter = ['id', 'email', 'pf', 'pf_user_id', 'pf_user_name',
-                      'email_confirmed']
+    # list_filter = ['id', 'email', 'pf', 'pf_user_id', 'pf_user_name',
+    #                   'email_confirmed']
     search_fields = ['id', 'email', 'pf', 'pf_user_id',
                               'pf_user_name', 'email_confirmed']
 
@@ -78,8 +78,8 @@ class SuUserAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom_default.html'
     list_display = ('del_field', 'id', 'device_id', 'create_tmp', 'language',
                     'os', 'push_key', 'aws_endpoint', 'last_login_ut')
-    list_filter = ['id', 'device_id', 'create_tmp', 'language',
-                      'os', 'push_key', 'last_login_ut']
+    # list_filter = ['id', 'device_id', 'create_tmp', 'language',
+    #                   'os', 'push_key', 'last_login_ut']
     search_fields = ['id', 'device_id', 'create_tmp',
                               'language', 'os', 'push_key', 'last_login_ut']
     def has_add_permission(self, request):

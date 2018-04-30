@@ -1,5 +1,20 @@
 from django.db import models
+class WorldPeacePorView(models.Model):
+    id = models.AutoField(primary_key=True)
+    round = models.IntegerField(blank=True)
+    tournament = models.IntegerField(blank=True, null=True)
+    league = models.IntegerField(blank=True, null=True)
+    player = models.IntegerField(blank=True, null=True)
+    lineup_type = models.IntegerField(blank=True, null=True)
+    position = models.IntegerField(blank=True, null=True)
+    rating = models.FloatField(blank=True, null=True)
+    team = models.IntegerField(blank=True, null=True)
 
+    class Meta:
+        managed = False
+        db_table = 'world_peace_por_view'
+        verbose_name = '베스트11'
+        verbose_name_plural = '베스트11'
 # Create your models here.
 class WorldPeacePreview(models.Model):
     match_id = models.IntegerField(primary_key=True)

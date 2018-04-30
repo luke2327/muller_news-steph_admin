@@ -143,7 +143,7 @@ $('.edit_pop_text').editable({
    }
   },
   success: function(response, newValue) {
-        requestModel = new Object();
+        var requestModel = new Object();
         requestModel.db_type = $(this).attr('data-db_type');
         requestModel.table = $(this).attr('data-table');
         requestModel.primary_key = $(this).attr('data-primary_key');
@@ -152,14 +152,13 @@ $('.edit_pop_text').editable({
         requestModel.default_value = $(this).attr('data-default_value');
         requestModel.new_value = newValue;
         $(this).attr('id', requestModel.primary_key + requestModel.primary_value + requestModel.change_key);
-        request_json = JSON.stringify(requestModel);
+        var new_id = $(this).attr('id');
+        var request_json = JSON.stringify(requestModel);
         console.log(request_json);
         $.ajax({
             type : "POST",
             url : "/steph_admin/one_value_change/",
-            dataType : "json",
             data : request_json,
-
             error : function(){
                 console.log('error');
                 alert('서버오류 값 변경실패!!');
@@ -173,9 +172,35 @@ $('.edit_pop_text').editable({
                 console.log(data);
                 // $('#f_add_'+data_id+"_"+following).remove();
                 $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).attr('data-default_value', requestModel.new_value);
+                $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).text(requestModel.new_value);
                 // location.reload();
                 if(requestModel.table=='swips_qna'){
                   location.reload();
+                }
+                if(requestModel.table=="world_peace_por"){
+                  var data_tournament = $('#' + new_id).attr('tournament');
+                  var data_round = $('#' + new_id).attr('round');
+                  console.log(data_tournament);
+                  console.log(data_round);
+                  requestModel = new Object();
+                  requestModel.tournament = data_tournament;
+                  requestModel.round = data_round;
+                  request_json = JSON.stringify(requestModel);
+                  $.ajax({
+                      type : "POST",
+                      url : "/steph_admin/best11/",
+                      data : request_json,
+                      error : function(){
+                          console.log('error');
+                          alert('생성이 안됐음');
+                      },
+                      success : function(data){
+                          console.log(data);
+                          if(data!='200'){
+                            alert('생성이 안됐음');
+                          }
+                      }
+                  });
                 }
             }
         });
@@ -195,7 +220,7 @@ $('.edit_pop_textarea').editable({
    }
   },
   success: function(response, newValue) {
-        requestModel = new Object();
+        var requestModel = new Object();
         requestModel.db_type = $(this).attr('data-db_type');
         requestModel.table = $(this).attr('data-table');
         requestModel.primary_key = $(this).attr('data-primary_key');
@@ -204,12 +229,11 @@ $('.edit_pop_textarea').editable({
         requestModel.default_value = $(this).attr('data-default_value');
         requestModel.new_value = newValue;
         $(this).attr('id', requestModel.primary_key + requestModel.primary_value + requestModel.change_key);
-        request_json = JSON.stringify(requestModel);
+        var request_json = JSON.stringify(requestModel);
         console.log(request_json);
         $.ajax({
             type : "POST",
             url : "/steph_admin/one_value_change/",
-            dataType : "json",
             data : request_json,
 
             error : function(){
@@ -221,10 +245,9 @@ $('.edit_pop_textarea').editable({
                 // location.reload();
             },
             success : function(data){
-                //alert("통신데이터 값 : " + data) ;
-                console.log(data);
                 // $('#f_add_'+data_id+"_"+following).remove();
                 $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).attr('data-default_value', requestModel.new_value);
+                $("#"+ requestModel.primary_key + requestModel.primary_value + requestModel.change_key).text(requestModel.new_value);
                 // location.reload();
                 if(requestModel.table=='swips_qna'){
                   location.reload();

@@ -5,6 +5,7 @@ from . import Database
 from django.views.decorators.csrf import csrf_exempt
 import json
 import logging
+import requests
 # Create your views here.
 def players(request):
     query = 'SELECT CONCAT(id, "|" ,name) as player from swips_player'
@@ -33,6 +34,20 @@ def followings(request):
     for row in results :
         result_l.append(row['league'])
     return HttpResponse(json.dumps({"players" : result_p, "leagues" : result_l, "teams" : result_t}))
+@csrf_exempt
+def best11(request) :
+    if request.method == "POST":
+
+        request_model = json.loads(str(request.body, "utf-8"))
+        tournament = request_model['tournament']
+        round = request_model['round']
+        payload  = {'round_info': round, 'tournament': tournament, 'locale': 'en,ko,pt,vi,th,id'}
+        headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
+        
+        response = requests.post("http://swips.co/preview/content_make/best11", data=payload)
+        print(response)
+        return HttpResponse(response)
+    return HttpResponse(status=403)
 @csrf_exempt
 def news_relation(request) :
 
@@ -257,7 +272,8 @@ def one_value_change(request) :
             if db_type == 'admin' :
                 result = Database().insert_data(query)
                 if result > 0 :
-                    return HttpResponse(json.dumps({"result" : 'ok'}))
+
+                    return HttpResponse('200')
                 else :
                     return HttpResponse(status=401)
 

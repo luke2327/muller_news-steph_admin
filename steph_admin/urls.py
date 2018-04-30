@@ -10,4 +10,5 @@ urlpatterns = [
     path('lineup/', views.lineup, name="lineup"),
     path('one_value_change/', views.one_value_change, name="one_value_change"),
     path('push_send/', views.push_send, name="push_send"),
+    path('best11/', views.best11, name="best11"),
 ]

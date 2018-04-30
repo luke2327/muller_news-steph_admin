@@ -3,6 +3,25 @@ from django.forms import BaseModelFormSet, TextInput, Textarea
 from django import forms
 # Register your models here.
 from .models import *
+from steph.util.util import Util
+from django.utils.html import format_html
+
+class WorldPeacePorViewAdmin(admin.ModelAdmin):
+    list_display = ('id', 'round', 'tournament', 'league',\
+            'player', 'lineup_type', 'position', 'rating',\
+            'team_')
+    change_list_template = 'admin/steph_admin/change_list_custom.html'
+    list_filter = ['id', 'round', 'league']
+    search_fields = ['id', 'round', 'tournament', 'league',\
+            'player', 'lineup_type', 'position', 'rating',\
+            'team_']
+    def team_(self, obj):
+        return Util().get_popover_best11('admin', 'world_peace_por', 'id', obj.id,\
+                           'team', obj.team, 'text', obj.tournament, obj.round)
+    def has_add_permission(self, request):
+        return False
+    def has_delete_permission(self, request, obj=None):
+         return True
 
 class WorldPeacePreviewAdmin(admin.ModelAdmin):
     list_display = ('match_id', 'league', 'team1', 'team2',\
@@ -132,6 +151,8 @@ class SwipsRatingPropertyAdmin(admin.ModelAdmin):
     list_display = ('id', 'mom_id', 'mom_goal', 'mom_assist', 'mom_min')
     list_filter = ['mom_id',]
     search_fields = ['id', 'mom_id']
+
+admin.site.register(WorldPeacePorView, WorldPeacePorViewAdmin)
 admin.site.register(WorldPeacePreview, WorldPeacePreviewAdmin)
 admin.site.register(WpFixtures, WPFixturesAdmin)
 admin.site.register(WpKeyPl, WpKeyPlAdmin)
