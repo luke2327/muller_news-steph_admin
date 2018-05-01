@@ -4,7 +4,9 @@ from .models import *
 @admin.register(CurryAdBalance)
 class CurryAdBalanceAdmin(admin.ModelAdmin):
     list_display = ('id', 'type', 'weight', 'country_cd', 'os', 'valid_until',
-                    'ut', 'advertiser', 'link', 'image_link', 'ad_type')
+                    'ut', 'advertiser', 'link', 'image_link', 'ad_type',
+                    'client_version', 'include_lower_versions',
+                    'include_upper_versions')
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     search_fields = ('id', 'type', 'weight', 'country_cd', 'os', 'valid_until',
                     'ut', 'advertiser', 'link', 'image_link', 'ad_type')

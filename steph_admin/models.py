@@ -123,6 +123,10 @@ class CurryAdBalance(models.Model):
     link = models.CharField(max_length=255, blank=True, null=True)
     image_link = models.CharField(max_length=255, blank=True, null=True)
     ad_type = models.CharField(max_length=8)
+    client_version = models.IntegerField()
+    include_lower_versions = models.CharField(max_length=3, blank=True, null=True)
+    include_upper_versions = models.CharField(max_length=3, blank=True, null=True)
+
 
     class Meta:
         managed = False
