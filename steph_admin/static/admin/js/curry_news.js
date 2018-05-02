@@ -36,7 +36,7 @@ $('.news_push').on("click",function(){
       }else{
         for(var i = 0; i<checked_news.length;i++){
           if(checked_news[i]==$(this).attr('id')){
-            checked_news.pop();
+            checked_news.splice(i, 1);
             break;
           }
         }
@@ -212,7 +212,7 @@ $('#btn_following_add').click(function(){
               console.log('following:' + following + ",data_id : " + data_id);
               $('#del_following').attr('data_id', data_id);
               $('#del_following').attr('following', following.split('/')[1]);
-
+              $('#del_following').attr('following_text', following);
               $('#del_following_body').text('news id : ' + data_id + '   ' + following + ' 을(를) 삭제합니다');
 
               var before_datas = $('#push-'+ data_id).attr('datas').split(',');
@@ -222,7 +222,7 @@ $('#btn_following_add').click(function(){
                 console.log(before_datas);
                 console.log(before_datas[i]);
                 if(before_datas[i] == data){
-                  before_datas.pop();
+                  before_datas.splice(i, 1);
                 }
               }
               $('#push-'+ data_id).attr('datas', before_datas.join());
@@ -244,14 +244,14 @@ $('#btn_following_add').click(function(){
               console.log('following:' + following + ",data_id : " + data_id);
               $('#del_following').attr('data_id', data_id);
               $('#del_following').attr('following', following.split('/')[1]);
-
+              $('#del_following').attr('following_text', following);
               $('#del_following_body').text('news id : ' + data_id + '   ' + following + ' 을(를) 삭제합니다');
 
               var before_datas = $('#push-'+ data_id).attr('datas').split(',');
               var data = 'Team/' + following;
               for (var i = 0 ; i<before_datas.length; i++){
                 if(before_datas[i] == data){
-                  before_datas.pop();
+                  before_datas.splice(i, 1);
                 }
               }
               $('#push-'+ data_id).attr('datas', before_datas.join());
@@ -273,7 +273,7 @@ $('#btn_following_add').click(function(){
               console.log('following:' + following + ",data_id : " + data_id);
               $('#del_following').attr('data_id', data_id);
               $('#del_following').attr('following', following.split('/')[1]);
-
+              $('#del_following').attr('following_text', following);
               $('#del_following_body').text('news id : ' + data_id + '   ' + following + ' 을(를) 삭제합니다');
 
               var before_datas = $('#push-'+ data_id).attr('datas').split(',');
@@ -281,7 +281,7 @@ $('#btn_following_add').click(function(){
               for (var i = 0 ; i<before_datas.length; i++){
 
                 if(before_datas[i] == data){
-                  before_datas.pop();
+                  before_datas.splice(i, 1);
                 }
               }
               $('#push-'+ data_id).attr('datas', before_datas.join());
@@ -315,19 +315,19 @@ $('#btn_del_following').on("click",function(){
             console.log('befor_datas :' + before_datas[i]);
             console.log('data :' + data);
             if(before_datas[i] == data){
-              before_datas.pop();
+              before_datas.splice(i, 1);
             }
           }
           data = 'Team/' + following_text;
           for (var i = 0 ; i<before_datas.length; i++){
             if(before_datas[i] == data){
-              before_datas.pop();
+              before_datas.splice(i, 1);
             }
           }
           data = 'League/' + following_text;
           for (var i = 0 ; i<before_datas.length; i++){
             if(before_datas[i] == data){
-              before_datas.pop();
+              before_datas.splice(i, 1);
             }
           }
           $('#push-'+ data_id).attr('datas', before_datas.join());
