@@ -193,7 +193,7 @@ class CurryVodAdmin(admin.ModelAdmin):
     def title_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'title', obj.title, 'textarea')
-    
+
     def following_desc_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'following_desc', obj.following_desc, 'textarea')
@@ -265,8 +265,8 @@ class SwipsCrawlingSourceAdmin(admin.ModelAdmin):
         return Util().get_popover('admin', 'swips_crawling_source', 'id', obj.id,\
                            'source', obj.source, 'text')
     def del_field_(self, obj):
-        return Util().get_popover('admin', 'swips_crawling_source', 'id', obj.id,\
-                           'del_field', obj.del_field, 'text')
+        return Util().get_count_change('admin', 'swips_crawling_source', 'id', obj.id,\
+                           'del', obj.del_field, 'text')
 @admin.register(SwipsNews)
 class SwipsNewsAdmin(admin.ModelAdmin):
     list_display = ('id','language_cd','source','link_news','link_image',\
