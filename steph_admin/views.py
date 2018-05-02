@@ -43,7 +43,7 @@ def best11(request) :
         round = request_model['round']
         payload  = {'round_info': round, 'tournament': tournament, 'locale': 'en,ko,pt,vi,th,id'}
         headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
-        
+
         response = requests.post("http://swips.co/preview/content_make/best11", data=payload)
         print(response)
         return HttpResponse(response)
@@ -221,7 +221,7 @@ def lineup(request) :
                     shirt_number = '0'
                 position = str(row['position'])
                 if position is None or position == '' :
-                    position = '0'
+                    position = ' '
                 values.append('("%s", "%s", "%s", "%s", "%s", "%s")'
                         %(match_id, '1', row['lineup_number'], shirt_number,\
                           position, row['name']))

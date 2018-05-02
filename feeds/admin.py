@@ -22,6 +22,7 @@ class CurryNewsAdmin(admin.ModelAdmin):
     '''
     list_per_page = 20
     change_list_template = 'admin/steph_admin/change_list_news.html'
+    list_display_links = None
 
     def has_delete_permission(self, request, obj=None):
         #Disable delete
@@ -132,7 +133,7 @@ class CurryNewsAdmin(admin.ModelAdmin):
 class CurryVodAdmin(admin.ModelAdmin):
     list_display = ('id','push','match_id_','lang','source','link_vods','link_image',\
                 'is_frifee_content_', 'pushed_', 'del_field_',\
-                'create_tmp','is_top_','sport_','country_cd','country_exclude_cd','is_live','title_','following_desc_',\
+                'create_tmp','is_top_','sport_','country_cd_','country_exclude_cd_','is_live_','title_','following_desc_',\
                 'following_')
     list_filter = ['source', 'sport', 'is_top', 'is_live', 'language_cd', 'country_cd', 'country_exclude_cd', 'del_field']
     search_fields = ['id', 'title', 'source', 'following_desc']
@@ -142,6 +143,7 @@ class CurryVodAdmin(admin.ModelAdmin):
     '''
     list_per_page = 20
     actions = ['del_field_change', ]
+    list_display_links = None
     change_list_template = 'admin/steph_admin/change_list_vods.html'
     def del_field_change(self, request, queryset):
         print('delf_field_0')
@@ -182,7 +184,8 @@ class CurryVodAdmin(admin.ModelAdmin):
             pass
         return format_html('<a class="btn news_push glyphicon glyphicon-send" id="push-%s" datas = "%s" title="%s" lang="%s"></a>' %(obj.id, ','.join(datas), obj.title, obj.language_cd))
     def lang(self, obj):
-        return obj.language_cd
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'language_cd', obj.language_cd, 'text')
     def link_vods(self, obj):
         return format_html("<a href='{0}' target='_blank'>click</a>", obj.link)
     def link_image(self, obj):
@@ -190,9 +193,10 @@ class CurryVodAdmin(admin.ModelAdmin):
     def title_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'title', obj.title, 'textarea')
+    
     def following_desc_(self, obj):
-        return format_html('<div title = "{}" style="width:300px; word-break:break-word;">{}<div>', obj.following_desc, obj.following_desc)
-        #return truncatechars(obj.following_desc, 100)
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'following_desc', obj.following_desc, 'textarea')
     def following_(self, obj) :
         html = '<ul class = "list-unstyled" id = "following_%s">' %(obj.id)
         html += '<li><a class="btn btn-primary btn-sm following_add" style="margin-bottom: 5px;" data_id="%s">+ following add</button></li>' %(obj.id)
@@ -232,6 +236,15 @@ class CurryVodAdmin(admin.ModelAdmin):
     def sport_(self, obj):
         return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
                            'sport', obj.sport, 'text')
+    def country_cd_(self, obj):
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'country_cd', obj.country_cd, 'text')
+    def country_exclude_cd_(self, obj):
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'country_exclude_cd', obj.country_exclude_cd, 'text')
+    def is_live_(self, obj):
+        return Util().get_popover('admin', 'swips_vod', 'id', obj.id,\
+                           'is_live', obj.is_live, 'text')
     def pushed_(self, obj):
         return format_html('<span id="%s%s%s">%s</span>' %('id', obj.id, 'pushed', obj.pushed))
     def has_add_permission(self, request):
