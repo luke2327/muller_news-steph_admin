@@ -9,7 +9,7 @@ var news_id_selected;
 var news_lang_selected;
 var news_title_selected;
 $('#grp-content-title').html(
-  '<h1>VOD</h1><ul class=\"grp-object-tools\"><li><a href=\"/admin_v2/feeds/swipsvod/add/\" class=\"grp-add-link grp-state-focus\">Add VOD 리스트</a></li></ul>'
+  '<h1>VOD</h1><ul class=\"grp-object-tools\"><li><a href=\"/feeds/swipsvod/add/\" class=\"grp-add-link grp-state-focus\">Add VOD 리스트</a></li></ul>'
 );
 //send pushed
 $('.news_push').on("click",function(){
