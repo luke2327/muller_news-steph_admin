@@ -15,13 +15,13 @@ class SwipsNationalTeamInfoWCAdmin(admin.ModelAdmin):
 @admin.register(SwipsNationalTeamInfoCompetition)
 class SwipsNationalTeamInfoCompetitionAdmin(admin.ModelAdmin):
     list_display = ('team', 'competition', 'no_champions', 'appearance', 'best_result',
-                    'no_champions_desc', 'appearance_desc', 'best_result_desc',
+                    'last_result', 'no_champions_desc', 'appearance_desc', 'best_result_desc',
                     'last_result_desc', 'valid_until', 'ut')
     list_editable = ['competition', 'no_champions', 'appearance', 'best_result',
-                    'no_champions_desc', 'appearance_desc', 'best_result_desc',
+                    'last_result', 'no_champions_desc', 'appearance_desc', 'best_result_desc',
                     'last_result_desc', 'valid_until', 'ut']
     change_list_template = 'admin/steph_admin/change_list_custom.html'
-
+    ordering = ['team']
 @admin.register(SwipsNationalCompetitionInfo)
 class SwipsNationalCompetitionInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'name_ko', 'name_pt', 'name_th',
