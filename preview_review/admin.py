@@ -14,7 +14,7 @@ class WorldPeacePorViewAdmin(admin.ModelAdmin):
     list_filter = ['id', 'round', 'league']
     search_fields = ['id', 'round', 'tournament', 'league',\
             'player', 'lineup_type', 'position', 'rating',\
-            'team_']
+            'team']
     def team_(self, obj):
         return Util().get_popover_best11('admin', 'world_peace_por', 'id', obj.id,\
                            'team', obj.team, 'text', obj.tournament, obj.round)
