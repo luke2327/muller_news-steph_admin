@@ -37,7 +37,7 @@ class SwipsTransfer(models.Model):
     is_loan = models.IntegerField(help_text="0이면 이적, 1이면 임대", default='0')
     type = models.CharField(max_length=10, choices=type_choice, help_text="rumor:루머, bid:제안, agreed:확정, official:오피셜")
     ut = models.DateTimeField(blank=True, null=True)
-    contract_dt = models.DateField(blank=True, null=True, help_text="신규계약 만료일", default='2000-01-01 00:00:00')
+    contract_dt = models.DateField(blank=True, null=True, help_text="신규계약 만료일", default='2000-01-01')
     contract_info = models.CharField(max_length=8, choices=contact_info_choice, help_text="close:contract_dt가 보이지 않게함, estimate: 추정, confirm: 확정")
     fee = models.BigIntegerField(help_text="이적금액 숫자로입력")
     fee_info = models.CharField(max_length=8, choices=fee_info_choice, help_text="close: fee가 보이지 않게함, estimate: 추정, confirm: 확정")
