@@ -42,12 +42,12 @@ class SwipsTransfer(models.Model):
     fee = models.BigIntegerField(help_text="이적금액 숫자로입력")
     fee_info = models.CharField(max_length=8, choices=fee_info_choice, help_text="close: fee가 보이지 않게함, estimate: 추정, confirm: 확정")
     fee_currency = models.CharField(max_length=6, choices=fee_currency_coice, help_text="통화")
-    source_id = models.CharField(blank=True, null=True, max_length=255, blank=True, null=True)
-    source_th = models.CharField(blank=True, null=True, max_length=255, blank=True, null=True)
-    source_pt = models.CharField(blank=True, null=True, max_length=255, blank=True, null=True)
-    source_ko = models.CharField(blank=True, null=True, max_length=255, blank=True, null=True)
-    source_vi = models.CharField(blank=True, null=True, max_length=255, blank=True, null=True)
-    source_en = models.CharField(blank=True, null=True, max_length=255, blank=True, null=True)
+    source_id = models.CharField(max_length=255, blank=True, null=True)
+    source_th = models.CharField(max_length=255, blank=True, null=True)
+    source_pt = models.CharField(max_length=255, blank=True, null=True)
+    source_ko = models.CharField(max_length=255, blank=True, null=True)
+    source_vi = models.CharField(max_length=255, blank=True, null=True)
+    source_en = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
