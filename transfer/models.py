@@ -35,7 +35,7 @@ class SwipsTransfer(models.Model):
     to_team_id = models.IntegerField(help_text="이적할 팀 id, 찾을 수 없을떄에는 0으로 기록", default='0')
     to_team_name = models.CharField(max_length=45, blank=True, null=True, help_text="to_team_id를 찾을 수 없을떄에만 영어로 기록(첫자 대문자!)")
     is_loan = models.IntegerField(help_text="0이면 이적, 1이면 임대", default='0')
-    type = models.CharField(max_length=10, choices=type_choice, help_text="rumor:루머, bid:제안, agreed:확정, official:오피셜", initial='rumor'))
+    type = models.CharField(max_length=10, choices=type_choice, help_text="rumor:루머, bid:제안, agreed:확정, official:오피셜"), initial='rumor')
     ut = models.DateTimeField(blank=True, null=True)
     contract_dt = models.DateField(blank=True, null=True, help_text="신규계약 만료일", default='2000-01-01')
     contract_info = models.CharField(max_length=8, choices=contact_info_choice, help_text="close:contract_dt가 보이지 않게함, estimate: 추정, confirm: 확정", initial='close')
