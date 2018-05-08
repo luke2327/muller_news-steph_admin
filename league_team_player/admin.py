@@ -103,8 +103,11 @@ class SwipsPlayerCareerAdmin(admin.ModelAdmin):
 class CurryPlayerAdmin(admin.ModelAdmin):
     list_display = ('player', 'name', 'mid_name', 'name_ko', 'mid_name_ko', 'name_th',
                     'mid_name_th', 'country', 'social', 'draft', 'school', 'ut', 'position')
+    search_fields = ['player', 'name', 'mid_name', 'name_ko', 'mid_name_ko', 'name_th',
+                    'mid_name_th', 'country', 'social', 'draft', 'school', 'ut', 'position']
     def has_add_permission(self, request):
         return False
+
 admin.site.register(SwipsPlayerInfo,SwipsPlayerInfoAdmin)
 admin.site.register(SwipsTeamInfo,SwipsTeamInfoAdmin)
 admin.site.register(SwipsLeagueInfo,SwipsLeagueInfoAdmin)
