@@ -25,7 +25,7 @@ class SwipsTransfer(models.Model):
           ('dollar','dollar'),
           ('won','won'),
       )
-    id = models.PositiveIntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     sport = models.IntegerField(help_text="1:football, 23: basketball, 26: baseball", default='1')
     player_id = models.IntegerField(help_text="swips_player id, 찾을 수 없을떄에는 1로 기록", default='0')
     player_name = models.CharField(max_length=45, blank=True, null=True, help_text="player_id를 찾을 수 없을때에만 영어로 기록")
