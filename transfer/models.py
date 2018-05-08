@@ -39,7 +39,7 @@ class SwipsTransfer(models.Model):
     ut = models.DateTimeField(blank=True, null=True)
     contract_dt = models.DateField(blank=True, null=True, help_text="신규계약 만료일", default='2000-01-01')
     contract_info = models.CharField(max_length=8, choices=contact_info_choice, help_text="close:contract_dt가 보이지 않게함, estimate: 추정, confirm: 확정")
-    fee = models.BigIntegerField(help_text="이적금액 숫자로입력")
+    fee = models.BigIntegerField(help_text="이적금액 숫자로입력", default='0')
     fee_info = models.CharField(max_length=8, choices=fee_info_choice, help_text="close: fee가 보이지 않게함, estimate: 추정, confirm: 확정")
     fee_currency = models.CharField(max_length=6, choices=fee_currency_coice, help_text="통화")
     source_id = models.CharField(max_length=255, blank=True, null=True)
