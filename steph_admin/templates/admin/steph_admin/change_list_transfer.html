@@ -1,0 +1,7 @@
+{% extends "admin/steph_admin/change_list_custom.html" %} {% block content %}
+
+{{ block.super }}
+{% load staticfiles%}
+<script type="text/javascript" src="{% static 'admin/js/curry_transfer.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/menu_custom.css' %}" />
+{% endblock %}

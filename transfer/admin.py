@@ -5,8 +5,8 @@ from django.utils.html import format_html
 
 @admin.register(SwipsTransfer)
 class SwipsTransferAdmin(admin.ModelAdmin):
-    change_list_template = 'admin/steph_admin/change_list_custom.html'
-    list_display = ('id', 'sport', 'player_id', 'player_name', 'position',
+    change_list_template = 'admin/steph_admin/change_list_transfer.html'
+    list_display = ('id', 'push_send', 'sport', 'player_id', 'player_name', 'position',
                     'from_team_id', 'from_team_name', 'to_team_id',
                     'to_team_name', 'is_loan', 'type', 'contract_dt',
                     'contract_info', 'fee', 'fee_info', 'fee_currency',
@@ -18,6 +18,13 @@ class SwipsTransferAdmin(admin.ModelAdmin):
     search_fields = ['player_id', 'player_name', 'from_team_id',
                       'from_team_name', 'to_team_id', 'to_team_name']
 
+    def push_send(self, obj):
+        return format_html('<ul class = "list-unstyled">'
+                           '<li><a class="grp-button transfer_push_send" data="0,%s,%s,%s,%s,%s,%s,%s">from_team</a><li>'
+                           '<li><a class="grp-button transfer_push_send" data="1,%s,%s,%s,%s,%s,%s,%s">to_team</a><li>'
+                           '</ul>'
+                           %(obj.from_team_id, obj.id, obj.player_name, obj.from_team_name, obj.to_team_name, obj.type, obj.is_loan,
+                            obj.to_team_id, obj.id, obj.player_name, obj.from_team_name, obj.to_team_name, obj.type, obj.is_loan))
     def source_linker(self, object):
         return format_html("<a href='{}' target='_blank'>{}</a>", object, object)
 

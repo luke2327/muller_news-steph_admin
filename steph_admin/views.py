@@ -346,3 +346,42 @@ def push_send(request) :
     except Exception as e :
         logging.error(e)
         return HttpResponse(status=401)
+
+@csrf_exempt
+def push_send_transfer(request) :
+    try :
+        if request.method == "POST":
+            request_model = json.loads(str(request.body, "utf-8"))
+            team = request_model['team']
+            following = request_model['following']
+            transfer_id = request_model['transfer_id']
+            player_name = request_model['player_name']
+            from_team_name = request_model['from_team_name']
+            to_team_name = request_model['to_team_name']
+            transfer_type = request_model['transfer_type']
+            is_loan = request_model['is_loan']
+            team_names = from_team_name + ';' + to_team_name
+            if int(team) <= 1:
+                participant_type = "te"
+            else :
+                return HttpResponse(status=401)
+
+            if transfer_type == 'official' and int(is_loan) != 1:
+                push_type = 11
+            elif transfer_type == 'rumor' and int(is_loan) != 1:
+                push_type = 111
+            elif transfer_type == 'official' and int(is_loan) == 1:
+                push_type = 211
+            elif transfer_type == 'rumor' and int(is_loan) == 1:
+                push_type = -1
+            query = ('INSERT INTO swips_push '
+                '(push_type, table_name, row_id, status, '
+                'ref1, ref2, ref3, ref4, ref5, refstr1, refstr2, refstr3) '
+                'VALUE ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")'
+                %(push_type, 'swips_transfer_push_send', transfer_id, 'ready', following,
+                transfer_id, team, 0, 0, participant_type, team_names, player_name))
+            print(query)
+            return HttpResponse(json.dumps({"result" : 'ok'}))
+    except Exception as e :
+        logging.error(e)
+        return HttpResponse(status=401)
