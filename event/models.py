@@ -72,19 +72,3 @@ class CurryMajorFixtures(models.Model):
         db_table = 'curry_major_fixtures'
         verbose_name = '주요경기조회'
         verbose_name_plural = '주요경기조회'
-
-class SwipsFixturesInfo(models.Model):
-    id = models.IntegerField(primary_key=True)
-    broadcast_id = models.CharField(max_length=50, blank=True, null=True)
-    broadcast_th = models.CharField(max_length=50, blank=True, null=True)
-    broadcast_vn = models.CharField(max_length=50, blank=True, null=True)
-    broadcast_br = models.CharField(max_length=50, blank=True, null=True)
-    broadcast_kr = models.CharField(max_length=50, blank=True, null=True)
-    broadcast_ph = models.CharField(max_length=50, blank=True, null=True)
-    ut = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'swips_fixtures_info'
-        verbose_name = '중계정보조회'
-        verbose_name_plural = '중계정보조회'

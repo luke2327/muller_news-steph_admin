@@ -17,19 +17,26 @@ def players(request):
 
 def followings(request):
     query = 'SELECT CONCAT(player, "|" ,name) as player from swips_player_info'
+    import time
+    start_time = time.time()
     results = Database().get_data(query)
+    print('player  : %s' %(time.time()-start_time))
     result_p = []
     for row in results :
         result_p.append(row['player'])
 
     query = 'SELECT CONCAT(team, "|" ,name) as team from swips_team_info'
+    start_time = time.time()
     results = Database().get_data(query)
+    print('player  : %s' %(time.time()-start_time))
     result_t = []
     for row in results :
         result_t.append(row['team'])
 
     query = 'SELECT CONCAT(league, "|" ,name) as league from swips_league_info'
+    start_time = time.time()
     results = Database().get_data(query)
+    print('league  : %s' %(time.time()-start_time))
     result_l = []
     for row in results :
         result_l.append(row['league'])
@@ -306,7 +313,7 @@ def push_send(request) :
             elif(type=='vod'):
 
                 for row in players :
-                    if lang is not None and lang != '':
+                    if lang is not None and lang != '' and lang!='None':
                         values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
                             %("pl", row, news_id, lang))
                     else :
@@ -314,7 +321,7 @@ def push_send(request) :
                             values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
                                 %("pl", row, news_id, la))
                 for row in teams :
-                    if lang is not None and lang != '':
+                    if lang is not None and lang != '' and lang!='None':
                         values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
                             %("te", row, news_id, lang))
                     else :
@@ -322,7 +329,7 @@ def push_send(request) :
                             values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
                                 %("te", row, news_id, la))
                 for row in leagues :
-                    if lang is not None and lang != '':
+                    if lang is not None and lang != '' and lang!='None':
                         values.append('CALL spocosy.swips_vod_push_send("%s","%s","%s","%s"); '
                             %("le", row, news_id, lang))
                     else :
@@ -331,7 +338,6 @@ def push_send(request) :
                                 %("le", row, news_id, la))
             result = 0
             for row in values :
-                logging.error(row)
                 result += Database().insert_data(row)
             if result > 0 :
                 return HttpResponse(json.dumps({"result" : 'ok'}))
