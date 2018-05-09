@@ -380,8 +380,11 @@ def push_send_transfer(request) :
                 'VALUE ("%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")'
                 %(push_type, 'swips_transfer_push_send', transfer_id, 'ready', following,
                 transfer_id, team, 0, 0, participant_type, team_names, player_name))
-            print(query)
-            return HttpResponse(json.dumps({"result" : 'ok'}))
+            result = Database().insert_data(query)
+            if result > 0 :
+                return HttpResponse(json.dumps({"result" : 'ok'}))
+            else :
+                return HttpResponse(status=401)
     except Exception as e :
         logging.error(e)
         return HttpResponse(status=401)
