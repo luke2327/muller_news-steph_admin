@@ -1616,6 +1616,7 @@ class SwipsCrawlingSource(models.Model):
     importance_cl = models.IntegerField(choices=IMPORTANCE_CHOICES, default=1)
     ut = models.CharField(max_length=10)
     del_field = models.IntegerField(db_column='del')  # Field renamed because it was a Python reserved word.
+    description = models.CharField(max_length=50, null=True, blank=True)
 
     class Meta:
         managed = False
