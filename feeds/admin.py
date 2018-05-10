@@ -235,10 +235,10 @@ class CurryVodAdmin(admin.ModelAdmin):
 @admin.register(SwipsCrawlingSource)
 class SwipsCrawlingSourceAdmin(admin.ModelAdmin):
     list_display = ('del_field_', 'id', 'source_', 'content_type', 'sport',
-                    'language_cd', 'frequency_cl', 'importance_cl', 'ut')
+                    'language_cd', 'frequency_cl', 'importance_cl', 'description', 'ut')
     list_filter = ['source', 'content_type', 'sport', 'language_cd',
                       'frequency_cl', 'importance_cl', 'ut', 'del_field']
-    list_editable = ['frequency_cl', 'importance_cl']
+    list_editable = ['frequency_cl', 'importance_cl', 'description']
     list_display_links = ['id',]
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     def has_add_permission(self, request):
