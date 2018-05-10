@@ -1,6 +1,12 @@
 from django.contrib import admin
-from .models import *
+from django.forms import BaseModelFormSet, TextInput, Textarea
+from django import forms
 # Register your models here.
+from .models import *
+from django.utils.html import format_html
+from django.template.defaultfilters import truncatechars
+from steph.util.util import Util
+from datetime import datetime
 
 @admin.register(CurryAdBalance)
 class CurryAdBalanceAdmin(admin.ModelAdmin):
@@ -9,12 +15,16 @@ class CurryAdBalanceAdmin(admin.ModelAdmin):
     change_list_template = 'admin/steph_admin/change_list_custom.html'
     search_fields = ('id', 'type', 'weight', 'country_cd', 'os', 'valid_until',
                     'ut', 'advertiser', 'link', 'image_link', 'ad_type')
-    
+
     ordering = ['-id']
 @admin.register(CurryRdsScaleModifier)
 class CurryRdsScaleModifierAdmin(admin.ModelAdmin):
-    list_display = ('id','time','number','description','status','ut','user')
+    list_display = ('id','time','number','description_','status','ut','user')
     change_list_template = 'admin/steph_admin/change_list_custom.html'
+
+    def description_(self, obj):
+        return Util().get_popover('admin', 'curry_rds_scale_modifier', 'id', obj.id,
+                                    'description', obj.description, 'text')
 
 @admin.register(SwipsPush)
 class SwipsPushAdmin(admin.ModelAdmin):

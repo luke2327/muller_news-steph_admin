@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class CurryAdBalance(models.Model):
@@ -37,9 +37,9 @@ class CurryRdsScaleModifier(models.Model):
     time = models.DateTimeField(help_text="디비변경을 시작할 시간. 신규 생성은 20분가량, 삭제는 5분가량")
     number = models.IntegerField(help_text="1~5사이의 숫자. 30분이내에 2번이상 변경을 시도하지말것")
     description = models.CharField(max_length=255, blank=True, null=True, help_text="설명")
-    status = models.CharField(max_length=9)
+    status = models.CharField(max_length=9, default='ready')
     ut = models.DateTimeField(blank=True, null=True)
-    user = models.CharField(max_length=45)
+    user = models.CharField(max_length=5)
 
     class Meta:
         managed = False
