@@ -258,6 +258,7 @@ class SwipsCrawlingSourceAdmin(admin.ModelAdmin):
     list_editable = ['frequency_cl', 'importance_cl', 'description']
     list_display_links = ['id',]
     change_list_template = 'admin/steph_admin/change_list_custom.html'
+    search_fields = ['source', 'sport']
     def has_add_permission(self, request):
         return False
 
