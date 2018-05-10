@@ -2,15 +2,13 @@ from django.contrib import admin
 from django.forms import BaseModelFormSet, TextInput, Textarea
 from django import forms
 # Register your models here.
-<<<<<<< HEAD
-=======
+
 from .models import *
 from django.utils.html import format_html
 from django.template.defaultfilters import truncatechars
 from steph.util.util import Util
 from datetime import datetime
 
->>>>>>> rb
 @admin.register(CurryAdBalance)
 class CurryAdBalanceAdmin(admin.ModelAdmin):
     list_display = ('id', 'type', 'weight', 'country_cd', 'os', 'valid_until',
