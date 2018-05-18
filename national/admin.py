@@ -7,7 +7,7 @@ class SwipsNationalTeamInfoWCAdmin(admin.ModelAdmin):
     list_display = ('team', 'name', 'fifa_ranking', 'no_champions', 'appearance',
                     'best_result', 'last_result', 'no_champions_desc',
                     'appearance_desc', 'best_result_desc', 'last_result_desc')
-    list_editable = ['no_champions', 'appearance',
+    list_editable = ['fifa_ranking', 'no_champions', 'appearance',
                     'best_result', 'last_result']
     list_filter = ['team', 'name']
     search_fields = ['team', 'name']
