@@ -6,14 +6,22 @@ $(document).ready(function(){
 $(function() {
 
     var href = $(location).attr('href');
-    if(href.includes('feeds/') || href.includes('curryfixturesinfo')|| href.includes('currymajorfixtures')){
+    if(href.includes('feeds/')
+    || href.includes('curryfixturesinfo')
+    || href.includes('currymajorfixtures')
+    || href.includes('swipsqna')){
       console.log($.urlParam('language_cd'));
       var filter_lang = $.urlParam('language_cd');
       var filter_sport = $.urlParam('sport');
       var filter_source = $.urlParam('source');
       var filter_league = $.urlParam('league');
       var filter_del = $.urlParam('del_field');
+      var filter_language = $.urlParam('language');
       console.log(filter_lang);
+      if(filter_language){
+        console.log('working??');
+        $('#language_'+ filter_language).button('toggle');
+      }
       if(filter_lang){
         console.log('working??');
         $('#language_cd_'+ filter_lang).button('toggle');
@@ -62,11 +70,19 @@ $('.curry-filter-btn').click(function(){
   var url = $(location).attr('href').split('?')[0];
   var data = $(this).attr('data');
   var toggle = $(this).attr('aria-pressed');
+  var filter_language = $.urlParam('language');
   var filter_lang = $.urlParam('language_cd');
   var filter_sport = $.urlParam('sport');
   var filter_source = $.urlParam('source');
   var filter_league = $.urlParam('league');
   var filter_del = $.urlParam('del_field');
+  if(data.split('=')[0]=='language'){
+    if(toggle){
+      filter_language = null;
+    }else{
+      filter_language = data.split('=')[1];
+    }
+  }
   if(data.split('=')[0]=='language_cd'){
     if(toggle){
       filter_lang = null;
@@ -105,6 +121,9 @@ $('.curry-filter-btn').click(function(){
     }
   }
   params = new Array();
+  if(filter_language){
+    params.push('language='+filter_language);
+  }
   if(filter_lang){
     params.push('language_cd='+filter_lang);
   }
@@ -140,6 +159,8 @@ $('.edit_pop_text').editable({
    //display checklist as comma-separated values
    if(value=='None'){
      $(this).text('');
+     $(this).addClass('editable-empty');
+     $(this).attr('data-value',"");
    }
   },
   success: function(response, newValue) {
@@ -154,6 +175,7 @@ $('.edit_pop_text').editable({
         $(this).attr('id', requestModel.primary_key + requestModel.primary_value + requestModel.change_key);
         var new_id = $(this).attr('id');
         var request_json = JSON.stringify(requestModel);
+        console.log('request_json');
         console.log(request_json);
         $.ajax({
             type : "POST",

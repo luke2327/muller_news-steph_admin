@@ -1,0 +1,25 @@
+{% extends "admin/steph_admin/change_list_custom.html" %} {% block content %}
+<!--ul class="navbar-nav bd-navbar-nav flex-row" style="margin-bottom: 10px">
+  <li class="nav-item">
+    <a id="language_id" class="btn btn-info curry-filter-btn" data = "language=id" href="#" style="margin-left: 10px">id</a>
+  </li>
+  <li class="nav-item">
+    <a id="language_th" class="btn btn-info curry-filter-btn" data = "language=th" href="#" style="margin-left: 10px">th</a>
+  </li>
+  <li class="nav-item">
+    <a id="language_pt" class="btn btn-info curry-filter-btn" data = "language=pt" href="#" style="margin-left: 10px">pt</a>
+  </li>
+  <li class="nav-item">
+    <a id="language_ko" class="btn btn-info curry-filter-btn" data = "language=ko" href="#" style="margin-left: 10px">ko</a>
+  </li>
+  <li class="nav-item">
+    <a id="language_vi" class="btn btn-info curry-filter-btn" data = "language=vi" href="#" style="margin-left: 10px">vi</a>
+  </li>
+  <li class="nav-item">
+    <a id="language_en" class="btn btn-info curry-filter-btn" data = "language=en" href="#" style="margin-left: 10px">en</a>
+  </li>
+</div-->
+{{ block.super }}
+{% load staticfiles%}
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/menu_custom.css' %}" />
+{% endblock %}

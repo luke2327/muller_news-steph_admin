@@ -11,14 +11,14 @@ class SwipsQnaAdmin(admin.ModelAdmin):
     list_display_links = ['id',]
     search_fields = ['id', 'user_id', 'account_id', 'user_agent', 'feedback', 'answer', 'language', 'status']
     list_filter = ('language', 'status',  'user_id', 'account_id')
-    change_list_template = 'admin/steph_admin/change_list_custom.html'
+    change_list_template = 'admin/steph_admin/change_list_feedback_new.html'
     def img_link(self, obj):
         if obj.img_ext is None:
             return None
         else:
-            return format_html("<a href='http://board.swips.co/origin/feedback/{}.jpg'>\
-            <img src='http://board.swips.co/thumbnails/origin/feedback/{}.jpg'></a>",
-            obj.id, obj.id)
+            return format_html("<a href='http://board.swips.co/origin/feedback/%s.%s'>\
+            <img src='http://board.swips.co/thumbnails/origin/feedback/%s.jpg'></a>"
+            %(obj.id, obj.img_ext, obj.id))
 
     def del_field_(self, obj):
         return Util().get_popover('admin', 'swips_qna', 'id', obj.id,\
