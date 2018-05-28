@@ -239,7 +239,7 @@ def lineup(request) :
                     shirt_number = '0'
                 position = str(row['position'])
                 if position is None or position == '' :
-                    position = '0'
+                    position = ' '
                 values.append('("%s", "%s", "%s", "%s", "%s", "%s")'
                         %(match_id, '2', row['lineup_number'], shirt_number,\
                           position, row['name']))
