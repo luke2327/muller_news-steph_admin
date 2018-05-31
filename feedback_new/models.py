@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-
+import datetime
 class SwipsQna(models.Model):
     id = models.IntegerField(primary_key=True)
     user_id = models.IntegerField(help_text="anom id")
@@ -15,7 +15,7 @@ class SwipsQna(models.Model):
     img_height = models.IntegerField(blank=True, null=True)
     answer = models.TextField(blank=True, null=True, help_text="답글")
     ut = models.DateTimeField(blank=True, null=True, help_text="피드백 올라온 시각")
-    answer_ut = models.DateTimeField(blank=True, null=True, help_text="답글 단 시각")
+    answer_ut = models.TextField(blank=True, null=True, help_text="답글 단 시각")
     status = models.CharField(max_length=9, blank=True, null=True, help_text="ready : 답글X answered : 답글 O")
     field_del = models.IntegerField(db_column='_del')  # Field renamed because it started with '_'.
 
